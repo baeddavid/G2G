@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Navbar from './components/Navbar/Navbar'
 import ViewScreen from './components/ViewScreen/ViewScreen'
 import './App.css';
 
 
-function App() {
-  return (
+class App extends Component {
+  state = {
+    user: {
+      name: 'Ana'
+    }
+  }
+  render = () => 
     <div className="App">
-      <ViewScreen />
+      <ViewScreen userName={this.state.user.name} />
       <Navbar />
     </div>
-  );
 }
 
 export default App;

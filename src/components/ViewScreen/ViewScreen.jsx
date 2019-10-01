@@ -8,16 +8,16 @@ import MorePage from '../../pages/MorePage/MorePage';
 const ViewScreen = (props) =>
   <div>
     <Switch>
-      <Route exact path='/' render={(props) =>
+      <Route exact path='/' render={() =>
         <SearchPage {...props} />
       } />
-      <Route exact path='/saved' render={(props) =>
+      <Route exact path='/saved' render={() =>
         <SavedPage {...props}/>
       } />
-      <Route exact path='/profile' render={(props) =>
+      <Route exact path='/profile' render={() =>
         <ProfilePage {...props}/>
       } />
-      <Route exact path='/more' render={(props) =>
+      <Route exact path='/more' render={() =>
         <MorePage {...props}/>
       } />
     </Switch>
