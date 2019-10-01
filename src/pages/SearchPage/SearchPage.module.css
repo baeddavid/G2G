@@ -1,5 +1,104 @@
 .SearchPage {
+  position: absolute;
+  top: 0px;
+  bottom: 86px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mapArea {
+  position: absolute;
+  top: 0;
+  bottom: 165px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  background-color: #D8D8D8;
+}
+
+.inputArea {
+  position: absolute;
+  bottom: 0;
+  height: 165px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+  width: 90%;
+}
+
+.inputElement {
+  background-color: white;
+  border-radius: 13px;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  filter: drop-shadow(0 3px 2px lightgrey);
+}
+
+.inputElement img {
+  object-fit: scale-down;
+  height: 30px;
+  width: 30px;
+  border: 1px dotted red;
+  margin: 0 30px;
+}
+
+input {
+  font-size: 18px;
+  line-height: 25px;
+  width: 100%;
+  border: none;
+}
+
+input::placeholder {
+  color: #3A3A3A;
+}
+
+input:focus {
+  outline: none;
+}
+
+h3 {
+  display: flex;
+  justify-content: left;
+  margin: 0;
+  font-size: 30px;
+  line-height: 41px;
+  width: 100%;
+  margin-bottom: 3px;
+}
+
+.addBathroomButton {
+  background-color: #FAB1A0;
+  position: absolute;
+  height: 86px;
+  width: 86px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 100px;
+  left: 70vw;
+  bottom: 122px;
+}
+
+.addBathroomButton:hover {
+  background-color: red; 
 }
