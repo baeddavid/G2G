@@ -9,8 +9,16 @@ const SearchPage = (props) =>
         <div className={styles.addBathroomButton}>+</div>
         <h3>Hi there, {props.userName}</h3>
         <div className={styles.inputElement}>
-          <img src="search-icon@3x.png" alt="searh icon"/>
-          <input type="text" placeholder="Where do you gotta go?"/>
+          <div>
+            <img src="pink-search.png" alt="searh icon"/>
+          </div>
+          <input 
+            type="text" 
+            placeholder="Where do you gotta go?"
+            name="searchInput"
+            onChange={props.handleChange}
+            value={props.searchText}
+          />
         </div>
       </div>
     </div>
