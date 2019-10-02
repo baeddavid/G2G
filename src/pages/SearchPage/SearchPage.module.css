@@ -9,17 +9,6 @@
   align-items: center;
 }
 
-.mapArea {
-  position: absolute;
-  top: 0;
-  bottom: 165px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: #D8D8D8;
-}
-
 .inputArea {
   position: absolute;
   bottom: 0;
@@ -70,7 +59,7 @@ input {
 }
 
 input::placeholder {
-  color: #3A3A3A;
+  color: grey;
 }
 
 input:focus {

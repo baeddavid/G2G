@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './SearchPage.module.css';
+import Map from '../../components/Map/Map';
 
 const SearchPage = (props) => 
   <div className={styles.SearchPage}>
-    <div className={styles.mapArea}>Map</div>
+    <Map />
     <div className={styles.inputArea}>
       <div className={styles.inputGroup}>
         <div className={styles.addBathroomButton}>+</div>
