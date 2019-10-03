@@ -10,13 +10,15 @@ const googleAPIKey =  process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 
 const SearchPage = (props) => 
   <div className={styles.SearchPage}>
-    <div className="map-wrapper" style={{height: "100vh", width: "100vw"}}>
-      <WrappedMap
-        googleMapURL={`${googleMapsURL + googleAPIKey}`}
-        loadingElement={ <div style={{ height: '100%'}}/> }
-        containerElement={ <div className='container' style={{ height: '100%'}}/> }
-        mapElement={ <div className='map' style={{ height: '100%'}}/> }
-      />
+    <div className={styles.MapWrapper}>
+      <div className={styles.Map}>
+        <WrappedMap
+          googleMapURL={`${googleMapsURL + googleAPIKey}`}
+          loadingElement={ <div style={{ height: '100%'}}/> }
+          containerElement={ <div className='container' style={{ height: '100%'}}/> }
+          mapElement={ <div className='map' style={{ height: '100%'}}/> }
+        />
+      </div>
     </div>
     <div className={styles.inputArea}>
       <div className={styles.inputGroup}>
