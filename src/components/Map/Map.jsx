@@ -20,7 +20,6 @@ function Map(props) {
       defaultZoom={15}
       defaultCenter={{lat:30.2686, lng:-97.7425}}
       defaultClickableIcons={false}
-      
       defaultOptions={{ disableDefaultUI: true,  styles:mapStyles }}
     >
       { tempLatLngList.map((item, idx) => (
@@ -30,7 +29,6 @@ function Map(props) {
           />
         )
       )}
-      
     </GoogleMap>
   )
 }

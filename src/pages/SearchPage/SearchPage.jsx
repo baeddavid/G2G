@@ -3,7 +3,7 @@ import styles from './SearchPage.module.css';
 import WrappedMap from '../../components/Map/Map';
 
 const googleMapsURL = `https://maps.googleapis.com/maps/api/js?&key=`
-const googleAPIKey =  'AIzaSyA7X9opLTmxQJT4SEvtea90bXDqm7OUZ2s'   //'AIzaSyAkFzpnSdVoZTo-KSm-i4VvQWNWAPe5gDc'
+const googleAPIKey =  process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 
 
 const SearchPage = (props) => 
