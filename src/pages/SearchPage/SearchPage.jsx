@@ -1,13 +1,16 @@
 import React from 'react';
 import styles from './SearchPage.module.css';
 import Map from '../../components/Map/Map';
+import { Link } from 'react-router-dom';
 
 const SearchPage = (props) => 
   <div className={styles.SearchPage}>
     <Map />
     <div className={styles.inputArea}>
       <div className={styles.inputGroup}>
-        <div className={styles.addBathroomButton}>+</div>
+        <Link to="/createbathroom">
+          <div className={styles.addBathroomButton}>+</div>
+        </Link>
         <h3>Hi there, {props.userName}</h3>
         <div className={styles.inputElement}>
           <div>
