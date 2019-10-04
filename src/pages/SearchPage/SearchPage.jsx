@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './SearchPage.module.css';
-import Map from '../../components/Map/Map';
 import { Link } from 'react-router-dom';
 import WrappedMap from '../../components/Map/Map';
+import { SearchInput } from '../../components/SearchInput/SearchInput';
 
 const googleMapsURL = `https://maps.googleapis.com/maps/api/js?&key=`
 const googleAPIKey =  process.env.REACT_APP_GOOGLE_MAPS_API_KEY
@@ -26,18 +26,7 @@ const SearchPage = (props) =>
           <div className={styles.addBathroomButton}>+</div>
         </Link>
         <h3>Hi there, {props.userName}</h3>
-        <div className={styles.inputElement}>
-          <div>
-            <img src="pink-search.png" alt="searh icon"/>
-          </div>
-          <input 
-            type="text" 
-            placeholder="Where do you gotta go?"
-            name="searchInput"
-            onChange={props.handleChange}
-            value={props.searchText}
-          />
-        </div>
+        <SearchInput {...props}/>
       </div>
     </div>
   </div>

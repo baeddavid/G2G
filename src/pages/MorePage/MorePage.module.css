@@ -1,5 +1,44 @@
 .MorePage {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.MorePage h1 {
+  font-size: 30px;
+  text-align: left;
+  margin: 0 22.5px;
+}
+
+.hr {
+  height: 1px;
+  width: 100vw;
+  background-color: #979797;
+  margin: 15.5px 0;
+}
+
+.square {
+  height: 40px;
+  width: 40px;
+  background-color: #D8D8D8;
+  border-radius: 4px;
+  margin: 0 16.5px 0 22.5px;
+}
+
+.head {
+  margin-top: 69px;
+}
+
+.row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  font-size: 24px;
+}
+
+.row img {
+  margin-left: auto;
+  margin-right: 22.5px;
 }
