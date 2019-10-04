@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import mapStyles from './mapStyles';
 import {
   withGoogleMap,
   withScriptjs,
   GoogleMap,
-  Marker
+  Marker,
+  InfoWindow
 } from "react-google-maps";
 
 const tempLatLngList = [
@@ -15,6 +16,20 @@ const tempLatLngList = [
 ]
 
 function Map(props) {
+
+  const [selectedBathroom, setSelectedBathroom] = useState(null);
+  // useEffect(() => {
+  //   const listener = e => {
+  //     if (e.key === "Escape") {
+  //       setSelectedBathroom(null);
+  //     }
+  //   };
+  //   window.addEventListener("keydown", listener);
+  //   return () => {
+  //     window.removeEventListener("keydown", listener);
+  //   };
+  // }, []);
+
   return (
     <GoogleMap 
       defaultZoom={15}
@@ -22,12 +37,30 @@ function Map(props) {
       defaultClickableIcons={false}
       defaultOptions={{ disableDefaultUI: true,  styles:mapStyles }}
     >
-      { tempLatLngList.map((item, idx) => (
+      { tempLatLngList.map((item, idx) => 
           <Marker key={idx}
             position={item}
-            icon={{url: `/assets/map-pin.png`,scaledSize: new window.google.maps.Size(25, 40)}}
+            // onClick={() => {
+            //   setSelectedBathroom(item);
+            // }}
+            icon={{url: `/assets/map-pin.png`,scaledSize: new window.google.maps.Size(23, 35)}}
           />
-        )
+      )}
+      {selectedBathroom && (
+        <InfoWindow
+          onCloseClick={() => {
+            setSelectedBathroom(null);
+          }}
+          position={{
+            lat: selectedBathroom.geometry.coordinates[1],
+            lng: selectedBathroom.geometry.coordinates[0]
+          }}
+        >
+          <div>
+            <h2>{selectedBathroom.properties.NAME}</h2>
+            <p>{selectedBathroom.properties.DESCRIPTIO}</p>
+          </div>
+        </InfoWindow>
       )}
     </GoogleMap>
   )

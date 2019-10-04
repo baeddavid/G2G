@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './SearchPage.module.css';
-import Map from '../../components/Map/Map';
 import { Link } from 'react-router-dom';
 import WrappedMap from '../../components/Map/Map';
 
