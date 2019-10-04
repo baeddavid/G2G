@@ -3,7 +3,27 @@ import styles from './SavedPage.module.css';
 
 const SavedPage = (props) =>
   <div className={styles.SavedPage}>
-    <h1>Saved Page</h1>
+    <div className={`${styles.row} ${styles.head}`}>
+      <h1>Saved</h1>
+      <img src="#" alt="options"/>
+    </div>
+    <div className={styles.hr}/>
+    <div className={styles.row}>
+      <div className={styles.square}/>
+    </div>
+    <div className={styles.hr}/>
+    <div className={styles.row}>
+      <div className={styles.square}/>
+    </div>
+    <div className={styles.hr}/>
+    <div className={styles.row}>
+      <div className={styles.square}/>
+    </div>
+    <div className={styles.hr}/>
+    <div className={styles.row}>
+      <div className={styles.square}/>
+    </div>
+    <div className={styles.hr}/>
   </div>
 
 export default SavedPage;
