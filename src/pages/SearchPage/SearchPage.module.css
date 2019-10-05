@@ -12,6 +12,11 @@
 .Map {
   height: 100%;
   width: 100%;
+  transition: height .5s;
+}
+
+.Map.isFocused {
+  height: 0;
 }
 
 .MapWrapper {
@@ -31,6 +36,12 @@
   align-items: center;
   justify-content: flex-end;
   background-color: white;
+  transition: bottom .5s, color .5s;
+}
+
+.inputArea.isFocused {
+  bottom: 80%;
+  color: transparent;
 }
 
 .inputGroup {
@@ -54,6 +65,7 @@ h3 {
 
 .addBathroomButton {
   background-color: #FAB1A0;
+  opacity: 100%;
   position: absolute;
   height: 86px;
   width: 86px;
@@ -65,6 +77,12 @@ h3 {
   font-size: 100px;
   left: 70vw;
   bottom: 122px;
+  transition: background-color .5s, color .5s;
+}
+
+.addBathroomButton.isFocused {
+  background-color: transparent;
+  color: transparent;
 }
 
 .addBathroomButton:hover {

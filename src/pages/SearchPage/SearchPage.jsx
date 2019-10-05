@@ -10,31 +10,36 @@ import { SearchInput } from '../../components/SearchInput/SearchInput';
 
 
 const SearchPage = (props) => {
-  const [mapState, setMapState] = useState({})
+
+  const [mapState, setMapState] = useState({});
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
-  <div className={styles.SearchPage}>
-    <div className={styles.MapWrapper}>
-      <div className={styles.Map}>
-        <VanillaMap setMapState={setMapState} location={props.location}/>
-        {/* <WrappedMap
-          googleMapURL={`${googleMapsURL + googleAPIKey}`}
-          loadingElement={ <div style={{ height: '100%'}}/> }
-          containerElement={ <div className='container' style={{ height: '100%'}}/> }
-          mapElement={ <div className='map' style={{ height: '100%'}}/> }
-        /> */}
+    <div className={styles.SearchPage}>
+      <div className={styles.MapWrapper}>
+        <div className={`${styles.Map} ${isFocused ? styles.isFocused : null}`}>
+          <VanillaMap setMapState={setMapState} location={props.location}/>
+          {/* <WrappedMap
+            googleMapURL={`${googleMapsURL + googleAPIKey}`}
+            loadingElement={ <div style={{ height: '100%'}}/> }
+            containerElement={ <div className='container' style={{ height: '100%'}}/> }
+            mapElement={ <div className='map' style={{ height: '100%'}}/> }
+          /> */}
+        </div>
+      </div>
+      <div className={`${styles.inputArea} ${isFocused ? styles.isFocused : null}`}>
+        <div className={styles.inputGroup}>
+          <Link to="/createbathroom">
+            <div className={`${styles.addBathroomButton} ${isFocused ? styles.isFocused : null}`}>+</div>
+          </Link>
+          <h3>Hi there, {props.userName}</h3>
+          <SearchInput {...props}
+          mapState={mapState}
+          setIsFocused={setIsFocused}
+          />
+        </div>
       </div>
     </div>
-    <div className={styles.inputArea}>
-      <div className={styles.inputGroup}>
-        <Link to="/createbathroom">
-          <div className={styles.addBathroomButton}>+</div>
-        </Link>
-        <h3>Hi there, {props.userName}</h3>
-        <SearchInput {...props}
-        mapState={mapState}/>
-      </div>
-    </div>
-  </div>
   )
 }
 export default SearchPage;

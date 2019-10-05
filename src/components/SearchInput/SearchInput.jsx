@@ -30,6 +30,8 @@ export const SearchInput = (props) => {
             name="searchInput"
             onChange={props.handleChange}
             value={props.searchText}
+            onFocus={() => props.setIsFocused(true)}
+            onBlur={() => props.setIsFocused(false)}
           />
         </div>
   )
