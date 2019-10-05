@@ -1,8 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SignupPage.module.css';
+import { Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
+import userService from '../../services/userService';
+
+const SIGNUP_MUTATION = gql`
+  mutation SignupMutation($email: String!, $password: String!, $name: String!) {
+    signup(email: $email, password: $password, name: $name) {
+      token
+    }
+  }
+`
 
 export const SignupPage = (props) => {
+
+  const [inputs, setInputs] = useState({
+    name: '',
+    email: '',
+    password: '',
+    passwordConf: '',
+  })
+  
+  const { name, email, password, passwordConf } = inputs;
+
+  const handleChange = (event) => {
+    setInputs({...inputs, [event.target.name]: event.target.value})
+  }
+
+  const _confirm = (data) => {
+    const { token } = data.signup;
+    _saveUserData(token)
+    props.history.push('/')
+  }
+
+  const _saveUserData = token => {
+    localStorage.setItem('auth-token', token)
+    props.setUser({userId: userService.getUser()})
+  }
+
   return (
     <div className={styles.SignupPage}>
       <Link to="/welcome">
@@ -12,30 +48,66 @@ export const SignupPage = (props) => {
       <div className={styles.inputGroup}>
         <label htmlFor="name">What's your name?</label>
         <div className={styles.inputContainer}>
-          <input type="text" id="name" name="name"/>
+          <input 
+            type="text" 
+            id="name" 
+            name="name"
+            value={name}
+            onChange={handleChange}
+          />
         </div>
       </div>
       <div className={styles.inputGroup}>
-        <label htmlFor="username">Username - what people will see</label>
+        <label htmlFor="email">What's your email?</label>
         <div className={styles.inputContainer}>
-          <input type="text" id="username" name="username"/>
+          <input 
+            type="text" 
+            id="email" 
+            name="email"
+            value={email}
+            onChange={handleChange}
+          />
         </div>
       </div>
       <div className={styles.inputGroup}>
         <label htmlFor="password">Password</label>
         <div className={styles.inputContainer}>
-          <input type="text" id="password" name="password"/>
+          <input 
+            type="password" 
+            id="password" 
+            name="password"
+            value={password}
+            onChange={handleChange}
+          />
         </div>
       </div>
       <div className={styles.inputGroup}>
-        <label htmlFor="password-confirmation">Re-type password</label>
+        <label htmlFor="passwordConf">Re-type password</label>
         <div className={styles.inputContainer}>
-          <input type="text" id="password-confirmation" name="password-confirmation"/>
+          <input 
+            type="password" 
+            id="passwordConf" 
+            name="passwordConf"
+            value={passwordConf}
+            onChange={handleChange}
+          />
         </div>
       </div>
-      <div className={styles.darkButton}>
-        Submit
-      </div>
+      <Mutation
+        mutation={SIGNUP_MUTATION}
+        variables={{name, email, password}}
+        onCompleted={data => _confirm(data)}
+      >
+        {mutation => (
+          <div 
+            className={styles.darkButton}
+            onClick={mutation}
+          >
+            Submit
+          </div>
+        )}
+      </Mutation>
     </div>
   )
+
 }

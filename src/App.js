@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar'
-import ViewScreen from './components/ViewScreen/ViewScreen'
+import { ViewScreen } from './components/ViewScreen/ViewScreen'
 import { WelcomePage } from './pages/WelcomePage/WelcomePage';
 import './App.css';
 import { getCurrentLatLng } from './services/geolocation';
 import { LoginPage } from './pages/LoginPage/LoginPage';
+// import { Login } from './components/Login/Login';
 import { SignupPage } from './pages/SignupPage/SignupPage';
+import userService from './services/userService';
 
 
-const App = () => {
+const App = (props) => {
 
-  const [user, setUser] = useState({name: null, username: null});
+  const [user, setUser] = useState({userId: userService.getUser()});
   const [searchText, setSearchText] = useState('');
   const [location, setLocation] = useState({lat: null, lng: null});
 
@@ -27,26 +29,34 @@ const App = () => {
   }
 
   const handleContinueAsGuest = () => {
-    setUser({name: ' '});
+    setUser({userId: 'guest'});
   }
 
   return ( 
     <div className="App">
       <Switch>
-        <Route path="/welcome" exact>
-          <WelcomePage 
-            handleContinueAsGuest={handleContinueAsGuest}
-          />
-        </Route>
-        <Route path="/login" exact>
-          <LoginPage />
-        </Route>
-        <Route path="/signup" exact>
-          <SignupPage />
-        </Route>
+        <Route 
+          exact path="/welcome"
+          render={(props) => 
+            <WelcomePage 
+              {...props} 
+              handleContinueAsGuest={handleContinueAsGuest}
+            />
+          } 
+        />
+        <Route 
+          exact path="/login" 
+          render={(props) => <LoginPage {...props} setUser={setUser}/>} 
+        />
+        <Route 
+          exact path="/signup"
+          render={(props) => <SignupPage {...props} setUser={setUser} />}
+        />
         <Route path="/">
-          {!user.name && <Redirect to="/welcome" />}
+          {!user.userId && <Redirect to="/welcome" />}
           <ViewScreen 
+            {...props}
+            setUser={setUser}
             userName={user.name} 
             searchText={searchText} 
             handleChange={handleChange}
