@@ -27,6 +27,18 @@ const SearchPage = (props) => {
           /> */}
         </div>
       </div>
+      <div 
+        className={`${styles.cancelButton} ${isFocused ? styles.isFocused : null}`}
+        onClick={() => setIsFocused(false)}
+      >
+          Cancel
+      </div>
+      <div 
+        className={`${styles.useCurrentLocationButton} ${isFocused ? styles.isFocused : null}`}
+        onClick={() => {/* insert useCurrentLocation handler here */}}
+      >
+          Use current location
+      </div>
       <div className={`${styles.inputArea} ${isFocused ? styles.isFocused : null}`}>
         <div className={styles.inputGroup}>
           <Link to="/createbathroom">
