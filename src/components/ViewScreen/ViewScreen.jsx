@@ -6,25 +6,27 @@ import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import MorePage from '../../pages/MorePage/MorePage';
 import { CreateBathroomPage } from '../../pages/CreateBathroomPage/CreateBathroomPage';
 
-const ViewScreen = (props) =>
-  <div>
-    <Switch>
-      <Route exact path='/search' render={() =>
-        <SearchPage {...props} />
-      } />
-      <Route exact path='/saved' render={() =>
-        <SavedPage {...props}/>
-      } />
-      <Route exact path='/profile' render={() =>
-        <ProfilePage {...props}/>
-      } />
-      <Route exact path='/more' render={() =>
-        <MorePage {...props}/>
-      } />
-      <Route exact path='/createbathroom' render={() =>
-        <CreateBathroomPage {...props}/>
-      } />
-    </Switch>
-  </div>
+export const ViewScreen = (parentProps) => {
 
-export default ViewScreen;
+  return (
+    <div>
+      <Switch>
+        <Route exact path='/' render={(props) =>
+          <SearchPage {...props} />
+        } />
+        <Route exact path='/saved' render={(props) =>
+          <SavedPage {...props}/>
+        } />
+        <Route exact path='/profile' render={(props) =>
+          <ProfilePage {...props} setUser={parentProps.setUser} />
+        } />
+        <Route exact path='/more' render={(props) =>
+          <MorePage {...props}/>
+        } />
+        <Route exact path='/createbathroom' render={(props) =>
+          <CreateBathroomPage {...props}/>
+        } />
+      </Switch>
+    </div>
+  )
+}
