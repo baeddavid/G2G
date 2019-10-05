@@ -50,6 +50,8 @@ export const LoginPage = (props) => {
             type="text" 
             id="email" 
             name="email"
+            autoComplete="off"
+            required
             value={email}
             onChange={handleChange}
             />
@@ -62,6 +64,8 @@ export const LoginPage = (props) => {
             type="password" 
             id="password" 
             name="password"
+            autoComplete="new-password"
+            required
             value={password}
             onChange={handleChange}
           />
