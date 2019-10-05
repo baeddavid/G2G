@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import WrappedMap from '../../components/Map/Map';
 import { SearchInput } from '../../components/SearchInput/SearchInput';
 
-const googleMapsURL = `https://maps.googleapis.com/maps/api/js?&key=`
+const googleMapsURL = `https://maps.googleapis.com/maps/api/js?libraries=places&key=`
 const googleAPIKey =  process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 
 
