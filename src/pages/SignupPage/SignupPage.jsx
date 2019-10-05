@@ -52,6 +52,8 @@ export const SignupPage = (props) => {
             type="text" 
             id="name" 
             name="name"
+            required
+            autoComplete="off"
             value={name}
             onChange={handleChange}
           />
@@ -64,6 +66,8 @@ export const SignupPage = (props) => {
             type="text" 
             id="email" 
             name="email"
+            required
+            autoComplete="off"
             value={email}
             onChange={handleChange}
           />
@@ -76,6 +80,8 @@ export const SignupPage = (props) => {
             type="password" 
             id="password" 
             name="password"
+            required
+            autoComplete="new-password"
             value={password}
             onChange={handleChange}
           />
@@ -88,6 +94,8 @@ export const SignupPage = (props) => {
             type="password" 
             id="passwordConf" 
             name="passwordConf"
+            required
+            autoComplete="new-password"
             value={passwordConf}
             onChange={handleChange}
           />

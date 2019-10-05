@@ -5,7 +5,7 @@ import styles from './Navbar.module.css';
 const Navbar = (props) => {
   return (
     <div className={styles.Navbar}>
-      <Link to="/search">
+      <Link to="/">
         <div>
           <img src="search-icon@3x.png" alt="search icon"/>
         </div>

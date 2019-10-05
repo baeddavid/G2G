@@ -24,7 +24,7 @@ export const ViewScreen = (parentProps) => {
           <MorePage {...props}/>
         } />
         <Route exact path='/createbathroom' render={(props) =>
-          <CreateBathroomPage {...props}/>
+          <CreateBathroomPage {...props} location={parentProps.location} />
         } />
       </Switch>
     </div>
