@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import mapStyles from './mapStyles';
-import styles from './Map.module.css'
-
+import styles from './Map.module.css';
 
 const tempBathroomList = [ // add more temp data
   { position: {lat:30.2600, lng:-97.7425}, content: '<div>one</div>' },
@@ -12,7 +11,7 @@ const tempBathroomList = [ // add more temp data
 
 const VanillaMap = ({location, setMapState}) => {
   let mapDiv = React.createRef();
-  
+
   function setMap() {
     if (location) {
       const map = new window.google.maps.Map(
