@@ -21,7 +21,7 @@ export const SearchInput = (props) => {
   return (
     <div className={styles.inputElement}>
           <div>
-            <img src="pink-search.png" alt="searh icon"/>
+            <img src="pink-search.png" alt="search icon"/>
           </div>
           <input 
             ref={inputRef}

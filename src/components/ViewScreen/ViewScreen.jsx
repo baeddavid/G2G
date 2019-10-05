@@ -11,7 +11,7 @@ export const ViewScreen = (parentProps) => {
   return (
     <div>
       <Switch>
-        <Route exact path='/search' render={(props) =>
+        <Route exact path='/' render={(props) =>
           <SearchPage {...props}
           {...parentProps}
           />

@@ -15,7 +15,7 @@ const App = (props) => {
 
   const [user, setUser] = useState({userId: userService.getUser()});
   const [searchText, setSearchText] = useState('');
-  const [location, setLocation] = useState({lat: null, lng: null});
+  const [location, setLocation] = useState({lat: 30, lng: 97});
 
   useEffect(() => {
     (async () => {
