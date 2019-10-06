@@ -65,34 +65,38 @@ h3 {
 
 .cancelButton {
   position: absolute;
+  visibility: hidden;
   z-index: 1;
   color: black;
   opacity: 0;
-  bottom: 110%;
+  bottom: 95%;
   left: 5%;
   font-size: 24px;
-  transition: opacity .5s, bottom .5s;
+  transition: opacity .5s, bottom .5s, visibility .5s;
 }
 
 .cancelButton.isFocused {
   bottom: 90%;
   opacity: 100;
+  visibility: visible;
 }
 
 .useCurrentLocationButton {
   position: absolute;
+  visibility: hidden;
   z-index: 1;
   color: #FAB1A0;
   opacity: 0;
   top: 24%;
-  right: -30%;
+  right: 40%;
   font-size: 16px;
-  transition: opacity .5s, right .5s;
+  transition: opacity .5s, right .5s, visibility .5s;
 }
 
 .useCurrentLocationButton.isFocused {
   right: 5%;
   opacity: 100;
+  visibility: visible;
 }
 
 .addBathroomButton {

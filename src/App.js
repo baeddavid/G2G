@@ -62,7 +62,7 @@ const App = (props) => {
             handleChange={handleChange}
             location={location}
           />
-          <Navbar />
+          <Navbar {...props} />
         </Route>
       </Switch>
       
