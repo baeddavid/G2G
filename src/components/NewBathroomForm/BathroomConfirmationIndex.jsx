@@ -3,7 +3,7 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const BathroomConfirmationIndex = ({ 
-    form, nextStep, prevStep, setForm
+    form, nextStep, prevStep, setNewBathroomId, newBathroomId,
  }) => {
     const 
     { 
@@ -18,7 +18,6 @@ const BathroomConfirmationIndex = ({
         changingStations,
         lat,
         lng,
-        newBathroomId,
     } = form;
 
     const POST_MUTATION = gql`
@@ -54,9 +53,9 @@ const BathroomConfirmationIndex = ({
             }
         }
     `
-
+    
     const saveAndContinue = (data) => {
-        setForm({ ...form, newBathroomId: data.postBathroom.id })
+        setNewBathroomId(data.postBathroom.id);
         nextStep();
     }
 
