@@ -54,11 +54,11 @@ const App = (props) => {
           render={(props) => <SignupPage {...props} setUser={setUser} />}
         />
         <Route 
-          exact path='/createbathroom' 
+          exact path="/createbathroom"
           render={(props) => <CreateBathroomPage {...props} location={location} setNewBathroomId={setNewBathroomId} newBathroomId={newBathroomId}/>
         } />
         <Route
-          exact path={`/bathroom/${newBathroomId}`}
+          exact path="/bathroom/:id"
           render={(props) => <ShowBathroomPage {...props} newBathroomId={newBathroomId}/>  
         } />
         <Route path="/">

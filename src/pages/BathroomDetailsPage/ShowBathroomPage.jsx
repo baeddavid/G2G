@@ -3,7 +3,6 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const ShowBathroomPage = (props) => {
-  console.log(props)
   const GET_BATHROOM = gql`
   query getBathroom($bathroomId: ID!) {
     getBathroom(bathroomId: $bathroomId) {
@@ -19,27 +18,31 @@ const ShowBathroomPage = (props) => {
     }
   }
   `
+
+
+  const Bathroom_ID_Object = {bathroomId: props.match.params.id};
+  console.log(Bathroom_ID_Object)
   return(
       <Query query={ GET_BATHROOM }
-      variables={ props.newBathroomId }>
+      variables={ Bathroom_ID_Object }>
         
         {({ loading, error, data}) => {
           if(loading) return <div>Fetching</div>
           if(error) return <div>Error</div>
           
           const Bathroom = data;
-
+          console.log(data);
           return(
             <div>
-              <div>Business Name: { Bathroom.businessName }</div>
-              <div>Decsription: { Bathroom.description }</div>
-              <div>Address: { Bathroom.address }</div>
-              <div>Gender Neutral: { Bathroom.genderNeutral }</div>
-              <div>Category: { Bathroom.category }</div>
-              <div>Changing Stations: { Bathroom.changingStations }</div>
-              <div>Purchase Required: { Bathroom.purchaseRequired }</div>
-              <div>Accessible Stall: { Bathroom.accessibleStall }</div>
-              <div>Single Occupany: { Bathroom.singleOccupancy }</div>
+              <div>Business Name: { Bathroom.getBathroom.businessName }</div>
+              <div>Decsription: { Bathroom.getBathroom.description }</div>
+              <div>Address: { Bathroom.getBathroom.address }</div>
+              <div>Gender Neutral: { Bathroom.getBathroom.genderNeutral  }</div>
+              <div>Category: { Bathroom.getBathroom.category }</div>
+              <div>Changing Stations: { Bathroom.getBathroom.changingStations ? 'true' : 'false' }</div>
+              <div>Purchase Required: { Bathroom.getBathroom.purchaseRequired ? 'true' : 'false' }</div>
+              <div>Accessible Stall: { Bathroom.getBathroom.accessibleStall ? 'true' : 'false' }</div>
+              <div>Single Occupany: { Bathroom.getBathroom.singleOccupancy ? 'true' : 'false' }</div>
             </div>
           )
         }}
