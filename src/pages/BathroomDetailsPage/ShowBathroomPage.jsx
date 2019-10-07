@@ -19,9 +19,7 @@ const ShowBathroomPage = (props) => {
   }
   `
 
-
   const Bathroom_ID_Object = {bathroomId: props.match.params.id};
-  console.log(Bathroom_ID_Object)
   return(
       <Query query={ GET_BATHROOM }
       variables={ Bathroom_ID_Object }>
@@ -31,7 +29,6 @@ const ShowBathroomPage = (props) => {
           if(error) return <div>Error</div>
           
           const Bathroom = data;
-          console.log(data);
           return(
             <div>
               <div>Business Name: { Bathroom.getBathroom.businessName }</div>
