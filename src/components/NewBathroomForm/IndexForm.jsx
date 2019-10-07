@@ -60,5 +60,6 @@ export default function IndexForm(props) {
                     />
         case 5:
             return <BathroomSuccessIndex />
+        default: return null;
     }    
 }

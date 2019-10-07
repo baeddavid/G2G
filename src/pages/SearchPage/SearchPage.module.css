@@ -53,7 +53,7 @@
   width: 90%;
 }
 
-h3 {
+.SearchPage h3 {
   display: flex;
   justify-content: left;
   margin: 0;
@@ -115,6 +115,26 @@ h3 {
   bottom: 122px;
   visibility: visible;
   transition: background-color .5s, color .5s, visibility .5s;
+}
+
+.vLine {
+  position: absolute;
+  left: 41px;
+  right: 41px;
+  top: 19px;
+  bottom: 19px;
+  border-radius: 2.5px;
+  background-color: white;
+}
+
+.hLine {
+  position: absolute;
+  left: 19px;
+  right: 19px;
+  top: 41px;
+  bottom: 41px;
+  border-radius: 2.5px;
+  background-color: white;
 }
 
 .addBathroomButton.isFocused {

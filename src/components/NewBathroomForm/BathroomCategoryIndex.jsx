@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function BathroomCategoryIndex({ form, nextStep, setForm }) {
+const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
 
     const saveAndContinue = e => {
         e.preventDefault();
@@ -10,9 +10,9 @@ export default function BathroomCategoryIndex({ form, nextStep, setForm }) {
     return(
         <div>
             <h1>New Bathroom</h1>
-            <div>Thanks for being a contributing member of the G2G community! By providing this information, you’re helping us keep our database updated and useful.</div>
+            <p>Thanks for being a contributing member of the G2G community! By providing this information, you’re helping us keep our database updated and useful.</p>
             {/* Should we say swipe? Or tap arrow button */}
-            <div>Select relevant answers. Then swipe</div>
+            <h3>Select relevant answers. Then swipe</h3>
             <div>
                 <div>Where is this bathroom?</div>
                 <div
@@ -34,8 +34,10 @@ export default function BathroomCategoryIndex({ form, nextStep, setForm }) {
                 <div
                     onClick={ () => setForm({ ...form, genderNeutral: 'Men\'s'})}
                     >Men's</div>
-                <button onClick={ saveAndContinue }>Save and Continue</button>
+                <div onClick={ saveAndContinue }>Save and Continue</div>
             </div>
         </div>
     )
 }
+
+export default BathroomCategoryIndex;

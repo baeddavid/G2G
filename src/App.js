@@ -6,9 +6,9 @@ import { WelcomePage } from './pages/WelcomePage/WelcomePage';
 import './App.css';
 import { getCurrentLatLng } from './services/geolocation';
 import { LoginPage } from './pages/LoginPage/LoginPage';
-// import { Login } from './components/Login/Login';
 import { SignupPage } from './pages/SignupPage/SignupPage';
 import userService from './services/userService';
+import { CreateBathroomPage } from './pages/CreateBathroomPage/CreateBathroomPage';
 
 
 const App = (props) => {
@@ -52,6 +52,10 @@ const App = (props) => {
           exact path="/signup"
           render={(props) => <SignupPage {...props} setUser={setUser} />}
         />
+        <Route 
+          exact path='/createbathroom' 
+          render={(props) => <CreateBathroomPage {...props} location={location} />
+        } />
         <Route path="/">
           {!user.userId && <Redirect to="/welcome" />}
           <ViewScreen 

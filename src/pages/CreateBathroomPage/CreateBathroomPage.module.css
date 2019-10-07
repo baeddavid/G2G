@@ -1,0 +1,26 @@
+.CreateBathroomPage {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  padding: 23px;
+  font-size: 16px;
+}
+
+.CreateBathroomPage a {
+  color: black;
+}
+
+.CreateBathroomPage h1 {
+  font-size: 32px;
+  color: #E19C8C;
+  text-align: center;
+}
+
+.CreateBathroomPage h3 {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
