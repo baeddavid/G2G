@@ -15,6 +15,7 @@ export default function IndexForm(props) {
         directions: '',
         description: '',
         address: '',
+        newBathroomId: null,
         lat: props.location.lat,
         lng: props.location.lng,
         purchaseRequired: false,
@@ -57,8 +58,11 @@ export default function IndexForm(props) {
                         nextStep={ nextStep }
                         prevStep={ prevStep }
                         form={ form }
+                        setForm={ setForm }
                     />
         case 5:
-            return <BathroomSuccessIndex />
+            return <BathroomSuccessIndex
+                        newBathroomId={ form.newBathroomId }
+            />
     }    
 }

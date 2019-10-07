@@ -3,11 +3,10 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const BathroomConfirmationIndex = ({ 
-    form
+    form, nextStep, prevStep, setForm
  }) => {
-    const { 
-        nextStep, 
-        prevStep,
+    const 
+    { 
         category,
         genderNeutral,
         description,
@@ -18,7 +17,8 @@ const BathroomConfirmationIndex = ({
         singleOccupancy,
         changingStations,
         lat,
-        lng
+        lng,
+        newBathroomId,
     } = form;
 
     const POST_MUTATION = gql`
@@ -49,17 +49,14 @@ const BathroomConfirmationIndex = ({
                 singleOccupancy: $singleOccupancy
             ) {
                 id
-                businessName
-                description
-                address
                 lat
                 lng
             }
         }
     `
 
-    const saveAndContinue = e => {
-        e.preventDefault();
+    const saveAndContinue = (data) => {
+        setForm({ ...form, newBathroomId: data.postBathroom.id })
         nextStep();
     }
 
@@ -96,8 +93,8 @@ const BathroomConfirmationIndex = ({
                 purchaseRequired,
                 accessibleStall,
                 singleOccupancy
-            }}>
-                { postMutation => <button onClick={postMutation}>Confirm</button> }
+            }} onCompleted={ (data) => { saveAndContinue(data) } }>
+                { postMutation => <button onClick={ postMutation }>Confirm</button> }
             </Mutation>
         </div>
     )
