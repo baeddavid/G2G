@@ -3,51 +3,52 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const BathroomConfirmationIndex = ({ 
-    form, 
-    nextStep, 
-    prevStep,
-    category,
-    genderNeutral,
-    description,
-    address,
-    businessName,
-    purchaseRequired,
-    accessibleStall,
-    singleOccupancy,
-    changingStations,
-    lat,
-    lng
+    form
  }) => {
+    const { 
+        nextStep, 
+        prevStep,
+        category,
+        genderNeutral,
+        description,
+        address,
+        businessName,
+        purchaseRequired,
+        accessibleStall,
+        singleOccupancy,
+        changingStations,
+        lat,
+        lng
+    } = form;
 
     const POST_MUTATION = gql`
         mutation PostMutation(
-            $category: String!,
-            $genderNeutral: String!,
+            $businessName: String,
             $description: String!,
             $address: String!,
-            $businessName: String,
-            $purhcaseRequired: Boolean!,
-            $accessibleStall: Boolean!,
-            $singleOccupancy: Boolean!,
-            $changingStations: Boolean!,
+            $genderNeutral: String!,
+            $category: String!,
             $lat: Float!,
-            $lng: Float!
+            $lng: Float!,
+            $changingStations: Boolean!,
+            $purchaseRequired: Boolean!,
+            $accessibleStall: Boolean!,
+            $singleOccupancy: Boolean!
         ) {
-            post(
-                category: $category,
-                genderNeutral: $genderNeutral,
+            postBathroom(
+                businessName: $businessName,
                 description: $description,
                 address: $address,
-                businessName: $businessName,
-                purchaseRequired: $purhcaseRequired,
-                accessibleStall: $accessibleStall,
-                singleOccupancy: $singleOccupancy,
-                changingStations: $changingStations,
+                genderNeutral: $genderNeutral,
+                category: $category,
                 lat: $lat,
-                lng: $lng
+                lng: $lng,
+                changingStations: $changingStations,
+                purchaseRequired: $purchaseRequired,
+                accessibleStall: $accessibleStall,
+                singleOccupancy: $singleOccupancy
             ) {
                 id
-                createdAt
                 businessName
                 description
                 address
@@ -72,30 +73,32 @@ const BathroomConfirmationIndex = ({
             <h1>Confirm New Bathroom Details</h1>
             <p>Click Confirm if the following details have been correctly entered</p>
             <div>
-                Bathroom Type: { form.category }<br />
-                Bathroom Gender: { form.genderNeutral }<br />
-                Purchase Required: { form.purchaseRequired ? 'true' : 'false' }<br />
-                Accessible Stall: { form.accessibleStall ? 'true' : 'false' }<br />
-                Single Occupancy: { form.singleOccupancy ? 'true' : 'false' }<br />
-                Changing Stations: { form.changingStations ? 'true' : 'false' }<br />
-                Business Name: { form.businessName }<br />
-                Business Address: { form.address }<br />
-                Business Description: { form.description }<br />
+                Bathroom Type: { category }<br />
+                Bathroom Gender: { genderNeutral }<br />
+                Purchase Required: { purchaseRequired ? 'true' : 'false' }<br />
+                Accessible Stall: { accessibleStall ? 'true' : 'false' }<br />
+                Single Occupancy: { singleOccupancy ? 'true' : 'false' }<br />
+                Changing Stations: { changingStations ? 'true' : 'false' }<br />
+                Business Name: { businessName }<br />
+                Business Address: { address }<br />
+                Business Description: { description }<br />
             </div>
             <button onClick={ back }>Back</button>
             <Mutation mutation={ POST_MUTATION } variables={{
-                category,
+                businessName,
+                description,
+                address,
                 genderNeutral,
+                category,
+                lat,
+                lng,
+                changingStations,
                 purchaseRequired,
                 accessibleStall,
-                singleOccupancy,
-                changingStations,
-                businessName,
-                address,
-                description,
-                lat,
-                lng
-            }}>{ postMutation => <button onClick={postMutation}>Confirm</button> }</Mutation>
+                singleOccupancy
+            }}>
+                { postMutation => <button onClick={postMutation}>Confirm</button> }
+            </Mutation>
         </div>
     )
 }

@@ -27,7 +27,7 @@ export default function IndexForm(props) {
 
     const prevStep = () => setStep(step - 1);
 
-    const handleChange = event => setForm({ ...form, [event.target.name]: [event.target.value] });
+    const handleChange = event => setForm({ ...form, [event.target.name]: event.target.value });
 
     switch(step) {
         case 1:
