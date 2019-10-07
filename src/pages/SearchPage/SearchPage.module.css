@@ -12,6 +12,11 @@
 .Map {
   height: 100%;
   width: 100%;
+  transition: height .5s;
+}
+
+.Map.isFocused {
+  height: 0;
 }
 
 .MapWrapper {
@@ -31,6 +36,12 @@
   align-items: center;
   justify-content: flex-end;
   background-color: white;
+  transition: bottom .5s, color .5s;
+}
+
+.inputArea.isFocused {
+  bottom: 75%;
+  color: transparent;
 }
 
 .inputGroup {
@@ -52,8 +63,45 @@ h3 {
   margin-bottom: 3px;
 }
 
+.cancelButton {
+  position: absolute;
+  visibility: hidden;
+  z-index: 1;
+  color: black;
+  opacity: 0;
+  bottom: 95%;
+  left: 5%;
+  font-size: 24px;
+  transition: opacity .5s, bottom .5s, visibility .5s;
+}
+
+.cancelButton.isFocused {
+  bottom: 90%;
+  opacity: 100;
+  visibility: visible;
+}
+
+.useCurrentLocationButton {
+  position: absolute;
+  visibility: hidden;
+  z-index: 1;
+  color: #FAB1A0;
+  opacity: 0;
+  top: 24%;
+  right: 40%;
+  font-size: 16px;
+  transition: opacity .5s, right .5s, visibility .5s;
+}
+
+.useCurrentLocationButton.isFocused {
+  right: 5%;
+  opacity: 100;
+  visibility: visible;
+}
+
 .addBathroomButton {
   background-color: #FAB1A0;
+  opacity: 100%;
   position: absolute;
   height: 86px;
   width: 86px;
@@ -65,6 +113,14 @@ h3 {
   font-size: 100px;
   left: 70vw;
   bottom: 122px;
+  visibility: visible;
+  transition: background-color .5s, color .5s, visibility .5s;
+}
+
+.addBathroomButton.isFocused {
+  background-color: transparent;
+  color: transparent;
+  visibility: hidden;
 }
 
 .addBathroomButton:hover {

@@ -28,8 +28,9 @@ export const SearchInput = (props) => {
             type="text" 
             placeholder="Where do you gotta go?"
             name="searchInput"
-            // onChange={props.handleChange}
-            // value={props.searchText}
+            onChange={props.handleChange}
+            value={props.searchText}
+            onFocus={() => props.setIsFocused(true)}
           />
         </div>
   )

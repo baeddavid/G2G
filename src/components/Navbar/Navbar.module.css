@@ -1,4 +1,5 @@
 .Navbar {
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -12,7 +13,7 @@
   color: white;
 }
 
-.Navbar div {
+.imgContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,4 +25,39 @@
   object-fit: scale-down;
   height: 100%;
   width: 100%;
+}
+
+.indicatorContainer {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+  height: 10px;
+}
+
+.indicator {
+  width: 25%;
+  grid-column: 2/3;
+  grid-row: 1;
+  background-color: white;
+  margin-left: 0%;
+  transition: margin-left .5s;
+}
+
+.indicator.search {
+  margin-left: 0%
+}
+
+.indicator.saved {
+  margin-left: 25%;
+}
+
+.indicator.profile {
+  margin-left: 50%;
+}
+
+.indicator.more {
+  margin-left: 75%;
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import IndexForm from '../../components/NewBathroomForm/IndexForm';
 
 export const CreateBathroomPage = (props) => {
   return (
     <>
-      <h1>Create Bathroom Page</h1>
       <div>
         Latitude: {props.location.lat}
       </div>
@@ -14,6 +14,7 @@ export const CreateBathroomPage = (props) => {
       <Link to="/search">
         <div>Back</div>
       </Link>
+      <IndexForm { ...props }/>
     </>  
   )
 }
