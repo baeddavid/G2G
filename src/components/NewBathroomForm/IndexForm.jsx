@@ -51,16 +51,9 @@ export default function IndexForm({ setNewBathroomId, newBathroomId, location })
                         prevStep={ prevStep }
                         handleChange={ handleChange }
                         form={ form }
-                    />
-        case 4:
-            return <BathroomConfirmationIndex
-                        nextStep={ nextStep }
-                        prevStep={ prevStep }
-                        form={ form }
-                        setForm={ setForm }
                         setNewBathroomId={ setNewBathroomId }
                     />
-        case 5:
+        case 4:
             return <BathroomSuccessIndex newBathroomId={ newBathroomId } />
 
         default: return null;

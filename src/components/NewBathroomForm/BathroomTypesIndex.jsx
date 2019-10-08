@@ -83,7 +83,6 @@ const BathroomTypesIndex = ({ form, nextStep, prevStep, setForm }) => {
         <div className={styles.dot} />
         <div className={`${styles.dot} ${styles.highlight}`} />
         <div className={styles.dot} />
-        <div className={styles.dot} />
       </div>
     </div>
   )
