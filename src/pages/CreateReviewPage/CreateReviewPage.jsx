@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mutation } from 'react-apollo';
+import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 
 const CreateReviewPage = props => {
@@ -28,6 +29,9 @@ const CreateReviewPage = props => {
 
   return(
     <div>
+
+      <Link to={`/bathroom/${props.match.params.id}`}><div>Cancel</div></Link>
+
       <input
         name='title'
         placeholder='Review Title'
