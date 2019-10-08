@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import mapStyles from './mapStyles';
 import styles from './Map.module.css';
 

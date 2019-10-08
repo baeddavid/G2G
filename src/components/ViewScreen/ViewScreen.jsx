@@ -4,7 +4,7 @@ import SearchPage from '../../pages/SearchPage/SearchPage';
 import SavedPage from '../../pages/SavedPage/SavedPage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import MorePage from '../../pages/MorePage/MorePage';
-import { CreateBathroomPage } from '../../pages/CreateBathroomPage/CreateBathroomPage';
+// import { CreateBathroomPage } from '../../pages/CreateBathroomPage/CreateBathroomPage';
 import ShowBathroomPage from '../../pages/ShowBathroomPage/ShowBathroomPage'
 
 export const ViewScreen = (parentProps) => {

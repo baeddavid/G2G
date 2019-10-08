@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from './SearchInput.module.css';
 
 export const SearchInput = ({setIsFocused, setMapCenter, setPlaceData}) => {

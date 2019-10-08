@@ -9,7 +9,7 @@ import { LoginPage } from './pages/LoginPage/LoginPage';
 import { SignupPage } from './pages/SignupPage/SignupPage';
 import userService from './services/userService';
 import { CreateBathroomPage } from './pages/CreateBathroomPage/CreateBathroomPage';
-import ShowBathroomPage from './pages/BathroomDetailsPage/ShowBathroomPage';
+// import ShowBathroomPage from './pages/ShowBathroomPage/ShowBathroomPage';
 import CreateReviewPage from './pages/CreateReviewPage/CreateReviewPage';
 import ReviewSuccessPage from './pages/ReviewSuccessPage/ReviewSuccessPage';
 import DeleteConfirmationPage from './pages/DeleteConfirmationPage/DeleteConfirmationPage';

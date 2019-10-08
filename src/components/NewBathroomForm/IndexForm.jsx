@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BathroomCategoryIndex from './BathroomCategoryIndex';
 import BathroomTypesIndex from './BathroomTypesIndex';
 import BathroomDescriptionIndex from './BathroomDescriptionIndex';
-import BathroomConfirmationIndex from './BathroomConfirmationIndex';
+// import BathroomConfirmationIndex from './BathroomConfirmationIndex';
 import BathroomSuccessIndex from './BathroomSucessIndex';
 
 export default function IndexForm({ setNewBathroomId, newBathroomId, location }) {

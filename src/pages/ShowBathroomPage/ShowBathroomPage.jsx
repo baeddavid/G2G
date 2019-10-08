@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { useQuery, Mutation } from 'react-apollo';
+import React from 'react';
+import { useQuery} from 'react-apollo';
 import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 import styles from './ShowBathroomPage.module.css';
 import LoadingPage from '../LoadingPage/LoadingPage';
 import DeletedPage from '../DeletedPage/DeletedPage';
-import ErrorPage from '../ErrorPage/ErrorPage';
+// import ErrorPage from '../ErrorPage/ErrorPage';
 
 const GET_BATHROOM = gql`
 query getBathroom($bathroomId: ID!) {
@@ -36,7 +36,7 @@ query getBathroom($bathroomId: ID!) {
 const ShowBathroomPage = props => {
 
   const Bathroom_ID_Object = {bathroomId: props.match.params.id};
-  const Mutate_Bathroom_ID = {id: props.match.params.id};
+  // const Mutate_Bathroom_ID = {id: props.match.params.id};
 
   const { loading, error, data } = useQuery(GET_BATHROOM, { fetchPolicy: 'no-cache', variables: Bathroom_ID_Object });
   
@@ -45,12 +45,12 @@ const ShowBathroomPage = props => {
 
   const Bathroom = data;
 
-  let deleteAction;
+  // let deleteAction;
   let showReviews;
 
-  if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
-    deleteAction = <Link to={`/bathroom/${props.match.params.id}/delete`}><div>Delete</div></Link>
-  }
+  // if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
+  //   deleteAction = <Link to={`/bathroom/${props.match.params.id}/delete`}><div>Delete</div></Link>
+  // }
 
 
   let tempArr = Bathroom.getBathroom.reviews.slice(0).reverse();
