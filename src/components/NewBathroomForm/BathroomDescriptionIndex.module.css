@@ -1,0 +1,74 @@
+.BathroomDescriptionIndex {
+  position: absolute;
+  top: 6vh;
+  bottom: 6vh;
+  left: 4vw;
+  right: 4vw;
+}
+
+.BathroomDescriptionIndex input {
+  border-bottom: 1px solid black;
+  padding: 0 3vw;
+  margin-bottom: 5vh;
+  width: 80vw;
+}
+
+.saveAndContinueBtnContainer {
+  position: absolute;
+  bottom: 7vh;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.saveAndContinueBtn {
+  border: 1px solid #E19C8C;
+  color: #E19C8C;
+  border-radius: 8px;
+  padding: 2px 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 140px;  
+}
+
+.backBtnContainer {
+  position: absolute;
+  bottom: 7vh;
+  left: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.backBtn {
+  border: 1px solid #E19C8C;
+  color: #E19C8C;
+  border-radius: 8px;
+  padding: 2px 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;  
+  width: 140px;
+}
+
+.dotContainer {
+  position: absolute;
+  bottom: 2vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  height: 11px;
+  width: 11px;
+  border-radius: 50%;
+  margin: 4px;
+  background-color: #A5A5A7;
+}
+
+.highlight {
+  background-color: #FAB1A0;
+}

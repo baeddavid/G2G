@@ -9,30 +9,30 @@
   color: white;
 }
 
-a {
+.WelcomePage a {
   color: white;
   text-decoration: none;
 }
 
-h1 {
+.WelcomePage h1 {
   margin: 0;
   font-size: 40px;
   line-height: 55px;
   font-weight: 800;
 }
 
-h2 {
+.WelcomePage h2 {
   margin: 0;
   font-size: 32px;
   font-weight: 50;
 }
 
-h2 span {
+.WelcomePage h2 span {
   font-style: italic;
   font-weight: 800;
 }
 
-h5 {
+.WelcomePage h5 {
   margin: 8px;
   font-size: 16px;
   line-height: 22px;

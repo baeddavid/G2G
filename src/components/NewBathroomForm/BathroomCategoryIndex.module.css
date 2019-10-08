@@ -1,0 +1,101 @@
+.BathroomCategoryIndex {
+  position: absolute;
+  top: 6vh;
+  bottom: 6vh;
+  left: 4vw;
+  right: 4vw;
+}
+
+.BathroomCategoryIndex p {
+  margin: 0;  
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5vh 0 4vh 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vh 3vw;
+  width: 20vw;
+  border-radius: 13px;
+  height: 16vh;
+  background-color: white;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  margin: 0;
+  border: 2px solid transparent;
+  transition: border .3s;
+}
+
+.selected {
+  border: 2px solid #FAB1A0;
+}
+
+.card.middle {
+  margin: 0 4vw;
+}
+
+.card .img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  margin-top: 2vh;
+}
+
+.img img {
+  object-fit: scale-down;
+  height: 100%;
+  width: 100%;
+}
+
+.card .text {
+  text-align: center;
+}
+
+.saveAndContinueBtnContainer {
+  position: absolute;
+  bottom: 7vh;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.saveAndContinueBtn {
+  border: 1px solid #E19C8C;
+  color: #E19C8C;
+  border-radius: 8px;
+  padding: 2px 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;  
+  width: 140px;
+}
+
+.dotContainer {
+  position: absolute;
+  bottom: 2vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dot {
+  height: 11px;
+  width: 11px;
+  border-radius: 50%;
+  margin: 4px;
+  background-color: #A5A5A7;
+}
+
+.highlight {
+  background-color: #FAB1A0;
+}
