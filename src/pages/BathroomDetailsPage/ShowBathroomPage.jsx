@@ -1,8 +1,9 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const ShowBathroomPage = (props) => {
+
   const GET_BATHROOM = gql`
   query getBathroom($bathroomId: ID!) {
     getBathroom(bathroomId: $bathroomId) {
@@ -15,11 +16,25 @@ const ShowBathroomPage = (props) => {
       purchaseRequired
       accessibleStall
       singleOccupancy
+      postedBy {
+        id
+      }
+    }
+  }
+  `
+
+  const DELETE_BATHROOM = gql`
+  mutation deleteBathroom($id: ID!) {
+    deleteBathroom(id: $id) {
+      postedBy {
+        name
+      }
     }
   }
   `
 
   const Bathroom_ID_Object = {bathroomId: props.match.params.id};
+  const Delete_Bathroom_ID = {id: props.match.params.id};
   return(
       <Query query={ GET_BATHROOM }
       variables={ Bathroom_ID_Object }>
@@ -29,6 +44,14 @@ const ShowBathroomPage = (props) => {
           if(error) return <div>Error</div>
           
           const Bathroom = data;
+
+          let deleteAction;
+          if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
+            deleteAction = <Mutation mutation={ DELETE_BATHROOM } variables={Delete_Bathroom_ID} >
+              { deleteMutation => <button onClick={ deleteMutation }>Delete</button> }
+            </Mutation>
+          }
+          
           return(
             <div>
               <div>Business Name: { Bathroom.getBathroom.businessName }</div>
@@ -40,6 +63,9 @@ const ShowBathroomPage = (props) => {
               <div>Purchase Required: { Bathroom.getBathroom.purchaseRequired ? 'true' : 'false' }</div>
               <div>Accessible Stall: { Bathroom.getBathroom.accessibleStall ? 'true' : 'false' }</div>
               <div>Single Occupany: { Bathroom.getBathroom.singleOccupancy ? 'true' : 'false' }</div>
+              <div>Author ID: { Bathroom.getBathroom.postedBy.id }</div>
+              <div>Current User ID: { props.user.userId }</div>
+              {deleteAction}
             </div>
           )
         }}
