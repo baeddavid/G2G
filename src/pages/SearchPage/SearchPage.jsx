@@ -10,7 +10,10 @@ const GET_CLOSEST_BATHROOMS = gql`
   query getClosest($currentLat:Float!, $currentLng: Float!) {
     getClosest(currentLat: $currentLat, currentLng: $currentLng) {
       bathrooms {
+        businessName
         address
+        description
+        genderNeutral
         id
         lat
         lng
