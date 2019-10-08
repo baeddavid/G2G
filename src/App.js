@@ -10,6 +10,7 @@ import { SignupPage } from './pages/SignupPage/SignupPage';
 import userService from './services/userService';
 import { CreateBathroomPage } from './pages/CreateBathroomPage/CreateBathroomPage';
 import ShowBathroomPage from './pages/BathroomDetailsPage/ShowBathroomPage';
+import CreateReviewPage from './pages/CreateReviewPage/CreateReviewPage';
 
 const App = (props) => {
 
@@ -60,6 +61,10 @@ const App = (props) => {
         <Route
           exact path="/bathroom/:id"
           render={(props) => <ShowBathroomPage {...props} location={location} newBathroomId={newBathroomId} user={user}/>  
+        } />
+        <Route
+          exact path="/bathroom/:id/createreview"
+          render={(props) => <CreateReviewPage {...props} newBathroomId={newBathroomId} />
         } />
         <Route path="/">
           {!user.userId && <Redirect to="/welcome" />}
