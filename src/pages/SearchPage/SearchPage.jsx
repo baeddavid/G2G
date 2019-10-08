@@ -1,30 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useQuery } from 'react-apollo';
+import gql from 'graphql-tag'
 import styles from './SearchPage.module.css';
 import { Link } from 'react-router-dom';
-// import WrappedMap from '../../components/Map/Map';
-import VanillaMap from '../../components/Map/VanillaMap'
+import Map from '../../components/Map/Map'
 import { SearchInput } from '../../components/SearchInput/SearchInput';
-
-// const googleMapsURL = `https://maps.googleapis.com/maps/api/js?libraries=places&key=`
-// const googleAPIKey =  process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 
 
 const SearchPage = (props) => {
-
-  const [mapState, setMapState] = useState({});
   const [isFocused, setIsFocused] = useState(false);
+  const [mapCenter, setMapCenter] = useState(props.location)
+
+  const GET_CLOSEST_BATHROOMS = gql`
+    query getClosest($currentLat:Float!, $currentLng: Float!) {
+      getClosest(currentLat: $currentLat, currentLng: $currentLng) {
+        bathrooms {
+          address
+          id
+          lat
+          lng
+        }
+      }
+    }
+  `
+
+  const { loading, error, data } = useQuery(GET_CLOSEST_BATHROOMS, { 
+    variables: { 
+      currentLat: mapCenter.lat, 
+      currentLng: mapCenter.lng
+    } 
+  });
+    
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
 
   return (
     <div className={styles.SearchPage}>
       <div className={styles.MapWrapper}>
         <div className={`${styles.Map} ${isFocused ? styles.isFocused : null}`}>
-          <VanillaMap setMapState={setMapState} location={props.location}/>
-          {/* <WrappedMap
-            googleMapURL={`${googleMapsURL + googleAPIKey}`}
-            loadingElement={ <div style={{ height: '100%'}}/> }
-            containerElement={ <div className='container' style={{ height: '100%'}}/> }
-            mapElement={ <div className='map' style={{ height: '100%'}}/> }
-          /> */}
+          <Map 
+          location={mapCenter}
+          bathrooms={data.getClosest.bathrooms}
+          />
         </div>
       </div>
       <div 
@@ -35,7 +52,9 @@ const SearchPage = (props) => {
       </div>
       <div 
         className={`${styles.useCurrentLocationButton} ${isFocused ? styles.isFocused : null}`}
-        onClick={() => {/* insert useCurrentLocation handler here */}}
+        onClick={() => {
+          setMapCenter(props.location)
+      }}
       >
           Use current location
       </div>
@@ -49,8 +68,8 @@ const SearchPage = (props) => {
           </Link>
           <h3>Hi there, {props.userName}</h3>
           <SearchInput {...props}
-          mapState={mapState}
           setIsFocused={setIsFocused}
+          setMapCenter={setMapCenter}
           />
         </div>
       </div>

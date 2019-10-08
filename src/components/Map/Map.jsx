@@ -1,74 +1,53 @@
-//refactor to vanilla 
-// dynamic content string for infoWindow made from bathroom data ===
-// contentString = '<div id="content">'+
-      // '<div id="siteNotice">'+
-      // '</div>'+
-      // '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-      // '<div id="bodyContent">'+
-import React, { useState, useEffect} from 'react';
+import React, { useEffect } from 'react';
 import mapStyles from './mapStyles';
-import styles from './Map.module.css'
-import {
-  withGoogleMap,
-  withScriptjs,
-  GoogleMap,
-  Marker,
-  InfoWindow
-} from "react-google-maps"; // remove
+import styles from './Map.module.css';
 
-const tempLatLngList = [ // add more temp data
-  {lat:30.2600, lng:-97.7425},
-  {lat:30.2533, lng:-97.7425},
-  {lat:30.2555, lng:-97.7360},
-  {lat:30.2578, lng:-97.7499}
-]
 
-function Map(props) {
-  const [selectedBathroom, setSelectedBathroom] = useState(null);
-  useEffect(() => {
-    const listener = e => {
-      if (e.key === "Escape") {
-        setSelectedBathroom(null);
+const Map = ({location, bathrooms}) => {
+  let mapDiv = React.createRef();
+
+  function setMap() {
+    if (location) {
+      const map = new window.google.maps.Map(
+        mapDiv.current, {
+          zoom: 15,
+          center: location,
+          disableDefaultUI: true,
+          styles: mapStyles,
+        });
+      // Marker showing users position 
+      new window.google.maps.Marker({position: location, map: map});
+      let infoWindows = [];
+      //creates a marker and info window for every bathroom in bathroom query results 
+      bathrooms.forEach(bathroom => {
+        var infoWindow = new window.google.maps.InfoWindow({content: bathroom.address});
+        infoWindows.push(infoWindow);
+        let marker = new window.google.maps.Marker({
+          position: {lat: bathroom.lat, lng: bathroom.lng}, 
+          map: map, 
+          icon: './assets/map-pin.png'
+        });
+        marker.addListener('click', () => {
+          closeAllInfoWindows();
+          infoWindow.open(map, marker);
+        });
+      });
+      function closeAllInfoWindows() {
+        infoWindows.forEach(info => info.close());
       }
-    };
-    window.addEventListener("keydown", listener);
-    return () => {
-      window.removeEventListener("keydown", listener);
-    };
+    }
+  }
+
+  useEffect(() => {
+    setMap();
   }, []);
 
-  return (
-    <GoogleMap // refactor to vanilla
-      defaultZoom={15}
-      defaultCenter={{lat:30.2686, lng:-97.7425}}
-      defaultClickableIcons={false}
-      defaultOptions={{ disableDefaultUI: true,  styles:mapStyles }}
-    >
-      { tempLatLngList.map((item, idx) => 
-          <Marker key={idx} // Markers MUST be attached to the map 
-            position={item}
-            onClick={() => {
-              setSelectedBathroom(item)
-            }}
-            icon={{url: `/assets/map-pin.png`,scaledSize: new window.google.maps.Size(23, 35)}}
-          />
-      )}
-      {selectedBathroom && (
-        <InfoWindow
-          onCloseClick={() => {
-            setSelectedBathroom(null);
-          }}
-          position={selectedBathroom}
-        >
-          <div className={styles.InfoWindow}>
-            <h2>it's working!!!!!!</h2>
-            <img src="./assets/map-pin.png" alt=""/>
-          </div>
-        </InfoWindow>
-      )}
-    </GoogleMap>
-  )
-}
 
-const WrappedMap = withScriptjs(withGoogleMap(Map))
-export default WrappedMap
+  
+  return ( 
+    <div ref={mapDiv} className={styles.Map}></div>
+    );
+}
+ 
+export default Map;
+
