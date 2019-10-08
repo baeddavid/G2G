@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery } from 'react-apollo';
+import { useQuery, Query } from 'react-apollo';
 import gql from 'graphql-tag'
 import styles from './SearchPage.module.css';
 import { Link } from 'react-router-dom';
@@ -24,14 +24,14 @@ const SearchPage = (props) => {
   const [mapCenter, setMapCenter] = useState(props.location)
   const [placeData, setPlaceData] = useState({});
 
-  const { loading, error, data } = useQuery(GET_CLOSEST_BATHROOMS, { 
+  const { loading, error, data } = useQuery(GET_CLOSEST_BATHROOMS, { fetchPolicy: 'no-cache',
     variables: { 
       currentLat: mapCenter.lat, 
       currentLng: mapCenter.lng
     } 
   });
     
-  if (loading) return 'Loading...';
+  if (loading) return <div style={{color: 'white'}}>Loading</div>;
   if (error) return `Error! ${error.message}`;
 
   return (
