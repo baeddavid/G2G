@@ -4,14 +4,7 @@ import { Query, Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 
-const ShowBathroomPage = (props) => {
-
-  const [form, setForm] = useState({
-    title: '',
-    description: ''
-  });
-
-  const handleChange = event => setForm({ ...form, [event.target.name]: event.target.value });
+const ShowBathroomPage = props => {
 
   const GET_BATHROOM = gql`
   query getBathroom($bathroomId: ID!) {
@@ -51,7 +44,7 @@ const ShowBathroomPage = (props) => {
   const Mutate_Bathroom_ID = {id: props.match.params.id};
   
   return(
-      <Query asyncMode query={ GET_BATHROOM }
+      <Query query={ GET_BATHROOM }
       variables={ Bathroom_ID_Object }>
         
         {({ loading, error, data}) => {
@@ -72,6 +65,7 @@ const ShowBathroomPage = (props) => {
 
           // If there are no reviews prompt the user to write a review. Else display the list of reviews.
           // TODO Nest queries here so that added queries actively update
+
           if(Bathroom.getBathroom.reviews.length === 0) {
             showReviews = <div>Write the first review!</div>
           } else {

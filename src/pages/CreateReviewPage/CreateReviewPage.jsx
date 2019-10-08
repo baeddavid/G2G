@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 
-const CreateReviewPage = (props) => {
+const CreateReviewPage = props => {
 
+  const route = props.match.params.id;
   const [form, setForm] = useState({
     title: '',
     description: ''
@@ -18,7 +19,7 @@ const CreateReviewPage = (props) => {
       }
     }
   `
-  console.log(props);
+
   const Post_Review_ID = {
     bathroomId: props.match.params.id,
     title: form.title,
@@ -40,7 +41,8 @@ const CreateReviewPage = (props) => {
         onChange={ handleChange }
         defaultValue={ form.description }
       />
-      <Mutation mutation={ POST_REVIEW } variables={ Post_Review_ID } onCompleted={() => props.history.push(`/`)}>
+
+      <Mutation mutation={ POST_REVIEW } variables={ Post_Review_ID } onCompleted={() => props.history.push(`/bathroom/${route}/reviewsuccess`)}>
         { postReview => <button onClick={ postReview }>Post Review</button>}
       </Mutation>
     </div>

@@ -11,6 +11,7 @@ import userService from './services/userService';
 import { CreateBathroomPage } from './pages/CreateBathroomPage/CreateBathroomPage';
 import ShowBathroomPage from './pages/BathroomDetailsPage/ShowBathroomPage';
 import CreateReviewPage from './pages/CreateReviewPage/CreateReviewPage';
+import ReviewSuccessPage from './pages/ReviewSuccessPage/ReviewSuccessPage';
 
 const App = (props) => {
 
@@ -65,6 +66,10 @@ const App = (props) => {
         <Route
           exact path="/bathroom/:id/createreview"
           render={(props) => <CreateReviewPage {...props} newBathroomId={newBathroomId} />
+        } />
+        <Route
+          exact path="/bathroom/:id/reviewsuccess"
+          render={(props) => <ReviewSuccessPage {...props} newBathroomId={newBathroomId} />
         } />
         <Route path="/">
           {!user.userId && <Redirect to="/welcome" />}
