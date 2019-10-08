@@ -31,7 +31,7 @@ const SearchPage = (props) => {
     } 
   });
     
-  if (loading) return 'Loading...';
+  if (loading) return <div style={{color: 'white'}}>Loading</div>;
   if (error) return `Error! ${error.message}`;
 
   return (
