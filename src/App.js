@@ -14,7 +14,6 @@ import ShowBathroomPage from './pages/BathroomDetailsPage/ShowBathroomPage';
 const App = (props) => {
 
   const [user, setUser] = useState({userId: userService.getUser()});
-  const [searchText, setSearchText] = useState('');
   const [location, setLocation] = useState({lat: 30.2313, lng: -97.7267});
   const [newBathroomId, setNewBathroomId] = useState(null);
 
@@ -25,9 +24,6 @@ const App = (props) => {
     })()
   }, [])
 
-  const handleChange = (event) => {
-    setSearchText(event.target.value);
-  }
 
   const handleContinueAsGuest = () => {
     setUser({userId: 'guest'});
@@ -66,9 +62,7 @@ const App = (props) => {
           <ViewScreen 
             {...props}
             setUser={setUser}
-            userName={user.name} 
-            searchText={searchText} 
-            handleChange={handleChange}
+            userName={user.name}
             location={location}
           />
           <Navbar {...props} />
