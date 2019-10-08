@@ -67,19 +67,31 @@ const ShowBathroomPage = props => {
 
   return(
     <div className={styles.ShowBathroomPage}>
-      <Link to={'/'}><div>Back to results</div></Link>
+      <Link to={'/'}><div className={styles.backBtn}>back to results</div></Link>
       <div className={styles.mapOuterContainer}>
         <div className={styles.mapContainer}>
           {/* TODO: insert map here */}
         </div>
       </div>
       <div className={styles.content}>
-        <div className={styles.nameAddrContainer}>
-          <div className={styles.businessName}>
-            { Bathroom.getBathroom.businessName }
+        <div className={styles.headSection}>
+          <div className={styles.nameAddrContainer}>
+            <div className={styles.businessName}>
+              { Bathroom.getBathroom.businessName }
+            </div>
+            <div className={styles.address}>
+              { Bathroom.getBathroom.address }
+            </div>
           </div>
-          <div className={styles.address}>
-            { Bathroom.getBathroom.address }
+          <div className={styles.voteContainer}>
+            <div className={styles.upGroup}>
+              <img src="/thumbsUp.png" alt="thumbs up"/>
+              93
+            </div>
+            <div className={styles.downGroup}>
+              <img src="/thumbsDown.png" alt="thumbs down"/>
+              21
+            </div>
           </div>
         </div>
         <div className={styles.description}>
@@ -87,7 +99,7 @@ const ShowBathroomPage = props => {
         </div>
         <div className={styles.row}>
           <h4>Features</h4>
-          <Link to={`/bathroom/${props.match.params.id}/edit`}>Edit Bathroom</Link>
+          <Link className={styles.btn} to={`/bathroom/${props.match.params.id}/edit`}>Edit Bathroom</Link>
         </div>
         <div className={styles.cardContainer}>
           <div className={styles.card}>
@@ -168,7 +180,7 @@ const ShowBathroomPage = props => {
         {/* {deleteAction} */}
         <div className={styles.row}>
           <h4>Reviews</h4>
-          <Link to={`/bathroom/${props.match.params.id}/createreview`}><div>Add a review</div></Link>
+          <Link className={styles.btn} to={`/bathroom/${props.match.params.id}/createreview`}><div>Add a review</div></Link>
         </div>
         { showReviews }
       </div>
