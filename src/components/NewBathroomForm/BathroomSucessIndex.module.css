@@ -1,0 +1,81 @@
+.BathroomSucessIndex {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #FAB1A0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.BathroomSucessIndex h2 {
+  font-size: 40px;
+  line-height: 55px;
+  margin: 0;
+}
+
+.BathroomSucessIndex p {
+  margin: 0;
+  font-size: 24px;
+  line-height: 33px;
+  margin-bottom: 55px;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkItOutBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 256px;
+  height: 66px;
+  border-radius: 36px;
+  font-size: 24px;
+  line-height: 33px;
+  font-weight: 800;
+  color: white;
+  border: 4px solid #E19C8C;
+  transition: all .5s;
+  margin-top: 96px;
+  margin-bottom: 16px;
+}
+
+.toiletContainer {
+  width: 134px;
+  height: 214px;
+}
+
+.toiletContainer img {
+  height: 100%;
+  width: 100%;
+  object-fit: scale-down;
+}
+
+.sparklesContainer {
+  position: absolute;
+  right: 53px;
+  top: 100px;
+  width: 61px;
+  height: 85px;
+}
+
+.sparklesContainer img {
+  height: 100%;
+  width: 100%;
+  object-fit: scale-down;
+}
+
+.back {
+  color: white;
+  font-size: 16px;
+  line-height: 22px;
+}

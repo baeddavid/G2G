@@ -62,7 +62,7 @@ const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
           onClick={ () => setForm({ ...form, genderNeutral: 'Women\'s' })}
         >
           <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
+            <img className={styles.female} src="female.png" alt="private business"/>
           </div>
           <div className={styles.text}>
             Women's
@@ -73,7 +73,7 @@ const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
           onClick={ () => setForm({ ...form, genderNeutral: 'Gender Neutral' })}
         >
           <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
+            <img className={styles.neutral} src="neutral.png" alt="private business"/>
           </div>
           <div className={styles.text}>
             Gender Neutral
@@ -84,7 +84,7 @@ const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
           onClick={ () => setForm({ ...form, genderNeutral: 'Men\'s'})}
         >
           <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
+            <img className={styles.male} src="male.png" alt="private business"/>
           </div>
           <div className={styles.text}>
             Men's

@@ -108,7 +108,7 @@ const BathroomDescriptionIndex = ({ nextStep, prevStep, handleChange, form, setN
         { postMutation => (
           <div 
             className={isFormComplete() ? styles.finishBtn : styles.nopeBtn}
-            onClick={ postMutation }
+            onClick={ isFormComplete() ? postMutation : null }
           >
             Finish
           </div>
