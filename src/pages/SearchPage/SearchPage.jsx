@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useQuery } from 'react-apollo';
+import { useQuery, Query } from 'react-apollo';
 import gql from 'graphql-tag'
 import styles from './SearchPage.module.css';
 import { Link } from 'react-router-dom';
@@ -22,9 +22,9 @@ const SearchPage = (props) => {
         }
       }
     }
-  `
+  ` 
 
-  const { loading, error, data } = useQuery(GET_CLOSEST_BATHROOMS, { 
+  const { loading, error, data } = useQuery(GET_CLOSEST_BATHROOMS, { fetchPolicy: 'no-cache',
     variables: { 
       currentLat: mapCenter.lat, 
       currentLng: mapCenter.lng
