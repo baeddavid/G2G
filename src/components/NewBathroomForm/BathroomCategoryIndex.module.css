@@ -45,15 +45,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  width: 40px;
+  height: 43px;
+  width: 43px;
   margin-top: 2vh;
 }
 
-.img img {
+.card img {
   object-fit: scale-down;
   height: 100%;
   width: 100%;
+}
+
+.card .neutral {
+  width: 68%;
+  height: 68%;
+  margin-top: 13px;
+}
+
+.card .female {
+  margin-top: 24px;
+}
+
+.card .male {
+  position: relative;
+  left: 5px;
 }
 
 .card .text {
