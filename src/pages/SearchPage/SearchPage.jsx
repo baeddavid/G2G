@@ -6,23 +6,23 @@ import { Link } from 'react-router-dom';
 import Map from '../../components/Map/Map'
 import { SearchInput } from '../../components/SearchInput/SearchInput';
 
+const GET_CLOSEST_BATHROOMS = gql`
+  query getClosest($currentLat:Float!, $currentLng: Float!) {
+    getClosest(currentLat: $currentLat, currentLng: $currentLng) {
+      bathrooms {
+        address
+        id
+        lat
+        lng
+      }
+    }
+  }
+`
 
 const SearchPage = (props) => {
   const [isFocused, setIsFocused] = useState(false);
   const [mapCenter, setMapCenter] = useState(props.location)
-
-  const GET_CLOSEST_BATHROOMS = gql`
-    query getClosest($currentLat:Float!, $currentLng: Float!) {
-      getClosest(currentLat: $currentLat, currentLng: $currentLng) {
-        bathrooms {
-          address
-          id
-          lat
-          lng
-        }
-      }
-    }
-  ` 
+  const [placeData, setPlaceData] = useState({});
 
   const { loading, error, data } = useQuery(GET_CLOSEST_BATHROOMS, { fetchPolicy: 'no-cache',
     variables: { 
@@ -41,6 +41,8 @@ const SearchPage = (props) => {
           <Map 
           location={mapCenter}
           bathrooms={data.getClosest.bathrooms}
+          placeData={placeData}
+          history={props.history}
           />
         </div>
       </div>
@@ -70,6 +72,7 @@ const SearchPage = (props) => {
           <SearchInput {...props}
           setIsFocused={setIsFocused}
           setMapCenter={setMapCenter}
+          setPlaceData={setPlaceData}
           />
         </div>
       </div>
