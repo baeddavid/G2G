@@ -6,16 +6,17 @@ import { WelcomePage } from './pages/WelcomePage/WelcomePage';
 import './App.css';
 import { getCurrentLatLng } from './services/geolocation';
 import { LoginPage } from './pages/LoginPage/LoginPage';
-// import { Login } from './components/Login/Login';
 import { SignupPage } from './pages/SignupPage/SignupPage';
 import userService from './services/userService';
-
+import { CreateBathroomPage } from './pages/CreateBathroomPage/CreateBathroomPage';
+import ShowBathroomPage from './pages/BathroomDetailsPage/ShowBathroomPage';
 
 const App = (props) => {
 
   const [user, setUser] = useState({userId: userService.getUser()});
   const [searchText, setSearchText] = useState('');
   const [location, setLocation] = useState({lat: 30.2313, lng: -97.7267});
+  const [newBathroomId, setNewBathroomId] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -52,6 +53,14 @@ const App = (props) => {
           exact path="/signup"
           render={(props) => <SignupPage {...props} setUser={setUser} />}
         />
+        <Route 
+          exact path="/createbathroom"
+          render={(props) => <CreateBathroomPage {...props} location={location} setNewBathroomId={setNewBathroomId} newBathroomId={newBathroomId}/>
+        } />
+        <Route
+          exact path="/bathroom/:id"
+          render={(props) => <ShowBathroomPage {...props} newBathroomId={newBathroomId} user={user}/>  
+        } />
         <Route path="/">
           {!user.userId && <Redirect to="/welcome" />}
           <ViewScreen 

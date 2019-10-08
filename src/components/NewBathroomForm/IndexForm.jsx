@@ -5,7 +5,7 @@ import BathroomDescriptionIndex from './BathroomDescriptionIndex';
 import BathroomConfirmationIndex from './BathroomConfirmationIndex';
 import BathroomSuccessIndex from './BathroomSucessIndex';
 
-export default function IndexForm(props) {
+export default function IndexForm({ setNewBathroomId, newBathroomId, location }) {
 
     const [step, setStep] = useState(1);
     const [form, setForm] = useState({
@@ -15,8 +15,8 @@ export default function IndexForm(props) {
         directions: '',
         description: '',
         address: '',
-        lat: props.location.lat,
-        lng: props.location.lng,
+        lat: location.lat,
+        lng: location.lng,
         purchaseRequired: false,
         accessibleStall: false,
         singleOccupancy: false,
@@ -51,14 +51,11 @@ export default function IndexForm(props) {
                         prevStep={ prevStep }
                         handleChange={ handleChange }
                         form={ form }
+                        setNewBathroomId={ setNewBathroomId }
                     />
         case 4:
-            return <BathroomConfirmationIndex
-                        nextStep={ nextStep }
-                        prevStep={ prevStep }
-                        form={ form }
-                    />
-        case 5:
-            return <BathroomSuccessIndex />
+            return <BathroomSuccessIndex newBathroomId={ newBathroomId } />
+
+        default: return null;
     }    
 }

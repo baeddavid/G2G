@@ -42,7 +42,10 @@ const SearchPage = (props) => {
       <div className={`${styles.inputArea} ${isFocused ? styles.isFocused : null}`}>
         <div className={styles.inputGroup}>
           <Link to="/createbathroom">
-            <div className={`${styles.addBathroomButton} ${isFocused ? styles.isFocused : null}`}>+</div>
+            <div className={`${styles.addBathroomButton} ${isFocused ? styles.isFocused : null}`}>
+              <div className={styles.vLine} />
+              <div className={styles.hLine} />
+            </div>
           </Link>
           <h3>Hi there, {props.userName}</h3>
           <SearchInput {...props}
