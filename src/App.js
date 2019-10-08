@@ -56,10 +56,10 @@ const App = (props) => {
           exact path="/createbathroom"
           render={(props) => <CreateBathroomPage {...props} location={location} setNewBathroomId={setNewBathroomId} newBathroomId={newBathroomId}/>
         } />
-        <Route
+        {/* <Route
           exact path="/bathroom/:id"
           render={(props) => <ShowBathroomPage {...props} location={location} newBathroomId={newBathroomId} user={user}/>  
-        } />
+        } /> */}
         <Route
           exact path="/bathroom/:id/createreview"
           render={(props) => <CreateReviewPage {...props} newBathroomId={newBathroomId} />
@@ -79,6 +79,7 @@ const App = (props) => {
             setUser={setUser}
             userName={user.name}
             location={location}
+            user={user}
           />
           <Navbar {...props} />
         </Route>

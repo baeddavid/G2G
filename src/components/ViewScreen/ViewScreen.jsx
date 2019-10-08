@@ -5,6 +5,7 @@ import SavedPage from '../../pages/SavedPage/SavedPage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import MorePage from '../../pages/MorePage/MorePage';
 import { CreateBathroomPage } from '../../pages/CreateBathroomPage/CreateBathroomPage';
+import ShowBathroomPage from '../../pages/ShowBathroomPage/ShowBathroomPage'
 
 export const ViewScreen = (parentProps) => {
 
@@ -24,6 +25,10 @@ export const ViewScreen = (parentProps) => {
         } />
         <Route exact path='/more' render={(props) =>
           <MorePage {...props}/>
+        } />
+        <Route
+          exact path="/bathroom/:id"
+          render={(props) => <ShowBathroomPage {...props} location={parentProps.location} newBathroomId={parentProps.newBathroomId} user={parentProps.user}/>  
         } />
       </Switch>
     </div>
