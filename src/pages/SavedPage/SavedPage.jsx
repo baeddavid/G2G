@@ -5,7 +5,9 @@ const SavedPage = (props) =>
   <div className={styles.SavedPage}>
     <div className={`${styles.row} ${styles.head}`}>
       <h1>Saved</h1>
-      <img src="#" alt="options"/>
+      <div className={styles.filterContainer}>
+        <img src="filter-icon.png" alt="filter"/>
+      </div>
     </div>
     <div className={styles.hr}/>
     <div className={styles.row}>

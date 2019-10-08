@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from './SearchInput.module.css';
 
 export const SearchInput = ({setIsFocused, setMapCenter, setPlaceData}) => {
@@ -14,7 +14,8 @@ export const SearchInput = ({setIsFocused, setMapCenter, setPlaceData}) => {
         setMapCenter({
           lat: place.geometry.location.lat(),
           lng: place.geometry.location.lng(),
-        });
+        })
+        setIsFocused(false);
       });
     }
   }, [])

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useQuery, Query } from 'react-apollo';
+import React, { useState } from 'react';
+import { useQuery } from 'react-apollo';
 import gql from 'graphql-tag'
 import styles from './SearchPage.module.css';
 import { Link } from 'react-router-dom';
