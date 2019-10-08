@@ -59,7 +59,7 @@ const App = (props) => {
         } />
         <Route
           exact path="/bathroom/:id"
-          render={(props) => <ShowBathroomPage {...props} newBathroomId={newBathroomId} user={user}/>  
+          render={(props) => <ShowBathroomPage {...props} location={location} newBathroomId={newBathroomId} user={user}/>  
         } />
         <Route path="/">
           {!user.userId && <Redirect to="/welcome" />}
