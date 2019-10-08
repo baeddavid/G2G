@@ -17,6 +17,12 @@
   color: white;
 }
 
+.logoutBtn {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+}
+
 .name {
   margin-left: 159px;
   margin-right: 16px;
@@ -42,6 +48,17 @@
   background-color: #7CD1D2;
 }
 
+.profilePictureContainer {
+  width: 60px;
+  height: 60px;
+}
+
+.profilePictureContainer img {
+  height: 100%;
+  width: 100%;
+  object-fit: scale-down;
+}
+
 .badge {
   display: flex;
   justify-content: center;
@@ -53,6 +70,17 @@
   height: 32px;
   background-color: #E3B1FF;
   border-radius: 50%;
+}
+
+.crownContainer {
+  width: 15px;
+  height: 14px;
+}
+
+.crownContainer img {
+  height: 100%;
+  width: 100%;
+  object-fit: scale-down;
 }
 
 .titleRow {

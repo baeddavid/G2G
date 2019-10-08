@@ -14,24 +14,23 @@ const ProfilePage = (props) => {
   return (
     <div className={styles.ProfilePage}>
       <div className={styles.headArea}>
+        <div className={styles.logoutBtn} onClick={logout}>
+          Logout
+        </div>
         <div>
           <span className={styles.name}>Ana J.</span>
           <span className={styles.userName}>@toilet_thoughts</span>
         </div>
         <div className={styles.circle}>
-          <img src="#" alt="profile pic"/>
-        </div>
-        <div className={styles.badge}>
-          <img src="#" alt="crown"/>
+          <div className={styles.profilePictureContainer}>
+            <img src="toilet-paper.png" alt="profile pic"/>
+          </div>
         </div>
       </div>
       <div className={styles.bodyArea}>
         <div className={styles.titleRow}>
           <span className={styles.title}>Queen of the throne</span>
         </div>
-      </div>
-      <div onClick={logout}>
-        Logout
       </div>
     </div>
   )

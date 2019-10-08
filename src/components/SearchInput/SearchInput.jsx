@@ -18,6 +18,7 @@ export const SearchInput = ({setIsFocused, setMapCenter}) => {
           lat: place.geometry.location.lat(),
           lng: place.geometry.location.lng(),
         })
+        setIsFocused(false);
       });
     }
   }, [])
