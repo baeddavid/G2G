@@ -3,8 +3,14 @@ import styles from './BathroomCategoryIndex.module.css';
 
 const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
 
+  const { category, genderNeutral} = form;
+
   const saveAndContinue = () => {
-      nextStep();
+    nextStep();
+  }
+
+  const isPageComplete = () => {
+    return category && genderNeutral
   }
 
   return (
@@ -16,7 +22,7 @@ const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
       <p>Where is this bathroom?</p>
       <div className={styles.cardContainer}>
         <div 
-          className={`${styles.card} ${form.category === 'Private Business' ? styles.selected : null}`}
+          className={`${styles.card} ${category === 'Private Business' ? styles.selected : null}`}
           onClick={ () => setForm({ ...form, category: 'Private Business' })}
         >
           <div className={styles.img}>
@@ -27,7 +33,7 @@ const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
           </div>
         </div>
         <div 
-          className={`${styles.card} ${styles.middle} ${form.category === 'Indoor Public' ? styles.selected : null}`}
+          className={`${styles.card} ${styles.middle} ${category === 'Indoor Public' ? styles.selected : null}`}
           onClick={ () => setForm({ ...form, category: 'Indoor Public' })}
         >
           <div className={styles.img}>
@@ -38,7 +44,7 @@ const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
           </div>
         </div>
         <div 
-          className={`${styles.card} ${form.category === 'Outdoor Public' ? styles.selected : null}`}
+          className={`${styles.card} ${category === 'Outdoor Public' ? styles.selected : null}`}
           onClick={ () => setForm({ ...form, category: 'Outdoor Public'})}
         >
           <div className={styles.img}>
@@ -52,11 +58,11 @@ const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
       <p>Which bathroom did you use?</p>
       <div className={styles.cardContainer}>
         <div
-          className={`${styles.card} ${form.genderNeutral === 'Women\'s' ? styles.selected : null}`}
+          className={`${styles.card} ${genderNeutral === 'Women\'s' ? styles.selected : null}`}
           onClick={ () => setForm({ ...form, genderNeutral: 'Women\'s' })}
         >
           <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
+            <img className={styles.female} src="female.png" alt="private business"/>
           </div>
           <div className={styles.text}>
             Women's
@@ -67,18 +73,18 @@ const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
           onClick={ () => setForm({ ...form, genderNeutral: 'Gender Neutral' })}
         >
           <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
+            <img className={styles.neutral} src="neutral.png" alt="private business"/>
           </div>
           <div className={styles.text}>
             Gender Neutral
           </div>
         </div>
         <div
-          className={`${styles.card} ${form.genderNeutral === 'Men\'s' ? styles.selected : null}`}
+          className={`${styles.card} ${genderNeutral === 'Men\'s' ? styles.selected : null}`}
           onClick={ () => setForm({ ...form, genderNeutral: 'Men\'s'})}
         >
           <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
+            <img className={styles.male} src="male.png" alt="private business"/>
           </div>
           <div className={styles.text}>
             Men's
@@ -87,15 +93,14 @@ const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
       </div>
       <div className={styles.saveAndContinueBtnContainer}>
         <div 
-          className={styles.saveAndContinueBtn}
-          onClick={ saveAndContinue }
+          className={isPageComplete() ? styles.saveAndContinueBtn : styles.cantContinueBtn}
+          onClick={ isPageComplete() ? saveAndContinue : null}
         >
           Save and Continue
         </div>
       </div>
       <div className={styles.dotContainer}>
         <div className={`${styles.dot} ${styles.highlight}`} />
-        <div className={styles.dot} />
         <div className={styles.dot} />
         <div className={styles.dot} />
       </div>

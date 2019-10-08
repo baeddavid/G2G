@@ -7,10 +7,33 @@
 }
 
 .BathroomDescriptionIndex input {
-  border-bottom: 1px solid black;
-  padding: 0 3vw;
-  margin-bottom: 5vh;
-  width: 80vw;
+  background: #FFFFFF;
+  border: 1px solid #A5A5A7;
+  box-sizing: border-box;
+  border-radius: 9px;
+  padding: 0 15px;
+  width: 100%;
+  margin-bottom: 1.5vh;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 33px;
+  height: 48px;
+  caret-color: #FAB1A0;
+}
+
+.BathroomDescriptionIndex textarea {
+  background: #FFFFFF;
+  border: 1px solid #A5A5A7;
+  box-sizing: border-box;
+  border-radius: 9px;
+  padding: 8px 15px;
+  width: 100%;
+  margin-bottom: 1.5vh;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 33px;
+  height: 20vh;
+  caret-color: #FAB1A0;
 }
 
 .saveAndContinueBtnContainer {
@@ -71,4 +94,44 @@
 
 .highlight {
   background-color: #FAB1A0;
+}
+
+.finishBtn {
+  position: absolute;
+  bottom: 15vh;
+  left: 50%;
+  margin-left: -132px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 256px;
+  height: 66px;
+  border-radius: 36px;
+  background-color: #E19C8C;
+  font-size: 24px;
+  line-height: 33px;
+  font-weight: 800;
+  color: white;
+  border: 4px solid #E19C8C;
+  transition: all .5s;
+}
+
+.nopeBtn {
+  position: absolute;
+  bottom: 15vh;
+  left: 50%;
+  margin-left: -132px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 256px;
+  height: 66px;
+  border-radius: 36px;
+  background-color: white;
+  font-size: 24px;
+  line-height: 33px;
+  font-weight: 800;
+  color: #979797;
+  border: 4px solid #979797;
+  transition: all .5s;
 }
