@@ -38,7 +38,7 @@ const ShowBathroomPage = props => {
   const Bathroom_ID_Object = {bathroomId: props.match.params.id};
   const Mutate_Bathroom_ID = {id: props.match.params.id};
 
-  const { loading, error, data } = useQuery(GET_BATHROOM, { variables: Bathroom_ID_Object },);
+  const { loading, error, data } = useQuery(GET_BATHROOM, { fetchPolicy: 'no-cache', variables: Bathroom_ID_Object });
   
   if(loading) return <LoadingPage />;
   if(error) return <DeletedPage />;
