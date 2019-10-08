@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { useQuery, Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
+import LoadingPage from '../LoadingPage/LoadingPage';
+import DeletedPage from '../DeletedPage/DeletedPage';
+import ErrorPage from '../ErrorPage/ErrorPage';
 
 const GET_BATHROOM = gql`
 query getBathroom($bathroomId: ID!) {
@@ -27,16 +30,6 @@ query getBathroom($bathroomId: ID!) {
 }
 `
 
-const DELETE_BATHROOM = gql`
-mutation deleteBathroom($id: ID!) {
-  deleteBathroom(id: $id) {
-    postedBy {
-      name
-    }
-  }
-}
-`
-
 const ShowBathroomPage = props => {
 
   const Bathroom_ID_Object = {bathroomId: props.match.params.id};
@@ -44,8 +37,8 @@ const ShowBathroomPage = props => {
 
   const { loading, error, data } = useQuery(GET_BATHROOM, { variables: Bathroom_ID_Object },);
   
-  if(loading) return <p>Loading...</p>;
-  if(error) return <h1>Error! You weren't supposed to see this :( </h1>
+  if(loading) return <LoadingPage />;
+  if(error) return <DeletedPage />;
 
   const Bathroom = data;
 
@@ -53,9 +46,7 @@ const ShowBathroomPage = props => {
   let showReviews;
 
   if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
-    deleteAction = <Mutation mutation={ DELETE_BATHROOM } variables={ Mutate_Bathroom_ID }>
-      { deleteMutation => <div onClick={ deleteMutation }>Delete</div>}
-    </Mutation>
+    deleteAction = <Link to={`/bathroom/${props.match.params.id}/delete`}><div>Delete</div></Link>
   }
 
 
