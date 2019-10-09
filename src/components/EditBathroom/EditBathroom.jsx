@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
+import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 
 const UPDATE_BATHROOM = gql`
@@ -58,7 +59,7 @@ export default class EditBathroom extends Component {
   handleChange = input => event => this.setState({ [input]: event.target.value });
 
   render() {
-    
+
     const {
       id,
       businessName,
@@ -73,23 +74,29 @@ export default class EditBathroom extends Component {
       lat,
       lng
     } = this.state;
-    
 
     return(
       <div>
+        <Link to={`/bathroom/${id}`}><div>Cancel</div></Link>
+        <Link to={`/bathroom/${id}/delete`}><div>Delete</div></Link>
+        Business Name:
         <input
           defaultValue={businessName}
           onChange={this.handleChange('businessName')}
         />
+        Addresss:
         <input
           defaultValue={address}
           onChange={this.handleChange('address')}
         />
+        Description: 
         <input
           defaultValue={description}
           placeholder='desc'
           onChange={this.handleChange('description')}
         />
+        <div><br /></div>
+        Gender Neutral:
         <div
           onClick={ () => this.setState({ genderNeutral: 'Men\'s'}) }
           >Men's</div>
@@ -99,8 +106,8 @@ export default class EditBathroom extends Component {
         <div
           onClick={ () => this.setState({ genderNeutral: 'Gender Neutral'}) }
           >Gender Neutral</div>
-          
-          {/* BROKEN */}
+          <br />
+          Bathroom Type: 
         <div
           onClick={ () => this.setState({ category: 'Indoor Public'}) }
           >Indoor Public</div>
@@ -110,12 +117,10 @@ export default class EditBathroom extends Component {
         <div
           onClick={ () => this.setState({ category: 'Outdoor Public'}) }
           >Outdoor Public</div>
-
-          {/* BROKEN */}
+          <br />
         <div
           onClick={ () => this.setState({ changingStations: !changingStations}) }
           >Changing Stations</div>
-
         <div
           onClick={ () => this.setState({ purchaseRequired: !purchaseRequired}) }
           >Purchase Required</div>
@@ -125,7 +130,7 @@ export default class EditBathroom extends Component {
         <div
           onClick={ () => this.setState({ singleOccupancy: !singleOccupancy}) }
           >Single Occupancy</div>
-
+        <br />
         <Mutation mutation={UPDATE_BATHROOM} variables={{
           id,
           businessName,

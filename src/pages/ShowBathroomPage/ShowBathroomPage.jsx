@@ -45,12 +45,12 @@ const ShowBathroomPage = props => {
 
   const Bathroom = data;
 
-  // let deleteAction;
+  let editAction;
   let showReviews;
 
-  // if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
-  //   deleteAction = <Link to={`/bathroom/${props.match.params.id}/delete`}><div>Delete</div></Link>
-  // }
+        if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
+          editAction = <Link className={styles.btn} to={`/bathroom/${props.match.params.id}/edit`}>Edit Bathroom</Link>
+        }
 
 
   let tempArr = Bathroom.getBathroom.reviews.slice(0).reverse();
@@ -99,7 +99,7 @@ const ShowBathroomPage = props => {
         </div>
         <div className={styles.row}>
           <h4>Features</h4>
-          <Link className={styles.btn} to={`/bathroom/${props.match.params.id}/edit`}>Edit Bathroom</Link>
+            { editAction }
         </div>
         <div className={styles.cardContainer}>
           <div className={styles.card}>

@@ -75,7 +75,7 @@ const App = (props) => {
         } />
         <Route
           exact path="/bathroom/:id/edit"
-          render={(props) => <EditBathroomPage {...props} location={location}/>
+          render={(props) => <EditBathroomPage {...props} location={location} user={user}/>
         } />
         <Route path="/">
           {!user.userId && <Redirect to="/welcome" />}

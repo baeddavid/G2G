@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Query, Mutation } from 'react-apollo';
+import React from 'react';
+import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import EditBathroom from '../../components/EditBathroom/EditBathroom';
 
@@ -18,25 +18,15 @@ query getBathroom($bathroomId: ID!) {
     singleOccupancy
     lat
     lng
+    postedBy {
+      id
+    }
   }
 }
 `
 
 const EditBathroomPage = props => {
   const Bathroom_ID_Object = {bathroomId: props.match.params.id};
-  const[form, setForm] = useState({
-    category: '',
-    genderNeutral: '',
-    businessName: '',
-    description: '',
-    address: '',
-    lat: props.location.lat,
-    lng: props.location.lng,
-    purchaseRequired: false,
-    accessibleStall: false,
-    singleOccupancy: false,
-    changingStations: false,
-  })
 
   return(
     <div>
