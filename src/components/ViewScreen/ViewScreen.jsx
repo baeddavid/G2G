@@ -6,16 +6,16 @@ import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import MorePage from '../../pages/MorePage/MorePage';
 // import { CreateBathroomPage } from '../../pages/CreateBathroomPage/CreateBathroomPage';
 import ShowBathroomPage from '../../pages/ShowBathroomPage/ShowBathroomPage'
+import LoadingPage from '../../pages/LoadingPage/LoadingPage';
 
 export const ViewScreen = (parentProps) => {
 
   return (
     <div>
       <Switch>
-        <Route exact path='/' render={(props) =>
-          <SearchPage {...props}
-          {...parentProps}
-          />
+        <Route exact path='/' render={(props) => { 
+           return parentProps.location ? <SearchPage {...props} {...parentProps} /> : <LoadingPage/> 
+        }
         } />
         <Route exact path='/saved' render={(props) =>
           <SavedPage {...props}/>

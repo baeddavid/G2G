@@ -18,7 +18,7 @@ import EditBathroomPage from './pages/EditBathroomPage/EditBathroomPage';
 const App = (props) => {
 
   const [user, setUser] = useState({userId: userService.getUser()});
-  const [location, setLocation] = useState({lat: 30.2313, lng: -97.7267});
+  const [location, setLocation] = useState(null);
   const [newBathroomId, setNewBathroomId] = useState(null);
 
   useEffect(() => {
