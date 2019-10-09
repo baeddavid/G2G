@@ -13,6 +13,7 @@ import { CreateBathroomPage } from './pages/CreateBathroomPage/CreateBathroomPag
 import CreateReviewPage from './pages/CreateReviewPage/CreateReviewPage';
 import ReviewSuccessPage from './pages/ReviewSuccessPage/ReviewSuccessPage';
 import DeleteConfirmationPage from './pages/DeleteConfirmationPage/DeleteConfirmationPage';
+import EditBathroomPage from './pages/EditBathroomPage/EditBathroomPage';
 
 const App = (props) => {
 
@@ -71,6 +72,10 @@ const App = (props) => {
         <Route
           exact path="/bathroom/:id/delete"
           render={(props) => <DeleteConfirmationPage {...props} />
+        } />
+        <Route
+          exact path="/bathroom/:id/edit"
+          render={(props) => <EditBathroomPage {...props} location={location}/>
         } />
         <Route path="/">
           {!user.userId && <Redirect to="/welcome" />}
