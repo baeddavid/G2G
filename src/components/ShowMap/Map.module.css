@@ -1,0 +1,15 @@
+.Map {
+  height: 100%;
+  width: 100%;
+}
+
+.InfoWindow {
+  width: 5rem;
+  height: 3rem;
+  background-color: aquamarine;
+}
+
+.Address{ 
+  color: darkmagenta;
+}
+

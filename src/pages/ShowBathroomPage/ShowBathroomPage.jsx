@@ -6,6 +6,7 @@ import styles from './ShowBathroomPage.module.css';
 import LoadingPage from '../LoadingPage/LoadingPage';
 import DeletedPage from '../DeletedPage/DeletedPage';
 import FeaturesScrollbar from '../../components/FeaturesScrollbar/FeaturesScrollbar';
+import ShowMap from '../../components/ShowMap/ShowMap'
 // import ErrorPage from '../ErrorPage/ErrorPage';
 
 const GET_BATHROOM = gql`
@@ -69,13 +70,14 @@ const ShowBathroomPage = props => {
       </div>
     ))
   }
-
+  const location = { lat: Bathroom.getBathroom.lat, lng: Bathroom.getBathroom.lng }
+  
   return(
     <div className={styles.ShowBathroomPage}>
       <Link to={'/'}><div className={styles.backBtn}>back to results</div></Link>
       <div className={styles.mapOuterContainer}>
         <div className={styles.mapContainer}>
-          {/* TODO: insert map here */}
+          <ShowMap location={location}/>          
         </div>
       </div>
       <div className={styles.content}>
