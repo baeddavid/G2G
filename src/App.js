@@ -14,7 +14,7 @@ import CreateReviewPage from './pages/CreateReviewPage/CreateReviewPage';
 import ReviewSuccessPage from './pages/ReviewSuccessPage/ReviewSuccessPage';
 import DeleteConfirmationPage from './pages/DeleteConfirmationPage/DeleteConfirmationPage';
 import EditBathroomPage from './pages/EditBathroomPage/EditBathroomPage';
-import AccessDeniedPage from './pages/AccessDeniedPage/AccessDeniedPage';
+// import AccessDeniedPage from './pages/AccessDeniedPage/AccessDeniedPage';
 
 const App = (props) => {
 
@@ -67,7 +67,10 @@ const App = (props) => {
         } /> */}
         <Route
           exact path="/bathroom/:id/createreview"
-          render={(props) => <CreateReviewPage {...props} newBathroomId={newBathroomId} />
+          render={(props) => 
+          user.userId !== 'guest' ?
+          <CreateReviewPage {...props} newBathroomId={newBathroomId} /> :
+          <Redirect to="/saved" />
         } />
         <Route
           exact path="/bathroom/:id/reviewsuccess"
