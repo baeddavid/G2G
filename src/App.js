@@ -59,7 +59,7 @@ const App = (props) => {
           render={(props) => 
             user.userId !== 'guest' ?
             <CreateBathroomPage {...props} location={location} setNewBathroomId={setNewBathroomId} newBathroomId={newBathroomId}/> :
-            <AccessDeniedPage />
+            <Redirect to="/saved" />
         } />
         {/* <Route
           exact path="/bathroom/:id"
