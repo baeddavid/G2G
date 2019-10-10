@@ -1,0 +1,21 @@
+.InfoWindow {
+  width: 200px;
+  height: 150px;
+}
+
+.Name {
+  color: #E19C8C;
+  font-size: 20px;
+  line-height: 33px;
+  font-weight: 600;
+}
+
+.Address{ 
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 5px;
+}
+
+.Description {
+  margin: 0 20px;
+}
