@@ -34,7 +34,7 @@ const SearchPage = (props) => {
       currentLng: mapCenter.lng
     } 
   });
-    
+  
   if (loading) return <LoadingPage/>;
   if (error) return `Error! ${error.message}`;
 
@@ -73,7 +73,7 @@ const SearchPage = (props) => {
               <div className={styles.hLine} />
             </div>
           </Link>
-          <h3>Hi there, {props.userName}</h3>
+          <h3>Hi there, {props.name}</h3>
           <SearchInput {...props}
           setIsFocused={setIsFocused}
           setMapCenter={setMapCenter}

@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import ReactDOMServer from 'react-dom/server';
+import InfoWindow from '../InfoWindow/InfoWindow';
 import mapStyles from './mapStyles';
 import styles from './Map.module.css';
 
@@ -6,6 +8,10 @@ import styles from './Map.module.css';
 const Map = ({location, bathrooms, placeData, history}) => {
   let mapDiv = React.createRef();
 
+  function renderInfoWindowContent(bathroom) {
+    return ReactDOMServer.renderToString(<InfoWindow bathroom={bathroom}/>)
+  }
+  
   function setMap() {
     if (location) {
       const map = new window.google.maps.Map(
@@ -22,13 +28,7 @@ const Map = ({location, bathrooms, placeData, history}) => {
       //creates a marker and info window for every bathroom in bathroom query results 
       bathrooms.forEach(bathroom => {
         var infoWindow = new window.google.maps.InfoWindow({
-          content: `
-              <div class="${styles.InfoWindow}" >
-                <div class="${styles.Name}">${bathroom.businessName}</div>
-                <div class="${styles.Address}"> ${bathroom.address} </div>
-                <div class="${styles.Description}"> ${bathroom.description}</div>
-              </div>
-            `
+          content: renderInfoWindowContent(bathroom)
           });
         infoWindows.push(infoWindow);
         let marker = new window.google.maps.Marker({
@@ -61,3 +61,13 @@ const Map = ({location, bathrooms, placeData, history}) => {
  
 export default Map;
 
+
+
+
+  // `
+  //   <div onclick=`${()=> pushToHistory(bathroom.id)}`class="${styles.InfoWindow}" >
+  //     <div class="${styles.Name}">${bathroom.businessName}</div>
+  //     <div class="${styles.Address}"> ${bathroom.address} </div>
+  //     <div class="${styles.Description}"> ${bathroom.description}</div>
+  //   </div>
+  // `
