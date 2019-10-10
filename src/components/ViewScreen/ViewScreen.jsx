@@ -5,12 +5,18 @@ import SavedPage from '../../pages/SavedPage/SavedPage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import MorePage from '../../pages/MorePage/MorePage';
 // import { CreateBathroomPage } from '../../pages/CreateBathroomPage/CreateBathroomPage';
-import ShowBathroomPage from '../../pages/ShowBathroomPage/ShowBathroomPage'
+import ShowBathroomPage from '../../pages/ShowBathroomPage/ShowBathroomPage';
+import AccessDeniedPage from '../../pages/AccessDeniedPage/AccessDeniedPage';
+import styles from './ViewScreen.module.css';
 
 export const ViewScreen = (parentProps) => {
 
+  const { user } = parentProps;
+
+  
+
   return (
-    <div>
+    <div className={styles.ViewScreen}>
       <Switch>
         <Route exact path='/' render={(props) =>
           <SearchPage {...props}
@@ -18,13 +24,19 @@ export const ViewScreen = (parentProps) => {
           />
         } />
         <Route exact path='/saved' render={(props) =>
-          <SavedPage {...props}/>
+          user.userId !== 'guest' ?
+          <SavedPage {...props}/> :
+          <AccessDeniedPage />
         } />
         <Route exact path='/profile' render={(props) =>
-          <ProfilePage {...props} setUser={parentProps.setUser} />
+          user.userId !== 'guest' ?
+          <ProfilePage {...props} setUser={parentProps.setUser} /> :
+          <AccessDeniedPage />
         } />
         <Route exact path='/more' render={(props) =>
-          <MorePage {...props}/>
+          user.userId !== 'guest' ?
+          <MorePage {...props}/> :
+          <AccessDeniedPage />
         } />
         <Route
           exact path="/bathroom/:id"

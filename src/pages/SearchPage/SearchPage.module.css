@@ -1,7 +1,7 @@
 .SearchPage {
   position: absolute;
   top: 0px;
-  bottom: 86px;
+  bottom: 0px;
   width: 100%;
   display: flex;
   flex-direction: column;
