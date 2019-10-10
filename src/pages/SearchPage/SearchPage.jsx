@@ -5,12 +5,16 @@ import styles from './SearchPage.module.css';
 import { Link } from 'react-router-dom';
 import Map from '../../components/Map/Map'
 import { SearchInput } from '../../components/SearchInput/SearchInput';
+import LoadingPage from '../LoadingPage/LoadingPage';
 
 const GET_CLOSEST_BATHROOMS = gql`
   query getClosest($currentLat:Float!, $currentLng: Float!) {
     getClosest(currentLat: $currentLat, currentLng: $currentLng) {
       bathrooms {
+        businessName
         address
+        description
+        genderNeutral
         id
         lat
         lng
@@ -31,7 +35,7 @@ const SearchPage = (props) => {
     } 
   });
     
-  if (loading) return <div style={{color: 'white'}}>Loading</div>;
+  if (loading) return <LoadingPage/>;
   if (error) return `Error! ${error.message}`;
 
   return (

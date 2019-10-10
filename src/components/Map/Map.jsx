@@ -21,7 +21,15 @@ const Map = ({location, bathrooms, placeData, history}) => {
       let infoWindows = [];
       //creates a marker and info window for every bathroom in bathroom query results 
       bathrooms.forEach(bathroom => {
-        var infoWindow = new window.google.maps.InfoWindow({content: bathroom.address });
+        var infoWindow = new window.google.maps.InfoWindow({
+          content: `
+              <div class="${styles.InfoWindow}" >
+                <div class="${styles.Name}">${bathroom.businessName}</div>
+                <div class="${styles.Address}"> ${bathroom.address} </div>
+                <div class="${styles.Description}"> ${bathroom.description}</div>
+              </div>
+            `
+          });
         infoWindows.push(infoWindow);
         let marker = new window.google.maps.Marker({
           position: {lat: bathroom.lat, lng: bathroom.lng}, 

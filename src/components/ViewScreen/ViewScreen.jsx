@@ -5,6 +5,7 @@ import SavedPage from '../../pages/SavedPage/SavedPage';
 import ProfilePage from '../../pages/ProfilePage/ProfilePage';
 import MorePage from '../../pages/MorePage/MorePage';
 // import { CreateBathroomPage } from '../../pages/CreateBathroomPage/CreateBathroomPage';
+import LoadingPage from '../../pages/LoadingPage/LoadingPage';
 import ShowBathroomPage from '../../pages/ShowBathroomPage/ShowBathroomPage';
 import AccessDeniedPage from '../../pages/AccessDeniedPage/AccessDeniedPage';
 import styles from './ViewScreen.module.css';
@@ -18,10 +19,9 @@ export const ViewScreen = (parentProps) => {
   return (
     <div className={styles.ViewScreen}>
       <Switch>
-        <Route exact path='/' render={(props) =>
-          <SearchPage {...props}
-          {...parentProps}
-          />
+        <Route exact path='/' render={(props) => { 
+           return parentProps.location ? <SearchPage {...props} {...parentProps} /> : <LoadingPage/> 
+        }
         } />
         <Route exact path='/saved' render={(props) =>
           user.userId !== 'guest' ?
