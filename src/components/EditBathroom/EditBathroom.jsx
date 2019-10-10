@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
+import styles from './EditBathroom.module.css';
 
 const UPDATE_BATHROOM = gql`
 mutation updateBathroom(
@@ -76,61 +77,104 @@ export default class EditBathroom extends Component {
     } = this.state;
 
     return(
-      <div>
-        <Link to={`/bathroom/${id}`}><div>Cancel</div></Link>
-        <Link to={`/bathroom/${id}/delete`}><div>Delete</div></Link>
-        Business Name:
+      <div className={styles.EditBathroom}>
+        <div className={styles.row}>
+          <Link className={styles.cancelBtn} to={`/bathroom/${id}`}>Cancel</Link>
+          <Link className={styles.deleteBtn} to={`/bathroom/${id}/delete`}>Delete</Link>
+        </div>
+        <h1>Edit Bathroom</h1>
+        <p>Notice something is amiss? Misspelled? You can edit the bathroom here to ensure our data stays accurate. Thos who gotta go thank you!</p>
         <input
           defaultValue={businessName}
           onChange={this.handleChange('businessName')}
         />
-        Addresss:
         <input
           defaultValue={address}
           onChange={this.handleChange('address')}
         />
-        Description: 
-        <input
+        <textarea
           defaultValue={description}
           placeholder='desc'
           onChange={this.handleChange('description')}
         />
-        <div><br /></div>
-        Gender Neutral:
-        <div
-          onClick={ () => this.setState({ genderNeutral: 'Men\'s'}) }
-          >Men's</div>
-        <div
-          onClick={ () => this.setState({ genderNeutral: 'Women\'s'}) }
-          >Women's</div>
-        <div
-          onClick={ () => this.setState({ genderNeutral: 'Gender Neutral'}) }
-          >Gender Neutral</div>
-          <br />
-          Bathroom Type: 
-        <div
-          onClick={ () => this.setState({ category: 'Indoor Public'}) }
-          >Indoor Public</div>
-        <div
-          onClick={ () => this.setState({ category: 'Private Business'}) }
-          >Private Business</div>
-        <div
-          onClick={ () => this.setState({ category: 'Outdoor Public'}) }
-          >Outdoor Public</div>
-          <br />
-        <div
-          onClick={ () => this.setState({ changingStations: !changingStations}) }
-          >Changing Stations</div>
-        <div
-          onClick={ () => this.setState({ purchaseRequired: !purchaseRequired}) }
-          >Purchase Required</div>
-        <div
-          onClick={ () => this.setState({ accessibleStall: !accessibleStall}) }
-          >Accessible Stall</div>
-        <div
-          onClick={ () => this.setState({ singleOccupancy: !singleOccupancy}) }
-          >Single Occupancy</div>
-        <br />
+        <h5>Select relevent answers. Then swipe.</h5>
+
+    
+
+        <div className={styles.cardContainer}>
+          <div
+            className={`${styles.card} ${genderNeutral === 'Women\'s' ? styles.selected : null} `}
+            onClick={ () => this.setState({ genderNeutral: 'Women\'s'}) }
+          >
+            <img src="/logo192.png" alt=""/>
+            Women's
+          </div>
+          <div
+            className={`${styles.card} ${genderNeutral === 'Gender Neutral' ? styles.selected : null} `}
+            onClick={ () => this.setState({ genderNeutral: 'Gender Neutral'}) }
+          >
+            <img src="/logo192.png" alt=""/>
+            Gender Neutral
+          </div>
+          <div
+            className={`${styles.card} ${genderNeutral === 'Men\'s' ? styles.selected : null} `}
+            onClick={ () => this.setState({ genderNeutral: 'Men\'s'}) }
+          >
+            <img src="/logo192.png" alt=""/>
+            Men's
+          </div>
+
+          <div
+            className={`${styles.card} ${category === 'Private Business' ? styles.selected : null} `}
+            onClick={ () => this.setState({ category: 'Private Business'}) }
+          >
+            <img src="/logo192.png" alt=""/>
+            Private Business
+          </div>
+          <div
+            className={`${styles.card} ${category === 'Indoor Public' ? styles.selected : null} `}
+            onClick={ () => this.setState({ category: 'Indoor Public'}) }
+          >
+            <img src="/logo192.png" alt=""/>
+            Indoor Public
+          </div>
+          <div
+            className={`${styles.card} ${category === 'Outdoor Public' ? styles.selected : null} `}
+            onClick={ () => this.setState({ category: 'Outdoor Public'}) }
+          >
+            <img src="/logo192.png" alt=""/>
+            Outdoor Public
+          </div>
+          <div
+            className={`${styles.card} ${purchaseRequired ? styles.selected : null} `}
+            onClick={ () => this.setState({ purchaseRequired: !purchaseRequired}) }
+          >
+            <img src="/logo192.png" alt=""/>
+            Purchase Required
+          </div>
+          <div
+            className={`${styles.card} ${accessibleStall ? styles.selected : null} `}
+            onClick={ () => this.setState({ accessibleStall: !accessibleStall}) }
+          >
+            <img src="/logo192.png" alt=""/>
+            Wheelchair Accessible
+          </div>
+          <div
+            className={`${styles.card} ${changingStations ? styles.selected : null} `}
+            onClick={ () => this.setState({ changingStations: !changingStations}) }
+          >
+            <img src="/logo192.png" alt=""/>
+            Baby Changing
+          </div>
+          <div
+            className={`${styles.card} ${singleOccupancy ? styles.selected : null} `}
+            onClick={ () => this.setState({ singleOccupancy: !singleOccupancy}) }
+          >
+            <img src="/logo192.png" alt=""/>
+            Single Occupancy
+          </div>
+        </div>
+      
         <Mutation mutation={UPDATE_BATHROOM} variables={{
           id,
           businessName,
@@ -145,7 +189,7 @@ export default class EditBathroom extends Component {
           lat,
           lng
         }} onCompleted={() => this.props.history.push(`/bathroom/${id}`)}>
-          { editMutation => <div onClick={editMutation}>Submit</div>}
+          { editMutation => <div className={styles.darkBtn} onClick={editMutation}>Submit</div>}
         </Mutation>
       </div>
     )
