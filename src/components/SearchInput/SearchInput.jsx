@@ -10,6 +10,7 @@ export const SearchInput = ({setIsFocused, setMapCenter, setPlaceData}) => {
       autocomplete.setFields(['address_components', 'formatted_address', 'geometry', 'icon', 'name', 'opening_hours', 'place_id', 'types', 'rating', 'photos']);
       autocomplete.addListener('place_changed', function() {
         const place = autocomplete.getPlace();
+        if (!place.geometry) return
         setPlaceData(place);
         setMapCenter({
           lat: place.geometry.location.lat(),
