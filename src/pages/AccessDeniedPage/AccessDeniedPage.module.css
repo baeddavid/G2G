@@ -1,0 +1,61 @@
+.AccessDeniedPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  color: #3A3A3A;
+}
+
+.AccessDeniedPage h1 {
+  font-size: 28px;
+  line-height: 41px;
+  font-weight: 400;
+  color: #3A3A3A;
+}
+
+.AccessDeniedPage h1 span {
+  font-weight: 900;
+}
+
+.AccessDeniedPage a {
+  margin: 0;
+}
+
+.AccessDeniedPage p {
+  margin: 10px 0;
+}
+
+.AccessDeniedPage img {
+  width: 133px;
+  height: 189px;
+  object-fit: scale-down;
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.darkBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 264px;
+  height: 72px;
+  border-radius: 36px;
+  background-color: #E19C8C;
+  font-size: 24px;
+  line-height: 33px;
+  font-weight: 800;
+  color: white;
+  text-decoration: none;
+}
+
+.pEnd {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.login {
+  color: #FAB1A0;
+  text-decoration: underline;
+}

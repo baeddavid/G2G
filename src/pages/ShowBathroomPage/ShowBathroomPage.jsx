@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import styles from './ShowBathroomPage.module.css';
 import LoadingPage from '../LoadingPage/LoadingPage';
 import DeletedPage from '../DeletedPage/DeletedPage';
+import FeaturesScrollbar from '../../components/FeaturesScrollbar/FeaturesScrollbar';
 // import ErrorPage from '../ErrorPage/ErrorPage';
 
 const GET_BATHROOM = gql`
@@ -28,6 +29,9 @@ query getBathroom($bathroomId: ID!) {
       id
       title
       description
+      createdBy {
+        name
+      }
     }
   }
 }
@@ -48,10 +52,9 @@ const ShowBathroomPage = props => {
   let editAction;
   let showReviews;
 
-        if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
-          editAction = <Link className={styles.btn} to={`/bathroom/${props.match.params.id}/edit`}>Edit Bathroom</Link>
-        }
-
+  if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
+    editAction = <Link className={styles.btn} to={`/bathroom/${props.match.params.id}/edit`}>Edit Bathroom</Link>
+  }
 
   let tempArr = Bathroom.getBathroom.reviews.slice(0).reverse();
   if(tempArr.length === 0) {
@@ -59,7 +62,9 @@ const ShowBathroomPage = props => {
   } else {
     showReviews = tempArr.map((review, index) => (
       <div key={index}>
-        <br/>Title: { review.title }<br/>
+        <br/>
+        Author: @{ review.createdBy.name }<br/>
+        Title: { review.title }<br/>
         Description: { review.description }
       </div>
     ))
@@ -101,88 +106,14 @@ const ShowBathroomPage = props => {
           <h4>Features</h4>
             { editAction }
         </div>
-        <div className={styles.cardContainer}>
-          <div className={styles.card}>
-            <div className={styles.imgContainer}>
-              <img src="/logo192.png" alt="category"/>
-            </div>
-            <div className={styles.text}>
-              { Bathroom.getBathroom.category }
-            </div>
-          </div>
-          { Bathroom.getBathroom.genderNeutral === 'Gender Neutral' 
-            ? 
-            <div className={styles.card}>
-              <div className={styles.imgContainer}>
-                <img src="/logo192.png" alt="category"/>
-              </div>
-              <div className={styles.text}>
-                Gender Neutral
-              </div>
-            </div>
-            :
-            null
-          }
-          { Bathroom.getBathroom.changingStations 
-            ? 
-            <div className={styles.card}> 
-              <div className={styles.imgContainer}>
-                <img src="/logo192.png" alt="category"/>
-              </div>
-              <div className={styles.text}>
-                Changing Stations
-              </div>
-            </div>
-            : 
-            null 
-          }
-          { Bathroom.getBathroom.purchaseRequired 
-            ? 
-            <div className={styles.card}>
-              <div className={styles.imgContainer}>
-                <img src="/logo192.png" alt="category"/>
-              </div>
-              <div className={styles.text}>
-                Purchase Required
-              </div>
-            </div> 
-            : 
-            null
-          }
-          { Bathroom.getBathroom.accessibleStall 
-            ? 
-            <div className={styles.card}>
-              <div className={styles.imgContainer}>
-                <img src="/logo192.png" alt="category"/>
-              </div>
-              <div className={styles.text}>
-                Wheelchair Accessible
-              </div>
-            </div>
-            : 
-            null
-          }
-          { Bathroom.getBathroom.singleOccupancy 
-            ?
-            <div className={styles.card}>
-              <div className={styles.imgContainer}>
-                <img src="/logo192.png" alt="category"/>
-              </div>
-              <div className={styles.text}>
-                Single Occupancy
-              </div>
-            </div>
-            : null
-          }
-        </div>
-        {/* <div>Author ID: { Bathroom.getBathroom.postedBy.id }</div>
-        <div>Current User ID: { props.user.userId }</div> */}
-        {/* {deleteAction} */}
+        <FeaturesScrollbar getBathroom={Bathroom.getBathroom}/>
         <div className={styles.row}>
           <h4>Reviews</h4>
           <Link className={styles.btn} to={`/bathroom/${props.match.params.id}/createreview`}><div>Add a review</div></Link>
         </div>
-        { showReviews }
+        <div className={styles.reviews}>
+          { showReviews }
+        </div>
       </div>
     </div>
   )

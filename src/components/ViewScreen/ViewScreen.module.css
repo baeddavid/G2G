@@ -1,0 +1,14 @@
+.ViewScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 86px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.ViewScreen::-webkit-scrollbar {
+  display: none;
+}
