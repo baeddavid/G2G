@@ -1,0 +1,28 @@
+.LoadingPage {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #A5A5A7;
+}
+
+.sparkles {
+  width: 61px;
+  height: 85px;
+  object-fit: scale-down;
+}
+
+.toiletPaper {
+  width: 160px;
+  object-fit: scale-down;
+}
+
+.shadow {
+
+}

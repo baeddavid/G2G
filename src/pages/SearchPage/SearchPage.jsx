@@ -25,13 +25,12 @@ const GET_CLOSEST_BATHROOMS = gql`
 
 const SearchPage = (props) => {
   const [isFocused, setIsFocused] = useState(false);
-  const [mapCenter, setMapCenter] = useState(props.location)
   const [placeData, setPlaceData] = useState({});
 
   const { loading, error, data } = useQuery(GET_CLOSEST_BATHROOMS, { fetchPolicy: 'no-cache',
     variables: { 
-      currentLat: mapCenter.lat, 
-      currentLng: mapCenter.lng
+      currentLat: props.mapCenter.lat, 
+      currentLng: props.mapCenter.lng
     } 
   });
   
@@ -43,7 +42,7 @@ const SearchPage = (props) => {
       <div className={styles.MapWrapper}>
         <div className={`${styles.Map} ${isFocused ? styles.isFocused : null}`}>
           <Map 
-          location={mapCenter}
+          location={props.mapCenter}
           bathrooms={data.getClosest.bathrooms}
           placeData={placeData}
           history={props.history}
@@ -59,7 +58,7 @@ const SearchPage = (props) => {
       <div 
         className={`${styles.useCurrentLocationButton} ${isFocused ? styles.isFocused : null}`}
         onClick={() => {
-          setMapCenter(props.location);
+          props.setMapCenter(props.location);
           setIsFocused(false);
       }}
       >
@@ -75,9 +74,9 @@ const SearchPage = (props) => {
           </Link>
           <h3>Hi there, {props.name ? props.name : 'guest'}</h3>
           <SearchInput {...props}
-          setIsFocused={setIsFocused}
-          setMapCenter={setMapCenter}
-          setPlaceData={setPlaceData}
+            setIsFocused={setIsFocused}
+            setMapCenter={props.setMapCenter}
+            setPlaceData={setPlaceData}
           />
         </div>
       </div>
