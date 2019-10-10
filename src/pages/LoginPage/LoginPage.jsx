@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './LoginPage.module.css';
-import { Mutation } from 'react-apollo';
+import { Mutation, useMutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import userService from '../../services/userService';
 
@@ -37,6 +37,12 @@ export const LoginPage = (props) => {
     setInputs({ ...inputs, [event.target.name]: event.target.value})
   }
 
+  const [login, { loading, error }] = useMutation( LOGIN_MUTATION, { onCompleted: data => _confirm(data) } );
+
+  // TODO: INSERT COMPONENTS HERE
+  if(loading) return <div>Loading...</div>
+  if(error) return <div>Wrong signin Component</div>
+
   return (
     <div className={styles.LoginPage}>
       <Link to="/welcome">
@@ -71,20 +77,13 @@ export const LoginPage = (props) => {
           />
         </div>
       </div>
-      <Mutation 
-        mutation={LOGIN_MUTATION}
-        variables={{email, password}}
-        onCompleted={data => _confirm(data)}
+
+      <div
+        onClick={ () => { login({ variables: {email, password}}) }}
+        className={styles.darkButton}
       >
-        {mutation => (
-          <div 
-            className={styles.darkButton}
-            onClick={mutation}
-          >
-            Log in
-          </div>
-        )}
-      </Mutation>
+        Login
+      </div>
     </div>
   )
 }
