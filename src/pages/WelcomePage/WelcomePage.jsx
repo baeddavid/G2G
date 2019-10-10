@@ -26,7 +26,7 @@ export const WelcomePage = (props) => {
       </div>
       <h5>Need a bathroom ASAP?</h5>
       <Link to="/">
-        <div className={styles.lightButton} onClick={props.handleContinueAsGuest}>
+        <div className={styles.lightButton}>
           Continue as guest
         </div>
       </Link>
