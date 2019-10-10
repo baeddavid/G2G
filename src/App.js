@@ -21,11 +21,13 @@ const App = (props) => {
   const [user, setUser] = useState({userId: userService.getUser()});
   const [location, setLocation] = useState(null);
   const [newBathroomId, setNewBathroomId] = useState(null);
+  const [mapCenter, setMapCenter] = useState(null);
 
   useEffect(() => {
     (async () => {
       const location = await getCurrentLatLng()
       setLocation(location);
+      setMapCenter(location);
     })()
   }, [])
 
@@ -58,7 +60,12 @@ const App = (props) => {
           exact path="/createbathroom"
           render={(props) => 
             user.userId !== 'guest' ?
-            <CreateBathroomPage {...props} location={location} setNewBathroomId={setNewBathroomId} newBathroomId={newBathroomId}/> :
+            <CreateBathroomPage 
+            {...props}
+            location={mapCenter === location ? location : mapCenter}
+            setNewBathroomId={setNewBathroomId} 
+            newBathroomId={newBathroomId}
+            /> :
             <Redirect to="/saved" />
         } />
         {/* <Route
@@ -92,6 +99,8 @@ const App = (props) => {
             userName={user.name}
             location={location}
             user={user}
+            setMapCenter={setMapCenter}
+            mapCenter={mapCenter}
           />
           <Navbar {...props} />
         </Route>

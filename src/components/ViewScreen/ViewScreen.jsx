@@ -43,7 +43,7 @@ export const ViewScreen = (parentProps) => {
           <div className={styles.ViewScreen}>
             <Switch>
               <Route exact path='/' render={(props) => { 
-                return parentProps.location ? <SearchPage {...props} {...parentProps} name={data.getUser.name}/> : <LoadingPage/> 
+                return parentProps.mapCenter ? <SearchPage {...props} {...parentProps} name={data.getUser.name}/> : <LoadingPage/> 
               }
               } />
               <Route exact path='/saved' render={(props) =>
