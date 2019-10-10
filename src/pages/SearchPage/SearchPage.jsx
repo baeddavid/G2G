@@ -59,7 +59,8 @@ const SearchPage = (props) => {
       <div 
         className={`${styles.useCurrentLocationButton} ${isFocused ? styles.isFocused : null}`}
         onClick={() => {
-          setMapCenter(props.location)
+          setMapCenter(props.location);
+          setIsFocused(false);
       }}
       >
           Use current location
