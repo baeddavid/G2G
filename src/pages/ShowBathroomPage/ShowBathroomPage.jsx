@@ -29,6 +29,9 @@ query getBathroom($bathroomId: ID!) {
       id
       title
       description
+      createdBy {
+        name
+      }
     }
   }
 }
@@ -49,10 +52,9 @@ const ShowBathroomPage = props => {
   let editAction;
   let showReviews;
 
-        if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
-          editAction = <Link className={styles.btn} to={`/bathroom/${props.match.params.id}/edit`}>Edit Bathroom</Link>
-        }
-
+  if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
+    editAction = <Link className={styles.btn} to={`/bathroom/${props.match.params.id}/edit`}>Edit Bathroom</Link>
+  }
 
   let tempArr = Bathroom.getBathroom.reviews.slice(0).reverse();
   if(tempArr.length === 0) {
@@ -60,7 +62,9 @@ const ShowBathroomPage = props => {
   } else {
     showReviews = tempArr.map((review, index) => (
       <div key={index}>
-        <br/>Title: { review.title }<br/>
+        <br/>
+        Author: @{ review.createdBy.name }<br/>
+        Title: { review.title }<br/>
         Description: { review.description }
       </div>
     ))
