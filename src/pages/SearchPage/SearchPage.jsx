@@ -73,7 +73,7 @@ const SearchPage = (props) => {
               <div className={styles.hLine} />
             </div>
           </Link>
-          <h3>Hi there, {props.name}</h3>
+          <h3>Hi there, {props.name ? props.name : 'guest'}</h3>
           <SearchInput {...props}
           setIsFocused={setIsFocused}
           setMapCenter={setMapCenter}

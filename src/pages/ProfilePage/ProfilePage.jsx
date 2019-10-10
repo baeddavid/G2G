@@ -18,8 +18,7 @@ const ProfilePage = (props) => {
           Logout
         </div>
         <div>
-          <span className={styles.name}>Ana J.</span>
-          <span className={styles.userName}>@toilet_thoughts</span>
+          <span className={styles.name}>@{props.name}</span>
         </div>
         <div className={styles.circle}>
           <div className={styles.profilePictureContainer}>
