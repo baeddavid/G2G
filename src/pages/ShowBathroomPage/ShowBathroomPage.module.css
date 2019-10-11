@@ -121,7 +121,7 @@
 }
 
 .Review .icon {
-  width: 53px;
+  min-width: 53px;
   height: 53px;
   border-radius: 50%;
   background: #7CD1D2;
