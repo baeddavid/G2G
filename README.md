@@ -53,8 +53,13 @@ To render maps onto our application we used the Google Maps API and styled the m
 From left to right:
 
 [Jack](https://github.com/Jground-33): API/Admin Portal Lead
+
 [Elise](https://eliseentzenberger.com ): UX Designer/Research Lead
+
 [Joe](https://github.com/SleepyJosus): Front End Lead
+
 [David](https://github.com/baeddavid): Back End Lead
+
 [Alice](https://aliceccheung.com): UX Designer/Design Lead
+
 [Rachel](https://rachelakerley.com): UX Designer
