@@ -1,7 +1,7 @@
 # Got 2 Go
 ![](https://img.shields.io/badge/Deployed-✓-brightgreen) ![](https://img.shields.io/badge/Version-0.1-fab1a0)
 
-[Deployed Link](https://g2g-gottago.herokuapp.com/)
+[Deployed Link](https://g2g-gottago.herokuapp.com/welcome)
 
 ![alt text](/public/G2G.png)
 
