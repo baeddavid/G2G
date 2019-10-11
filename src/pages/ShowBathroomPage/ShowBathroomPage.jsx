@@ -62,11 +62,14 @@ const ShowBathroomPage = props => {
     showReviews = <div>Write the first review!</div>
   } else {
     showReviews = tempArr.map((review, index) => (
-      <div key={index}>
-        <br/>
-        Author: @{ review.createdBy.name }<br/>
-        Title: { review.title }<br/>
-        Description: { review.description }
+      <div className={styles.Review} key={index}>
+        <div className={styles.icon}>
+          <img src="/toilet-paper.png" alt="toilet paper"/>
+        </div>
+        <div className={styles.text}>
+          <div className={styles.author}>@{ review.createdBy.name }</div>
+          <p>{ review.description }</p>
+        </div>
       </div>
     ))
   }

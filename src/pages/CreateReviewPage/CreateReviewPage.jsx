@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
+import styles from './CreateReviewPage.module.css';
 
 const CreateReviewPage = props => {
 
@@ -28,26 +29,29 @@ const CreateReviewPage = props => {
   };
 
   return(
-    <div>
+    <div className={styles.CreateReviewPage}>
 
-      <Link to={`/bathroom/${props.match.params.id}`}><div>Cancel</div></Link>
+      <Link className={styles.cancelBtn} to={`/bathroom/${props.match.params.id}`}>Cancel</Link>
 
-      <input
+      <h1>Review a bathroom</h1>
+      <p>Tell us a little more about the bathroom you are using. On which floor is it located? Is it clean? Do you like the mirrors?</p>
+
+      {/* <input
         name='title'
         placeholder='Review Title'
         onChange={ handleChange }
         defaultValue={ form.title }
-      />
+      /> */}
 
-      <input
+      <textarea
         name='description'
-        placeholder='Write your review!'
+        placeholder='Add your description here'
         onChange={ handleChange }
         defaultValue={ form.description }
       />
 
       <Mutation mutation={ POST_REVIEW } variables={ Post_Review_ID } onCompleted={() => props.history.push(`/bathroom/${route}/reviewsuccess`)}>
-        { postReview => <button onClick={ postReview }>Post Review</button>}
+        { postReview => <button className={styles.darkBtn} onClick={ postReview }>Post to Reviews</button>}
       </Mutation>
     </div>
   )

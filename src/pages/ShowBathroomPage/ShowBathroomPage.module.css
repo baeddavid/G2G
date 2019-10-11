@@ -109,3 +109,38 @@
   margin: 15px 0 10px 15px;
   font-size: 16px;
 }
+
+.Review {
+  display: flex;
+  margin-bottom: 12px;
+  margin-left: 8px;
+}
+
+.Review .author {
+  color: #E19C8C;
+}
+
+.Review .icon {
+  width: 53px;
+  height: 53px;
+  border-radius: 50%;
+  background: #7CD1D2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon img {
+  width: 24px;
+  height: 28px;
+  object-fit: scale-down;
+}
+
+.Review .text {
+  margin-top: 4px;
+  margin-left: 14px;
+}
+
+.text p {
+  margin: 0;
+}
