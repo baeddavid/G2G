@@ -1,68 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Got 2 Go
+![](https://img.shields.io/badge/Deployed-✓-brightgreen) ![](https://img.shields.io/badge/Version-0.1-fab1a0)
 
-## Available Scripts
+![alt text](/public/G2G.png)
 
-In the project directory, you can run:
+**GottaGo: an app designed for anyone who’s gotta go.**
 
-### `npm start`
+Got 2 Go is a bathroom-finding app that features:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Locating a restroom within close proximity to your current location
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+* Filtering based on wheelchair accessibility, gender-neutral bathrooms, changing stations, safety, cleanliness, and single-occupancy
 
-### `npm test`
+* Leaving a review of restrooms so that clean restrooms are easier to find and the user can choose a restroom knowledgeably
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Bookmarking restrooms with notes for later use.
 
-### `npm run build`
+## Design
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![alt text](/public/color-styles.png)
+![alt text](/public/bathroom-listing-page.png)
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+We designed the app to be as clean as we would like all of our restrooms to be; soft pinks and minimal icons bring levity and playfulness to the serious issue of finding a suitable public restroom.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Minimal design allows the user to quickly find and add bathrooms from a map, identify the location and the type of restroom used and leave a review of that restroom.
 
-### `npm run eject`
+## Technology
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Because we wanted to provide fast geo-location and retrieval of bathrooms for mobile devices we had to be a little creative with our tech stack. Rather than opting for MERN stack, we used JAM stack.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Our application is decoupled with the backend API hosted independently on Heroku. The backend was made with GraphQL, GraphQL-yoga, Prisma, MongoDB, and JavaScript. We used GraphQL to create the schema calls to our frontend and used Prisma as our "ORM" for GraphQL so that it created resolver functions for us.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+We connected our backend to a React frontend using Apollo to manipulate our backend. All components and pages were styled through CSS modules and a little bit of materialize.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To render maps onto our application we used the Google Maps API and styled the map to create a warm color pallette for the user. Custom markers were made to display information about the bathrooms and the markers themselves are clickable to direct users to a detail page about the specific bathroom.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Future Features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Upvote Downvote implementaion
 
-### Code Splitting
+* User Profile page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* Booksmarks
 
-### Analyzing the Bundle Size
+* Mailchimp API
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+* Stripe API
 
-### Making a Progressive Web App
+## The Team
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+![alt text](/public/grouppic.jpg)
+From left to right:
 
-### Advanced Configuration
+[Jack](https://github.com/Jground-33): API/Admin Portal Lead
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+[Elise](https://eliseentzenberger.com ): UX Designer/Research Lead
 
-### Deployment
+[Joe](https://github.com/SleepyJosus): Front End Lead
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+[David](https://github.com/baeddavid): Back End Lead
 
-### `npm run build` fails to minify
+[Alice](https://aliceccheung.com): UX Designer/Design Lead
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[Rachel](https://rachelakerley.com): UX Designer

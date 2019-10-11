@@ -31,7 +31,6 @@ const App = (props) => {
     })()
   }, [])
 
-
   const handleContinueAsGuest = () => {
     setUser({userId: 'guest'});
   }
@@ -43,7 +42,7 @@ const App = (props) => {
           exact path="/welcome"
           render={(props) => 
             <WelcomePage 
-              {...props} 
+              {...props}
               handleContinueAsGuest={handleContinueAsGuest}
             />
           } 
