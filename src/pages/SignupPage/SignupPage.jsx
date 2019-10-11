@@ -117,6 +117,11 @@ export const SignupPage = (props) => {
             onChange={handleChange}
           />
         </div>
+        <div className={styles.requirements}>
+          - Minimum 8 characters<br/>
+          - At least 1 capital letter<br/>
+          - At least 1 lower case letter<br/>
+        </div>
       </div>
       <Mutation
         mutation={SIGNUP_MUTATION}
