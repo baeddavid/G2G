@@ -1,19 +1,28 @@
 # Got 2 Go
 ![](https://img.shields.io/badge/Deployed-✓-brightgreen) ![](https://img.shields.io/badge/Version-0.1-fab1a0)
+
 ![alt text](/public/G2G.png)
 
-Got 2 Go is a progressive web application for helping users find accessible bathrooms around them. Users can then apply additional filters through categories such as gender neutral or purchase required.
+**GottaGo: an app designed for anyone who’s gotta go.**
 
-G2G will only render bathrooms in a 40 mile diameter from the user, 20 miles from the user being the farthest at any point. Custom distance filtering is not an option at this point, but is an important feature that will be implemented soon.
+Got 2 Go is a bathroom-finding app that features:
 
-## Our Mission Statement
+* Locating a restroom within close proximity to your current location
 
-To create an app with high social impact and 
+* Filtering based on wheelchair accessibility, gender-neutral bathrooms, changing stations, safety, cleanliness, and single-occupancy
+
+* Leaving a review of restrooms so that clean restrooms are easier to find and the user can choose a restroom knowledgeably
+
+* Bookmarking restrooms with notes for later use.
 
 ## Design
 
 ![alt text](/public/color-styles.png)
 ![alt text](/public/bathroom-listing-page.png)
+
+We designed the app to be as clean as we would like all of our restrooms to be; soft pinks and minimal icons bring levity and playfulness to the serious issue of finding a suitable public restroom.
+
+Minimal design allows the user to quickly find and add bathrooms from a map, identify the location and the type of restroom used and leave a review of that restroom.
 
 ## Technology
 
@@ -44,8 +53,13 @@ To render maps onto our application we used the Google Maps API and styled the m
 From left to right:
 
 [Jack](https://github.com/Jground-33): API/Admin Portal Lead
+
 [Elise](https://eliseentzenberger.com ): UX Designer/Research Lead
+
 [Joe](https://github.com/SleepyJosus): Front End Lead
+
 [David](https://github.com/baeddavid): Back End Lead
+
 [Alice](https://aliceccheung.com): UX Designer/Design Lead
+
 [Rachel](https://rachelakerley.com): UX Designer
