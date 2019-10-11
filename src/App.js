@@ -18,7 +18,7 @@ import EditBathroomPage from './pages/EditBathroomPage/EditBathroomPage';
 
 const App = (props) => {
 
-  const [user, setUser] = useState({userId: userService.getUser() || 'guest'});
+  const [user, setUser] = useState({userId: userService.getUser()});
   const [location, setLocation] = useState(null);
   const [newBathroomId, setNewBathroomId] = useState(null);
   const [mapCenter, setMapCenter] = useState(null);
@@ -31,6 +31,10 @@ const App = (props) => {
     })()
   }, [])
 
+  const handleContinueAsGuest = () => {
+    setUser({userId: 'guest'});
+  }
+
   return ( 
     <div className="App">
       <Switch>
@@ -39,6 +43,7 @@ const App = (props) => {
           render={(props) => 
             <WelcomePage 
               {...props}
+              handleContinueAsGuest={handleContinueAsGuest}
             />
           } 
         />

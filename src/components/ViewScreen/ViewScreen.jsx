@@ -36,7 +36,7 @@ export const ViewScreen = (parentProps) => {
 
         {({ loading, error, data}) => {
 
-          if(loading) return 'loading';
+          if(loading) return <LoadingPage />;
           if(error) return 'errorasd';
 
           return (

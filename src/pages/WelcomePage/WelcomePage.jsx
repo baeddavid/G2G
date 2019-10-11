@@ -3,6 +3,9 @@ import styles from './WelcomePage.module.css';
 import { Link } from 'react-router-dom';
 
 export const WelcomePage = (props) => {
+
+  const { handleContinueAsGuest } = props;
+
   return(
     <div className={styles.WelcomePage}>
       <div className={styles.headerSection}>
@@ -26,7 +29,10 @@ export const WelcomePage = (props) => {
       </div>
       <h5>Need a bathroom ASAP?</h5>
       <Link to="/">
-        <div className={styles.lightButton}>
+        <div 
+          onClick={handleContinueAsGuest}
+          className={styles.lightButton}
+          >
           Continue as guest
         </div>
       </Link>
