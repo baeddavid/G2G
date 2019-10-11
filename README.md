@@ -20,6 +20,8 @@ Got 2 Go is a bathroom-finding app that features:
 ![alt text](/public/color-styles.png)
 ![alt text](/public/bathroom-listing-page.png)
 
+[Trello Board](https://trello.com/b/mncwglez/project-devutantes)
+
 We designed the app to be as clean as we would like all of our restrooms to be; soft pinks and minimal icons bring levity and playfulness to the serious issue of finding a suitable public restroom.
 
 Minimal design allows the user to quickly find and add bathrooms from a map, identify the location and the type of restroom used and leave a review of that restroom.
