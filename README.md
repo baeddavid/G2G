@@ -1,68 +1,51 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Got 2 Go
+![](https://img.shields.io/badge/Deployed-✓-brightgreen) ![](https://img.shields.io/badge/Version-0.1-fab1a0)
+![alt text](/public/G2G.png)
 
-## Available Scripts
+Got 2 Go is a progressive web application for helping users find accessible bathrooms around them. Users can then apply additional filters through categories such as gender neutral or purchase required.
 
-In the project directory, you can run:
+G2G will only render bathrooms in a 40 mile diameter from the user, 20 miles from the user being the farthest at any point. Custom distance filtering is not an option at this point, but is an important feature that will be implemented soon.
 
-### `npm start`
+## Our Mission Statement
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To create an app with high social impact and 
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Design
 
-### `npm test`
+![alt text](/public/color-styles.png)
+![alt text](/public/bathroom-listing-page.png)
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technology
 
-### `npm run build`
+Because we wanted to provide fast geo-location and retrieval of bathrooms for mobile devices we had to be a little creative with our tech stack. Rather than opting for MERN stack, we used JAM stack.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Our application is decoupled with the backend API hosted independently on Heroku. The backend was made with GraphQL, GraphQL-yoga, Prisma, MongoDB, and JavaScript. We used GraphQL to create the schema calls to our frontend and used Prisma as our "ORM" for GraphQL so that it created resolver functions for us.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+We connected our backend to a React frontend using Apollo to manipulate our backend. All components and pages were styled through CSS modules and a little bit of materialize.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To render maps onto our application we used the Google Maps API and styled the map to create a warm color pallette for the user. Custom markers were made to display information about the bathrooms and the markers themselves are clickable to direct users to a detail page about the specific bathroom.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Future Features
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Upvote Downvote implementaion
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* User Profile page
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* Booksmarks
 
-## Learn More
+* Mailchimp API
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Stripe API
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## The Team
 
-### Code Splitting
+![alt text](/public/grouppic.jpg)
+From left to right:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[Jack](https://github.com/Jground-33): API/Admin Portal Lead
+[Elise](https://eliseentzenberger.com ): UX Designer/Research Lead
+[Joe](https://github.com/SleepyJosus): Front End Lead
+[David](https://github.com/baeddavid): Back End Lead
+[Alice](https://aliceccheung.com): UX Designer/Design Lead
+[Rachel](https://rachelakerley.com): UX Designer
