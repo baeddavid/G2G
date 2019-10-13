@@ -22,8 +22,6 @@ export const LoginPage = (props) => {
     password: '',
   })
 
-  const [showPassword, setShowPassword] = useState(false)
-
   const { email, password} = inputs;
 
   const _confirm = (data) => {
