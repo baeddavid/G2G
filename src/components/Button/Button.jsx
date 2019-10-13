@@ -1,26 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const StyledButton = styled.div`
-  display: flex;
-  justify-content: center;
   align-items: center;
-  width: 70vw;
-  height: 8vh;
+  background: ${({ primary }) => primary ? "#E19C8C" : "#FAB1A0"};
   border: .5vh solid #E19C8C;
   border-radius: 5vh;
-  background-color: #FAB1A0;
+  color: white;
+  display: flex;
   font-size: 3vh;
-  line-height: 33px;
   font-weight: 800;
-  margin-top: auto;
-  margin-bottom: 10vh;
+  height: 8vh;
+  justify-content: center;
+  line-height: 33px;
+  margin: 0 auto;
+  margin-bottom: ${props => props.marginBottom || '10vh'};
+  margin-top: ${props => props.marginTop || 'auto'};
   transition: background-color .5s;
-
-  ${props => props.primary && css`
-    background-color: #E19C8C;
-  `};
+  width: 70vw;
 `;
 
 const Button = ({ children, onClick, primary, ...props }) => {

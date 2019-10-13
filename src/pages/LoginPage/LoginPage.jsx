@@ -5,6 +5,7 @@ import { useMutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import userService from '../../services/userService';
 import Button from '../../components/Button/Button';
+import InputGroup from '../../components/InputGroup/InputGroup';
 
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {
@@ -55,51 +56,20 @@ export const LoginPage = (props) => {
         <h1>Log in</h1>
         <h2>Glad to see you again</h2>
       </header>
-      <div className={styles.inputGroup}>
-        <label htmlFor="email">Username or email</label>
-        <div className={styles.inputContainer}>
-          <input 
-            type="text" 
-            id="email" 
-            name="email"
-            autoComplete="off"
-            required
-            value={email}
-            onChange={handleChange}
-            />
-        </div>
-      </div>
-      <div className={styles.inputGroup}>
-        <label htmlFor="password">Password</label>
-        <div className={styles.inputContainer}>
-          <input 
-            type={showPassword ? "text" : "password"} 
-            id="password" 
-            name="password"
-            autoComplete="new-password"
-            required
-            value={password}
-            onChange={handleChange}
-          />
-          <img 
-            src="/eye@3x.png" alt="show password"
-            onClick={() => {setShowPassword(!showPassword)}}
-          />
-        </div>
-        <div 
-          className={styles.forgotPassword}
-          //TODO: insert forgotPasswordHandler here
-        >
-            Forgot password?
-        </div>
-      </div>
-
-      {/* <div
-        onClick={ email && password ? () => { login({ variables: {email, password}}) } : null}
-        className={email && password ? styles.darkButton : styles.lightButton}
-      >
-        Let's go
-      </div> */}
+      <InputGroup 
+        type="text"
+        name="email" 
+        value={email} 
+        label="Username or email"
+        onChange={handleChange}
+      />
+      <InputGroup
+        type="password"
+        name="password"
+        value={password}
+        label="Password"
+        onChange={handleChange}
+      />
       <Button 
         disabled={!(email && password)}
         primary={!!(email && password)}
