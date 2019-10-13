@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './LoginPage.module.css';
-import { Mutation, useMutation } from 'react-apollo';
+import { useMutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import userService from '../../services/userService';
+import Button from '../../components/Button/Button';
 
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {
@@ -19,6 +20,8 @@ export const LoginPage = (props) => {
     email: '',
     password: '',
   })
+
+  const [showPassword, setShowPassword] = useState(false)
 
   const { email, password} = inputs;
 
@@ -45,12 +48,15 @@ export const LoginPage = (props) => {
 
   return (
     <div className={styles.LoginPage}>
-      <Link to="/welcome">
-        <span className={styles.backButton}>Back</span>
+      <Link className={styles.backButton} to="/welcome">
+        <span>Back</span>
       </Link>
-      <h1>Log in</h1>
+      <header>
+        <h1>Log in</h1>
+        <h2>Glad to see you again</h2>
+      </header>
       <div className={styles.inputGroup}>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Username or email</label>
         <div className={styles.inputContainer}>
           <input 
             type="text" 
@@ -67,7 +73,7 @@ export const LoginPage = (props) => {
         <label htmlFor="password">Password</label>
         <div className={styles.inputContainer}>
           <input 
-            type="password" 
+            type={showPassword ? "text" : "password"} 
             id="password" 
             name="password"
             autoComplete="new-password"
@@ -75,15 +81,32 @@ export const LoginPage = (props) => {
             value={password}
             onChange={handleChange}
           />
+          <img 
+            src="/eye@3x.png" alt="show password"
+            onClick={() => {setShowPassword(!showPassword)}}
+          />
+        </div>
+        <div 
+          className={styles.forgotPassword}
+          //TODO: insert forgotPasswordHandler here
+        >
+            Forgot password?
         </div>
       </div>
 
-      <div
-        onClick={ () => { login({ variables: {email, password}}) }}
-        className={styles.darkButton}
+      {/* <div
+        onClick={ email && password ? () => { login({ variables: {email, password}}) } : null}
+        className={email && password ? styles.darkButton : styles.lightButton}
       >
-        Login
-      </div>
+        Let's go
+      </div> */}
+      <Button 
+        disabled={!(email && password)}
+        primary={!!(email && password)}
+        onClick={() => { login({ variables: {email, password}})}}
+      >
+        Let's go
+      </Button>
     </div>
   )
 }
