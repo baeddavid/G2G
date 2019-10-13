@@ -6,6 +6,7 @@ import gql from 'graphql-tag';
 import userService from '../../services/userService';
 import Button from '../../components/Button/Button';
 import InputGroup from '../../components/InputGroup/InputGroup';
+import BackLink from '../../components/BackLink/BackLink';
 
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {
@@ -47,15 +48,12 @@ export const LoginPage = (props) => {
 
   return (
     <div className={styles.LoginPage}>
-      <Link className={styles.backButton} to="/welcome">
-        <span>Back</span>
-      </Link>
+      <BackLink />
       <header>
         <h1>Log in</h1>
         <h2>Glad to see you again</h2>
       </header>
       <InputGroup 
-        type="text"
         name="email" 
         value={email} 
         label="Username or email"

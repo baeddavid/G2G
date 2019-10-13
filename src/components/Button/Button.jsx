@@ -18,13 +18,13 @@ const StyledButton = styled.div`
   margin-bottom: ${props => props.marginBottom || '10vh'};
   margin-top: ${props => props.marginTop || 'auto'};
   transition: background-color .5s;
-  width: 70vw;
+  width: 68vw;
 `;
 
-const Button = ({ children, onClick, primary, ...props }) => {
+const Button = ({ children, onClick, primary, disabled, ...props }) => {
   return (
     <StyledButton 
-      onClick={onClick}
+      onClick={disabled ? null : onClick}
       primary={primary}
       {...props}
     >
@@ -37,6 +37,7 @@ Button.propTypes = {
   children: PropTypes.node,
   onClick: PropTypes.func,
   primary: PropTypes.bool,
+  disabled: PropTypes.bool,
 }
 
 export default Button;

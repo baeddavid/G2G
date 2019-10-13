@@ -9,18 +9,6 @@
   color: white;
 }
 
-.backButton {
-  color: white;
-  text-decoration: none;
-  font-size: 5vw;
-  width: 100%;
-  margin-top: 5vh;
-}
-
-.backButton span {
-  margin-left: 5vw;
-}
-
 .LoginPage header {
   width: 80%;
   margin-top: 5vh;
@@ -39,83 +27,3 @@
   line-height: 9vw;
   font-weight: 100;
 }
-
-.inputGroup {
-  margin: 7px 0;
-  width: 80%;
-}
-
-.inputGroup label {
-  margin-left: 5px;
-  font-size: 4vw;
-}
-
-.inputContainer {
-  height: 5vh;
-  width: 1fr;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #FFFFFF;
-  border: 1px solid #A5A5A7;
-  box-sizing: border-box;
-  border-radius: 1vh;
-}
-
-.inputContainer input {
-  caret-color: #FAB1A0;
-  margin: auto 2vw;
-  height: 4vh;
-  font-size: 4vw;
-}
-
-.inputContainer img {
-  width: 3vh;
-  object-fit: scale-down;
-  margin-right: 2vw;
-}
-
-.forgotPassword {
-  width: 100%;
-  text-align: right;
-  color: white;
-  font-size: 3vw;
-  line-height: 4vw;
-}
-
-.darkButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70vw;
-  /* max-width: 256px; */
-  height: 8vh;
-  border: .5vh solid #E19C8C;
-  border-radius: 5vh;
-  background-color: #E19C8C;
-  font-size: 3vh;
-  line-height: 33px;
-  font-weight: 800;
-  margin-top: auto;
-  margin-bottom: 10vh;
-  transition: background-color .5s;
-}
-
-.lightButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70vw;
-  /* min-width: 265px; */
-  /* max-width: 400px; */
-  height: 8vh;
-  border-radius: 5vh;
-  border: .5vh solid #E19C8C;
-  font-size: 3vh;
-  line-height: 33px;
-  font-weight: 800;
-  margin-top: auto;
-  margin-bottom: 10vh;
-  transition: background-color .5s;
-}
-

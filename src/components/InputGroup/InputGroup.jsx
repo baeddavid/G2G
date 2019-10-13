@@ -47,6 +47,14 @@ const ForgotPasswordLink = styled.div`
   line-height: 4vw;
 `;
 
+const PasswordReqs = styled.div`
+  color: white;
+  font-size: 3vw;
+  line-height: 4vw;
+  margin-left: 1vw;
+  margin-top: .5vh;
+`;
+
 const InputGroup = ({name, label, value, onChange, type, ...props}) => {
 
   const [showPassword, setShowPassword] = useState(false);
@@ -56,7 +64,9 @@ const InputGroup = ({name, label, value, onChange, type, ...props}) => {
       {label && <StyledLabel htmlFor={name}>{label}</StyledLabel>}
       <InputWrapper>
         <StyledInput
-          type={type === 'password' ? (showPassword ? "text" : "password") : type || "text"}
+          type={(type === 'password' || type === 'new-password') 
+            ? (showPassword ? "text" : "password")
+            : type || "text"}
           id={name}
           name={name}
           autoComplete="new-password"
@@ -65,7 +75,7 @@ const InputGroup = ({name, label, value, onChange, type, ...props}) => {
           onChange={onChange}
           {...props}
         />
-        {type === 'password' && 
+        {(type === 'password' || type === 'new-password') && 
           <StyledImg 
             src="/eye@3x.png" alt="show password" 
             onClick={() => setShowPassword(!showPassword)}
@@ -77,6 +87,13 @@ const InputGroup = ({name, label, value, onChange, type, ...props}) => {
         <ForgotPasswordLink>
           Forgot password?
         </ForgotPasswordLink>
+      }
+      {type === 'new-password' &&
+        <PasswordReqs>
+          - Minimum 8 characters<br/>
+          - At least 1 number<br/>
+          - At least 1 capital letter<br/>
+        </PasswordReqs>
       }
     </StyledInputGroup>
   )

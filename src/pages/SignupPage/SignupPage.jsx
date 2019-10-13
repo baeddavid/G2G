@@ -4,6 +4,10 @@ import styles from './SignupPage.module.css';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import userService from '../../services/userService';
+import BackLink from '../../components/BackLink/BackLink';
+import InputGroup from '../../components/InputGroup/InputGroup';
+import Button from '../../components/Button/Button';
+
 
 const SIGNUP_MUTATION = gql`
   mutation SignupMutation($email: String!, $password: String!, $name: String!) {
@@ -57,79 +61,43 @@ export const SignupPage = (props) => {
 
   return (
     <div className={styles.SignupPage}>
-      <Link to="/welcome">
-        <span className={styles.backButton}>Back</span>
-      </Link>
-      <h1>Sign up</h1>
-      <div className={styles.inputGroup}>
-        <label htmlFor="name">What's your name?</label>
-        <div className={styles.inputContainer}>
-          <input 
-            type="text" 
-            id="name" 
-            name="name"
-            required
-            autoComplete="off"
-            value={name}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <div className={styles.inputGroup}>
-        <label htmlFor="email">What's your email?</label>
-        <div className={styles.inputContainer}>
-          <input 
-            type="text" 
-            id="email" 
-            name="email"
-            required
-            autoComplete="off"
-            value={email}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <div className={styles.inputGroup}>
-        <label htmlFor="password">Password</label>
-        <div className={styles.inputContainer}>
-          <input 
-            type="password" 
-            id="password" 
-            name="password"
-            required
-            autoComplete="new-password"
-            value={password}
-            onChange={handleChange}
-            pattern="^([a-zA-Z0-9@*#]{8,15})$"
-          />
-        </div>
-      </div>
-      <div className={styles.inputGroup}>
-        <label htmlFor="passwordConf">Re-type password</label>
-        <div className={styles.inputContainer}>
-          <input 
-            type="password" 
-            id="passwordConf" 
-            name="passwordConf"
-            required
-            autoComplete="new-password"
-            value={passwordConf}
-            onChange={handleChange}
-          />
-        </div>
-      </div>
+      <BackLink />
+      <header>
+        <h1>Sign up</h1>
+        <h2>Nice to meet you</h2>
+      </header>
+      <InputGroup 
+        name="name"
+        value={name}
+        onChange={handleChange}
+        label="Username"
+      />
+      <InputGroup
+        name="email"
+        value={email}
+        onChange={handleChange}
+        label="Email"
+      />
+      <InputGroup 
+        type="new-password"
+        name="password"
+        value={password}
+        onChange={handleChange}
+        label="Password"
+      />  
       <Mutation
         mutation={SIGNUP_MUTATION}
         variables={{name, email, password}}
         onCompleted={data => _confirm(data)}
       >
         {mutation => (
-          <div 
-            className={styles.darkButton}
-            onClick={validSignUp() ? mutation : null}
+          <Button
+            disabled={!(name && email && password)}
+            primary={!!(name && email && password)}
+            onClick={mutation}
           >
-            Submit
-          </div>
+            Create Account
+          </Button>
         )}
       </Mutation>
     </div>

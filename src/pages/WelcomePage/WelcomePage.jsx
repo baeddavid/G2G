@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './WelcomePage.module.css';
+import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
 
 export const WelcomePage = (props) => {
@@ -17,24 +18,28 @@ export const WelcomePage = (props) => {
       </div>
       <div className={styles.loginSection}>
         <Link to="/login">
-          <div className={styles.darkButton}>
+          <Button 
+            primary
+            marginBottom="2vh"
+          >
             Log in
-          </div>
+          </Button>
         </Link>
         <Link to="/signup">
-          <div className={styles.darkButton}>
+          <Button 
+            primary
+          >
             Sign up
-          </div>
+          </Button>
         </Link>
       </div>
       <h5>Need a bathroom ASAP?</h5>
       <Link to="/">
-        <div 
+        <Button 
           onClick={handleContinueAsGuest}
-          className={styles.lightButton}
-          >
+        >
           Continue as guest
-        </div>
+        </Button>
       </Link>
     </div >
   )
