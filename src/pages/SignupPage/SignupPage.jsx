@@ -4,7 +4,7 @@ import styles from './SignupPage.module.css';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import userService from '../../services/userService';
-import BackLink from '../../components/StyledLink/StyledLink';
+import BackLink from '../../components/BackLink';
 import InputGroup from '../../components/InputGroup/InputGroup';
 import Button from '../../components/Button';
 

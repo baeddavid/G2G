@@ -5,7 +5,7 @@ import gql from 'graphql-tag';
 import userService from '../../services/userService';
 import Button from '../../components/Button';
 import InputGroup from '../../components/InputGroup/InputGroup';
-import BackLink from '../../components/BackLink/BackLink';
+import BackLink from '../../components/BackLink';
 
 const LOGIN_MUTATION = gql`
   mutation LoginMutation($email: String!, $password: String!) {

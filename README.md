@@ -1,6 +1,8 @@
 # Got 2 Go
 ![](https://img.shields.io/badge/Deployed-✓-brightgreen) ![](https://img.shields.io/badge/Version-0.1-fab1a0)
 
+[Deployed Link](https://g2g-gottago.herokuapp.com/welcome)
+
 ![alt text](/public/G2G.png)
 
 **GottaGo: an app designed for anyone who’s gotta go.**
@@ -19,6 +21,8 @@ Got 2 Go is a bathroom-finding app that features:
 
 ![alt text](/public/color-styles.png)
 ![alt text](/public/bathroom-listing-page.png)
+
+[Trello Board](https://trello.com/b/mncwglez/project-devutantes)
 
 We designed the app to be as clean as we would like all of our restrooms to be; soft pinks and minimal icons bring levity and playfulness to the serious issue of finding a suitable public restroom.
 
