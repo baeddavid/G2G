@@ -4,9 +4,9 @@ import styles from './SignupPage.module.css';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import userService from '../../services/userService';
-import BackLink from '../../components/BackLink/BackLink';
+import BackLink from '../../components/StyledLink/StyledLink';
 import InputGroup from '../../components/InputGroup/InputGroup';
-import Button from '../../components/Button/Button';
+import Button from '../../components/Button';
 
 
 const SIGNUP_MUTATION = gql`

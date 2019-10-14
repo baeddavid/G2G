@@ -45,6 +45,7 @@ const App = (props) => {
     warning: '#EACA77',
     dark: '#2C2C2C',
     medium: '#A5A5A7',
+    light: '#FFFFFF',
   }
 
   return ( 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './AccessDeniedPage.module.css';
-import Button from '../../components/Button/Button';
+import Button from '../../components/Button';
 
 const AccessDeniedPage = (props) => {
 

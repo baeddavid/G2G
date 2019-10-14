@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 import { useMutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import userService from '../../services/userService';
-import Button from '../../components/Button/Button';
+import Button from '../../components/Button';
 import InputGroup from '../../components/InputGroup/InputGroup';
 import BackLink from '../../components/BackLink/BackLink';
 

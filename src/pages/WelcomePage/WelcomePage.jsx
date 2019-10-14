@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './WelcomePage.module.css';
-import Button from '../../components/Button/Button';
+import Button from '../../components/Button';
 import { Link } from 'react-router-dom';
 
 export const WelcomePage = (props) => {
