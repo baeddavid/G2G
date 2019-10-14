@@ -12,13 +12,13 @@ mutation bookmark($bathroomId: ID!) {
 
 const Bookmark = props => {
   const Bathroom_ID_Object = {bathroomId: props.bathroomId};
-  const setTrue = () => {
-    return props.setBookmark(true);
-  }
 
   return(
     <div>
-      <Mutation mutation={ADD_BOOKMARK} variables={ Bathroom_ID_Object }>
+      <Mutation mutation={ADD_BOOKMARK} variables={ Bathroom_ID_Object } onCompleted={() => {
+        props.isBookmarked = true;
+        props.refetch();
+      }}>
         {bookmark => (
           <div style={{backgroundColor: "black", color: "white"}} onClick={ bookmark }>
             Save to Favorites

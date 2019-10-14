@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useQuery, Mutation } from 'react-apollo';
+import { useQuery, useLazyQuery } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 import styles from './ShowBathroomPage.module.css';
@@ -9,6 +9,7 @@ import FeaturesScrollbar from '../../components/FeaturesScrollbar/FeaturesScroll
 import ShowMap from '../../components/ShowMap/ShowMap'
 import Bookmark from '../../components/Bookmark/Bookmark';
 import RemoveBookmark from '../../components/Bookmark/RemoveBookmark';
+import { is } from '@babel/types';
 // import ErrorPage from '../ErrorPage/ErrorPage';
 
 const GET_BATHROOM = gql`
@@ -47,11 +48,13 @@ query getBathroom($bathroomId: ID!) {
 `
 
 const ShowBathroomPage = props => {
-  const [isBookmarked, setBookmark] = useState(false);
+  // TODO: LIFT THE STATE OF ISBOOKMARKED PLEASE JESUS CHRIST
+  const isBookmarked = false;
+  
   const Bathroom_ID_Object = {bathroomId: props.match.params.id};
   // const Mutate_Bathroom_ID = {id: props.match.params.id};
 
-  const { loading, error, data } = useQuery(GET_BATHROOM, { fetchPolicy: 'no-cache', variables: Bathroom_ID_Object });
+  const { loading, error, data, refetch } = useQuery(GET_BATHROOM, { fetchPolicy: 'no-cache', variables: Bathroom_ID_Object });
   
   if(loading) return <LoadingPage />;
   if(error) return <DeletedPage />;
@@ -64,16 +67,20 @@ const ShowBathroomPage = props => {
   let removeBookmark;
   let addBookmark;
 
-  // TODO: It currently requires a page refresh to render the button
-  Bookmarks.forEach((bookmark, index) => {
-    if(bookmark.user.id === props.user.userId) {
-      let bookmarkId = { id: bookmark.id };
-      removeBookmark = <RemoveBookmark bookmarkId={ bookmarkId }/>
-    }
-  })
+  // TODO: FIX THIS SECTION PLEASE GOD DAMN IT
+  if(isBookmarked) {
+    Bookmarks.forEach((bookmark, index) => {
+      if(bookmark.user.id === props.user.userId) {
+        let bookmarkId = { id: bookmark.id };
+        removeBookmark = <RemoveBookmark bookmarkId={ bookmarkId } isBookmarked={isBookmarked} refetch={refetch}/>
+      }
+    })
+  }
 
-  if(removeBookmark === undefined)
-    addBookmark = <Bookmark bathroomId={props.match.params.id} setBookmark={setBookmark}/>
+  if(!isBookmarked) {
+    addBookmark = <Bookmark bathroomId={props.match.params.id} isBookmarked={isBookmarked} refetch={refetch}/>
+  }
+  //
 
   if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
     editAction = <Link className={styles.btn} to={`/bathroom/${props.match.params.id}/edit`}>Edit Bathroom</Link>

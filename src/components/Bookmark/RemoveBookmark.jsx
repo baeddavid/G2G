@@ -14,7 +14,10 @@ const RemoveBookmark = props => {
   console.log(props.bookmarkId);
   return(
     <div>
-      <Mutation mutation={REMOVE_BOOKMARK} variables={ props.bookmarkId }>
+      <Mutation mutation={REMOVE_BOOKMARK} variables={ props.bookmarkId } onCompleted={ () => {
+        props.isBookmarked = false;
+        props.refetch();
+      }}>
         { removeBookmark => <div style={{backgroundColor: "black", color: "white"}} onClick={ removeBookmark }>
           Remove Bookmark</div> }
       </Mutation>
