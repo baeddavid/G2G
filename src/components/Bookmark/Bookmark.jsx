@@ -1,6 +1,7 @@
 import React from 'react';
-import { Mutation } from 'react-apollo';
+import { useMutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import AddBookmarkButton from '../Bookmark/AddBookmarkButton';
 
 const ADD_BOOKMARK = gql`
 mutation bookmark($bathroomId: ID!) {
@@ -11,20 +12,18 @@ mutation bookmark($bathroomId: ID!) {
 `
 
 const Bookmark = ({bathroomId, setBookmark, currentState, refetch}) => {
-  const Bathroom_ID_Object = bathroomId;
+  
+  const[addBookmark, {loading}] = useMutation(ADD_BOOKMARK, {
+    onCompleted() {
+      setBookmark(!currentState);
+      refetch();
+    }
+  });
+
+  if(loading) return <div style={{backgroundColor: "black", color: "white"}}>Save to Favorites</div>
+  
   return(
-    <div>
-      <Mutation mutation={ADD_BOOKMARK} variables={ Bathroom_ID_Object } onCompleted={() => {
-        setBookmark(!currentState);
-        refetch();
-      }}>
-        {bookmark => (
-          <div style={{backgroundColor: "black", color: "white"}} onClick={ bookmark }>
-            Save to Favorites
-          </div>
-        )}
-      </Mutation>
-    </div>
+    <AddBookmarkButton addBookmark={addBookmark} bathroomId={bathroomId} />
   )
 }
 
