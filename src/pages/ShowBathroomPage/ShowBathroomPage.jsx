@@ -9,7 +9,6 @@ import FeaturesScrollbar from '../../components/FeaturesScrollbar/FeaturesScroll
 import ShowMap from '../../components/ShowMap/ShowMap'
 import Bookmark from '../../components/Bookmark/Bookmark';
 import RemoveBookmark from '../../components/Bookmark/RemoveBookmark';
-import { is } from '@babel/types';
 // import ErrorPage from '../ErrorPage/ErrorPage';
 
 const GET_BATHROOM = gql`
@@ -107,15 +106,6 @@ const ShowBathroomPage = props => {
   return(
     <div className={styles.ShowBathroomPage}>
       <Link to={'/'}><div className={styles.backBtn}>back to results</div></Link>
-      {/* why isnt this working 90% of the time */}
-      
-      {/* <Mutation mutation={ADD_BOOKMARK} variables={ Bathroom_ID_Object }>
-        {bookmark => (
-          <button style={{backgroundColor: "black", color: "white"}} onClick={ bookmark }>
-          Save to Favorites
-        </button>
-        )}
-      </Mutation> */}
       <div className={styles.mapOuterContainer}>
         <div className={styles.mapContainer}>
           <ShowMap location={location}/>          
