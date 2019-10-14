@@ -10,25 +10,22 @@ mutation bookmark($bathroomId: ID!) {
 }
 `
 
-const REMOVE_BOOKMARK = gql`
-mutation removeBookmark($id: ID!) {
-  removeBookmark(id: $id) {
-    id
-  }
-}
-`
-
 const Bookmark = props => {
   const Bathroom_ID_Object = {bathroomId: props.bathroomId};
+  const setTrue = () => {
+    return props.setBookmark(true);
+  }
 
   return(
-    <Mutation mutation={ADD_BOOKMARK} variables={ Bathroom_ID_Object }>
-      {bookmark => (
-        <div style={{backgroundColor: "black", color: "white"}} onClick={ bookmark }>
-          Save to Favorites
-        </div>
-      )}
-    </Mutation>
+    <div>
+      <Mutation mutation={ADD_BOOKMARK} variables={ Bathroom_ID_Object }>
+        {bookmark => (
+          <div style={{backgroundColor: "black", color: "white"}} onClick={ bookmark }>
+            Save to Favorites
+          </div>
+        )}
+      </Mutation>
+    </div>
   )
 }
 

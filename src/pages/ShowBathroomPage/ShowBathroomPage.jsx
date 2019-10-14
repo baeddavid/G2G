@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery, Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
@@ -8,6 +8,7 @@ import DeletedPage from '../DeletedPage/DeletedPage';
 import FeaturesScrollbar from '../../components/FeaturesScrollbar/FeaturesScrollbar';
 import ShowMap from '../../components/ShowMap/ShowMap'
 import Bookmark from '../../components/Bookmark/Bookmark';
+import RemoveBookmark from '../../components/Bookmark/RemoveBookmark';
 // import ErrorPage from '../ErrorPage/ErrorPage';
 
 const GET_BATHROOM = gql`
@@ -35,20 +36,18 @@ query getBathroom($bathroomId: ID!) {
         name
       }
     }
-  }
-}
-`
-
-const ADD_BOOKMARK = gql`
-mutation bookmark($bathroomId: ID!) {
-  bookmark(bathroomId: $bathroomId) {
-    id
+    bookmarks {
+      id
+      user {
+        id
+      }
+    }
   }
 }
 `
 
 const ShowBathroomPage = props => {
-
+  const [isBookmarked, setBookmark] = useState(false);
   const Bathroom_ID_Object = {bathroomId: props.match.params.id};
   // const Mutate_Bathroom_ID = {id: props.match.params.id};
 
@@ -58,9 +57,23 @@ const ShowBathroomPage = props => {
   if(error) return <DeletedPage />;
 
   const Bathroom = data;
+  const Bookmarks = data.getBathroom.bookmarks;
 
   let editAction;
   let showReviews;
+  let removeBookmark;
+  let addBookmark;
+
+  // TODO: It currently requires a page refresh to render the button
+  Bookmarks.forEach((bookmark, index) => {
+    if(bookmark.user.id === props.user.userId) {
+      let bookmarkId = { id: bookmark.id };
+      removeBookmark = <RemoveBookmark bookmarkId={ bookmarkId }/>
+    }
+  })
+
+  if(removeBookmark === undefined)
+    addBookmark = <Bookmark bathroomId={props.match.params.id} setBookmark={setBookmark}/>
 
   if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
     editAction = <Link className={styles.btn} to={`/bathroom/${props.match.params.id}/edit`}>Edit Bathroom</Link>
@@ -125,7 +138,8 @@ const ShowBathroomPage = props => {
         <div className={styles.description}>
           { Bathroom.getBathroom.description }
         </div>
-        <Bookmark bathroomId={props.match.params.id} />
+        { addBookmark }
+        { removeBookmark }
         <div className={styles.row}>
           <h4>Features</h4>
             { editAction }
