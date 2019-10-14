@@ -47,7 +47,7 @@ query getBathroom($bathroomId: ID!) {
 
 const ShowBathroomPage = props => {
   const Bathroom_ID_Object = {bathroomId: props.match.params.id};
-  const [isBookmarked, setBookmark] = useState();
+  const [isBookmarked, setBookmark] = useState(false);
 
   const { loading, error, data, refetch } = useQuery(GET_BATHROOM, { fetchPolicy: 'no-cache', variables: Bathroom_ID_Object });
   
