@@ -3,7 +3,6 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar'
 import { ViewScreen } from './components/ViewScreen/ViewScreen'
 import { WelcomePage } from './pages/WelcomePage/WelcomePage';
-import './App.css';
 import { getCurrentLatLng } from './services/geolocation';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import { SignupPage } from './pages/SignupPage/SignupPage';
@@ -15,6 +14,7 @@ import ReviewSuccessPage from './pages/ReviewSuccessPage/ReviewSuccessPage';
 import DeleteConfirmationPage from './pages/DeleteConfirmationPage/DeleteConfirmationPage';
 import EditBathroomPage from './pages/EditBathroomPage/EditBathroomPage';
 // import AccessDeniedPage from './pages/AccessDeniedPage/AccessDeniedPage';
+import { ThemeProvider } from 'styled-components';
 
 const App = (props) => {
 
@@ -35,8 +35,20 @@ const App = (props) => {
     setUser({userId: 'guest'});
   }
 
+  const theme = {
+    primary: '#FAB1A0',
+    primaryDark: '#E19C8C',
+    secondary: '#83DADF',
+    secondaryDark: '#51989C',
+    succes: '#96C495',
+    error: '#DD7979',
+    warning: '#EACA77',
+    dark: '#2C2C2C',
+    medium: '#A5A5A7',
+  }
+
   return ( 
-    <div className="App">
+    <ThemeProvider theme={theme}>
       <Switch>
         <Route 
           exact path="/welcome"
@@ -104,8 +116,7 @@ const App = (props) => {
           <Navbar {...props} />
         </Route>
       </Switch>
-      
-    </div>
+    </ThemeProvider>
   )
 }
 

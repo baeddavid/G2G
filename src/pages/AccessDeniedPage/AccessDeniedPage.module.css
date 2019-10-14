@@ -21,6 +21,7 @@
 
 .AccessDeniedPage a {
   margin: 0;
+  text-decoration: none;
 }
 
 .AccessDeniedPage p {
@@ -33,21 +34,6 @@
   object-fit: scale-down;
   margin-top: 40px;
   margin-bottom: 60px;
-}
-
-.darkBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 264px;
-  height: 72px;
-  border-radius: 36px;
-  background-color: #E19C8C;
-  font-size: 24px;
-  line-height: 33px;
-  font-weight: 800;
-  color: white;
-  text-decoration: none;
 }
 
 .pEnd {

@@ -15,15 +15,25 @@
 }
 
 .WelcomePage h1 {
+  position: relative;
   margin: 0;
-  font-size: 40px;
-  line-height: 55px;
+  font-size: 10vw;
+  line-height: 11vw;
   font-weight: 800;
+}
+
+.WelcomePage h1 img {
+  position: absolute;
+  width: 15vw;
+  top: -7vh;
+  left: -15vw;
+  object-fit: scale-down;
 }
 
 .WelcomePage h2 {
   margin: 0;
-  font-size: 32px;
+  font-size: 8vw;
+  line-height: 9vw;
   font-weight: 50;
 }
 
@@ -34,8 +44,8 @@
 
 .WelcomePage h5 {
   margin: 8px;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 3vw;
+  line-height: 4vw;
   font-weight: 100;
 }
 
@@ -49,11 +59,11 @@
 }
 
 .sparklesContainer {
-  position: absolute;
-  top: -50px;
-  left: -20px;
-  height: 80px;
-  width: 61px;
+  position: relative;
+  top: 7vh;
+  left: -27vw;
+  /* height: 80px; */
+  width: 15vw;
 }
 
 .sparklesContainer img {

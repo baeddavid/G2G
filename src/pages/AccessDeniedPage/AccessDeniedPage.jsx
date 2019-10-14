@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './AccessDeniedPage.module.css';
+import Button from '../../components/Button/Button';
 
 const AccessDeniedPage = (props) => {
 
@@ -15,13 +16,18 @@ const AccessDeniedPage = (props) => {
 
       <img src="/lock.png" alt="lock"/>
 
-      <Link to="/signup" className={styles.darkBtn}>
-        Sign up
+      <Link to="/signup">
+        <Button 
+          primary
+          marginBottom="0"
+        >
+          Sign up
+        </Button>
       </Link>
 
       <div className={styles.pEnd}>Already have an account?</div>
       
-      <Link to="/login" className={styles.login}>Log in</Link>
+      <Link to="/login"><span className={styles.login}>Log in</span></Link>
 
     </div>
   )

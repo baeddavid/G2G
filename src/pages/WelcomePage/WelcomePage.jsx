@@ -10,10 +10,12 @@ export const WelcomePage = (props) => {
   return(
     <div className={styles.WelcomePage}>
       <div className={styles.headerSection}>
-        <div className={styles.sparklesContainer}>
+        {/* <div className={styles.sparklesContainer}>
+        </div> */}
+        <h1>
           <img src="sparkles.png" alt="sparkles"/>
-        </div>
-        <h1>Welcome</h1>
+          Welcome
+        </h1>
         <h2>Your places to <span>go</span>.</h2>
       </div>
       <div className={styles.loginSection}>

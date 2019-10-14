@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledButton = styled.div`
   align-items: center;
-  background: ${({ primary }) => primary ? "#E19C8C" : "#FAB1A0"};
-  border: .5vh solid #E19C8C;
+  background: ${({primary, theme}) => primary ? theme.primaryDark : theme.primary};
+  border: .5vh solid ${({theme}) => theme.primaryDark};
   border-radius: 5vh;
   color: white;
   display: flex;
@@ -22,6 +23,7 @@ const StyledButton = styled.div`
 `;
 
 const Button = ({ children, onClick, primary, disabled, ...props }) => {
+  
   return (
     <StyledButton 
       onClick={disabled ? null : onClick}

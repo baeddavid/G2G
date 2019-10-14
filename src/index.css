@@ -1,7 +1,3 @@
-@font-face {
-  font-family: 'Avenir Next';
-  src: local('Avenir Next'), url(./fonts/AvenirNextLTPro-Regular.otf) format('OpenType');
-}
 
 body {
   margin: 0;
