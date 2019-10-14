@@ -7,8 +7,7 @@ import LoadingPage from '../LoadingPage/LoadingPage';
 import DeletedPage from '../DeletedPage/DeletedPage';
 import FeaturesScrollbar from '../../components/FeaturesScrollbar/FeaturesScrollbar';
 import ShowMap from '../../components/ShowMap/ShowMap'
-import Bookmark from '../../components/Bookmark/Bookmark';
-import RemoveBookmark from '../../components/Bookmark/RemoveBookmark';
+import BookmarkIndex from '../../components/Bookmark/BookmarkIndex';
 // import ErrorPage from '../ErrorPage/ErrorPage';
 
 const GET_BATHROOM = gql`
@@ -48,10 +47,8 @@ query getBathroom($bathroomId: ID!) {
 
 const ShowBathroomPage = props => {
   // TODO: LIFT THE STATE OF ISBOOKMARKED PLEASE JESUS CHRIST
-  const isBookmarked = false;
-  
   const Bathroom_ID_Object = {bathroomId: props.match.params.id};
-  // const Mutate_Bathroom_ID = {id: props.match.params.id};
+  const [isBookmarked, setBookmark] = useState();
 
   const { loading, error, data, refetch } = useQuery(GET_BATHROOM, { fetchPolicy: 'no-cache', variables: Bathroom_ID_Object });
   
@@ -63,22 +60,16 @@ const ShowBathroomPage = props => {
 
   let editAction;
   let showReviews;
-  let removeBookmark;
-  let addBookmark;
-
+  let bookmarkId 
+  
   // TODO: FIX THIS SECTION PLEASE GOD DAMN IT
-  if(isBookmarked) {
-    Bookmarks.forEach((bookmark, index) => {
-      if(bookmark.user.id === props.user.userId) {
-        let bookmarkId = { id: bookmark.id };
-        removeBookmark = <RemoveBookmark bookmarkId={ bookmarkId } isBookmarked={isBookmarked} refetch={refetch}/>
-      }
-    })
-  }
-
-  if(!isBookmarked) {
-    addBookmark = <Bookmark bathroomId={props.match.params.id} isBookmarked={isBookmarked} refetch={refetch}/>
-  }
+  let isBookmarkedByUser = Bookmarks.find((bookmark) => bookmark.user.id === props.user.userId);
+  if(isBookmarkedByUser !== undefined)
+    bookmarkId = isBookmarkedByUser.id;
+  else
+    bookmarkId = 'not present';
+  isBookmarkedByUser = !!isBookmarkedByUser;
+  
   //
 
   if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
@@ -135,8 +126,8 @@ const ShowBathroomPage = props => {
         <div className={styles.description}>
           { Bathroom.getBathroom.description }
         </div>
-        { addBookmark }
-        { removeBookmark }
+        <BookmarkIndex setBookmark={setBookmark} isBookmarked={isBookmarked} currentState={isBookmarkedByUser}
+          refetch={refetch} bathroomId={Bathroom_ID_Object} bookmarkId={bookmarkId}/>
         <div className={styles.row}>
           <h4>Features</h4>
             { editAction }

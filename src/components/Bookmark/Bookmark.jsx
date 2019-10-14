@@ -11,12 +11,11 @@ mutation bookmark($bathroomId: ID!) {
 `
 
 const Bookmark = props => {
-  const Bathroom_ID_Object = {bathroomId: props.bathroomId};
-
+  const Bathroom_ID_Object = props.bathroomId;
   return(
     <div>
       <Mutation mutation={ADD_BOOKMARK} variables={ Bathroom_ID_Object } onCompleted={() => {
-        props.isBookmarked = true;
+        props.setBookmark(!props.currentState);
         props.refetch();
       }}>
         {bookmark => (

@@ -11,11 +11,11 @@ mutation removeBookmark($id: ID!) {
 `
 
 const RemoveBookmark = props => {
-  console.log(props.bookmarkId);
+  const BOOKMARK_ID = {id: props.bookmarkId};
   return(
     <div>
-      <Mutation mutation={REMOVE_BOOKMARK} variables={ props.bookmarkId } onCompleted={ () => {
-        props.isBookmarked = false;
+      <Mutation mutation={REMOVE_BOOKMARK} variables={ BOOKMARK_ID } onCompleted={ () => {
+        props.setBookmark(!props.currentState);
         props.refetch();
       }}>
         { removeBookmark => <div style={{backgroundColor: "black", color: "white"}} onClick={ removeBookmark }>
