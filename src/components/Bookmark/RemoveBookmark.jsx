@@ -1,6 +1,7 @@
 import React from 'react';
 import { useMutation } from 'react-apollo';
 import gql from 'graphql-tag';
+import RemoveBookmarkButton  from '../Bookmark/RemoveBookmarkButton';
 
 const REMOVE_BOOKMARK = gql`
 mutation removeBookmark($id: ID!) {
@@ -19,11 +20,11 @@ const RemoveBookmark = ({bookmarkId, currentState, setBookmark, refetch})=> {
       refetch();
     }
   });
+  
   if(loading) return <div style={{backgroundColor: "black", color: "white"}}>Remove Bookmark</div>
+
   return(
-    <div style={{backgroundColor: "black", color: "white"}} onClick={ () => removeBookmark({ variables: BOOKMARK_ID }) }>
-      Remove Bookmark
-    </div>
+    <RemoveBookmarkButton removeBookmark={removeBookmark} BOOKMARK_ID={BOOKMARK_ID} />
   )
 }
 
