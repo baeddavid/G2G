@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import StyledInputGroup from './StyledInputGroup';
+import { StyledInputGroup } from './styles';
 
 const InputGroup = ({name, label, value, onChange, type, ...props}) => {
 

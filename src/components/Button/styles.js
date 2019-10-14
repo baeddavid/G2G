@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const StyledButton = styled.div(({theme, ...props}) => css`
+export const StyledButton = styled.div(({theme, ...props}) => css`
   align-items: center;
   background: ${props.primary ? theme.primaryDark : theme.primary};
   border: .5vh solid ${theme.primaryDark};
@@ -19,4 +19,3 @@ const StyledButton = styled.div(({theme, ...props}) => css`
   width: 68vw;
 `);
 
-export default StyledButton;

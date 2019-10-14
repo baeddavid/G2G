@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledBackLink from './StyledBackLink';
+import { StyledBackLink } from './styles';
 
 const BackLink = (props) => {
 

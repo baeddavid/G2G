@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const StyledInputGroup = styled.div(({theme, ...props}) => css`
+export const StyledInputGroup = styled.div(({theme, ...props}) => css`
   margin: 7px 0;
   width: 80%;
 
@@ -50,5 +50,3 @@ const StyledInputGroup = styled.div(({theme, ...props}) => css`
     margin-top: .5vh;  
   }
 `);
-
-export default StyledInputGroup;
