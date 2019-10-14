@@ -10,13 +10,13 @@ mutation removeBookmark($id: ID!) {
 }
 `
 
-const RemoveBookmark = props => {
-  const BOOKMARK_ID = {id: props.bookmarkId};
+const RemoveBookmark = ({bookmarkId, currentState, setBookmark, refetch})=> {
+  const BOOKMARK_ID = {id: bookmarkId};
   return(
     <div>
       <Mutation mutation={REMOVE_BOOKMARK} variables={ BOOKMARK_ID } onCompleted={ () => {
-        props.setBookmark(!props.currentState);
-        props.refetch();
+        setBookmark(!currentState);
+        refetch();
       }}>
         { removeBookmark => <div style={{backgroundColor: "black", color: "white"}} onClick={ removeBookmark }>
           Remove Bookmark</div> }

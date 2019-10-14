@@ -2,15 +2,15 @@ import React from 'react';
 import Bookmark from '../Bookmark/Bookmark';
 import RemoveBookmark from '../Bookmark/RemoveBookmark';
 
-const BookmarkIndex = props => {
+const BookmarkIndex = ({ bookmarkId, bathroomId, setBookmark, currentState, refetch}) => {
 
-  props.setBookmark(props.currentState);
+  setBookmark(currentState);
   return(
     <div>
-      {props.currentState ? 
-      <RemoveBookmark refetch={props.refetch} bookmarkId={props.bookmarkId} setBookmark={props.setBookmark} currentState={props.currentState}/>
+      {currentState ? 
+      <RemoveBookmark refetch={refetch} bookmarkId={bookmarkId} setBookmark={setBookmark} currentState={currentState}/>
       : 
-      <Bookmark refetch={props.refetch} bathroomId={props.bathroomId} setBookmark={props.setBookmark} currentState={props.currentState}/>}
+      <Bookmark refetch={refetch} bathroomId={bathroomId} setBookmark={setBookmark} currentState={currentState}/>}
     </div>
   )
 }
