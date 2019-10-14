@@ -46,7 +46,6 @@ query getBathroom($bathroomId: ID!) {
 `
 
 const ShowBathroomPage = props => {
-  // TODO: LIFT THE STATE OF ISBOOKMARKED PLEASE JESUS CHRIST
   const Bathroom_ID_Object = {bathroomId: props.match.params.id};
   const [isBookmarked, setBookmark] = useState();
 
@@ -62,15 +61,17 @@ const ShowBathroomPage = props => {
   let showReviews;
   let bookmarkId 
   
-  // TODO: FIX THIS SECTION PLEASE GOD DAMN IT
   let isBookmarkedByUser = Bookmarks.find((bookmark) => bookmark.user.id === props.user.userId);
-  if(isBookmarkedByUser !== undefined)
+
+  // If the user does not make a bookmark it will be undefined so set the actual id to a placeholder.
+  if(isBookmarkedByUser !== undefined) {
     bookmarkId = isBookmarkedByUser.id;
-  else
-    bookmarkId = 'not present';
-  isBookmarkedByUser = !!isBookmarkedByUser;
+  } else {
+    bookmarkId = 'Bookmark not present';
+  }
   
-  //
+  // Convert the string into a boolean
+  isBookmarkedByUser = !!isBookmarkedByUser;
 
   if(props.user.userId === Bathroom.getBathroom.postedBy.id) {
     editAction = <Link className={styles.btn} to={`/bathroom/${props.match.params.id}/edit`}>Edit Bathroom</Link>
