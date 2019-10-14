@@ -22,7 +22,7 @@ export const LoginPage = (props) => {
     password: '',
   })
 
-  const { email, password} = inputs;
+  const { email, password } = inputs;
 
   const _confirm = (data) => {
     const { token } = data.login

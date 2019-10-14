@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './SignupPage.module.css';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -43,8 +42,6 @@ export const SignupPage = (props) => {
     props.setUser({userId: userService.getUser()})
   }
 
-  const passwordMatch = () => password === passwordConf;
-
   const validPassword = () => {
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
     return regex.test(password);
@@ -56,7 +53,7 @@ export const SignupPage = (props) => {
   }
 
   const validSignUp = () => {
-    return passwordMatch() && validPassword() && validEmail()
+    return validPassword() && validEmail()
   }  
 
   return (
@@ -92,8 +89,8 @@ export const SignupPage = (props) => {
       >
         {mutation => (
           <Button
-            disabled={!(name && email && password)}
-            primary={!!(name && email && password)}
+            disabled={!validSignUp()}
+            primary={validSignUp()}
             onClick={mutation}
           >
             Create Account
