@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery} from 'react-apollo';
+import { useQuery, Mutation } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 import styles from './ShowBathroomPage.module.css';
@@ -7,6 +7,7 @@ import LoadingPage from '../LoadingPage/LoadingPage';
 import DeletedPage from '../DeletedPage/DeletedPage';
 import FeaturesScrollbar from '../../components/FeaturesScrollbar/FeaturesScrollbar';
 import ShowMap from '../../components/ShowMap/ShowMap'
+import Bookmark from '../../components/Bookmark/Bookmark';
 // import ErrorPage from '../ErrorPage/ErrorPage';
 
 const GET_BATHROOM = gql`
@@ -34,6 +35,14 @@ query getBathroom($bathroomId: ID!) {
         name
       }
     }
+  }
+}
+`
+
+const ADD_BOOKMARK = gql`
+mutation bookmark($bathroomId: ID!) {
+  bookmark(bathroomId: $bathroomId) {
+    id
   }
 }
 `
@@ -78,6 +87,15 @@ const ShowBathroomPage = props => {
   return(
     <div className={styles.ShowBathroomPage}>
       <Link to={'/'}><div className={styles.backBtn}>back to results</div></Link>
+      {/* why isnt this working 90% of the time */}
+      
+      {/* <Mutation mutation={ADD_BOOKMARK} variables={ Bathroom_ID_Object }>
+        {bookmark => (
+          <button style={{backgroundColor: "black", color: "white"}} onClick={ bookmark }>
+          Save to Favorites
+        </button>
+        )}
+      </Mutation> */}
       <div className={styles.mapOuterContainer}>
         <div className={styles.mapContainer}>
           <ShowMap location={location}/>          
@@ -107,6 +125,7 @@ const ShowBathroomPage = props => {
         <div className={styles.description}>
           { Bathroom.getBathroom.description }
         </div>
+        <Bookmark bathroomId={props.match.params.id} />
         <div className={styles.row}>
           <h4>Features</h4>
             { editAction }
