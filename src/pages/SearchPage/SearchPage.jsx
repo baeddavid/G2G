@@ -24,10 +24,11 @@ const GET_CLOSEST_BATHROOMS = gql`
 `
 
 const SearchPage = (props) => {
+  console.log('Search Page')
   const [isFocused, setIsFocused] = useState(false);
   const [placeData, setPlaceData] = useState({});
 
-  const { loading, error, data } = useQuery(GET_CLOSEST_BATHROOMS, { fetchPolicy: 'no-cache',
+  const { loading, error, data } = useQuery(GET_CLOSEST_BATHROOMS, { fetchPolicy: 'network-only',
     variables: { 
       currentLat: props.mapCenter.lat, 
       currentLng: props.mapCenter.lng

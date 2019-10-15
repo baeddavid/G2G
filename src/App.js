@@ -23,11 +23,14 @@ const App = (props) => {
   const [newBathroomId, setNewBathroomId] = useState(null);
   const [mapCenter, setMapCenter] = useState(null);
 
+
   useEffect(() => {
     (async () => {
       const location = await getCurrentLatLng()
       setLocation(location);
       setMapCenter(location);
+      // Save to fav should print one additional time 
+      // Unless it only scaps the subtree not the actual tree
     })()
   }, [])
 
@@ -47,7 +50,6 @@ const App = (props) => {
     medium: '#A5A5A7',
     light: '#FFFFFF',
   }
-
   return ( 
     <ThemeProvider theme={theme}>
       <Switch>

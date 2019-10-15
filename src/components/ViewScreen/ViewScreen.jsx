@@ -9,7 +9,7 @@ import LoadingPage from '../../pages/LoadingPage/LoadingPage';
 import ShowBathroomPage from '../../pages/ShowBathroomPage/ShowBathroomPage';
 import AccessDeniedPage from '../../pages/AccessDeniedPage/AccessDeniedPage';
 import styles from './ViewScreen.module.css';
-import { Query } from 'react-apollo';
+import { useQuery } from 'react-apollo';
 import gql from 'graphql-tag';
 
 const GET_USER = gql`
@@ -30,48 +30,41 @@ const GET_USER = gql`
 export const ViewScreen = (parentProps) => {
 
   const { user } = parentProps;
+  const { loading, error, data } = useQuery(GET_USER, { fetchPolicy: 'network-only',  variables: {userId: user.userId }});
+
   if(user.userId !== 'guest') {
-    return(
-      <Query query={GET_USER} variables={ {userId: user.userId} }>
+    if(loading) return <LoadingPage />;
+    if(error) return 'errorasd';
 
-        {({ loading, error, data}) => {
-
-          if(loading) return <LoadingPage />;
-          if(error) return 'errorasd';
-
-          return (
-            <div className={styles.ViewScreen}>
-              <Switch>
-                <Route exact path='/' render={(props) => { 
-                  return parentProps.mapCenter ? <SearchPage {...props} {...parentProps} name={data.getUser.name}/> : <LoadingPage/> 
-                }
-                } />
-                <Route exact path='/saved' render={(props) =>
-                  user.userId !== 'guest' ?
-                  <SavedPage {...props}/> :
-                  <AccessDeniedPage />
-                } />
-                <Route exact path='/profile' render={(props) =>
-                  user.userId !== 'guest' ?
-                  <ProfilePage {...props} setUser={parentProps.setUser} name={data.getUser.name}/> :
-                  <AccessDeniedPage />
-                } />
-                <Route exact path='/more' render={(props) =>
-                  user.userId !== 'guest' ?
-                  <MorePage {...props}/> :
-                  <AccessDeniedPage />
-                } />
-                <Route
-                  exact path="/bathroom/:id"
-                  render={(props) => <ShowBathroomPage {...props} location={parentProps.location} newBathroomId={parentProps.newBathroomId} user={parentProps.user}/>  
-                } />
-              </Switch>
-            </div>
-          )
-        }}
-      </Query>
-    )
-  } else {
+    return (
+      <div className={styles.ViewScreen}>
+        <Switch>
+           <Route exact path='/' render={(props) => { 
+              return parentProps.mapCenter ? <SearchPage {...props} {...parentProps} name={data.getUser.name}/> : <LoadingPage/> 
+              }
+          } />
+            <Route exact path='/saved' render={(props) =>
+              user.userId !== 'guest' ?
+                <SavedPage {...props}/> :
+                <AccessDeniedPage />
+          } />
+            <Route exact path='/profile' render={(props) =>
+              user.userId !== 'guest' ?
+              <ProfilePage {...props} setUser={parentProps.setUser} name={data.getUser.name}/> :
+              <AccessDeniedPage />
+          } />
+            <Route exact path='/more' render={(props) =>
+              user.userId !== 'guest' ?
+              <MorePage {...props}/> :
+              <AccessDeniedPage />
+          } />
+            <Route
+              exact path="/bathroom/:id"
+              render={(props) => <ShowBathroomPage {...props} location={parentProps.location}newBathroomId={parentProps.newBathroomId} user={parentProps.user}/>  
+          } />
+        </Switch>
+      </div>
+    ) } else {
     return(
       <div className={styles.ViewScreen}>
         <Switch>
