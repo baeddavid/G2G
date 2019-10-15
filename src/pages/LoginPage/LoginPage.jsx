@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './LoginPage.module.css';
+import { StyledLoginPage } from './styles';
 import { useMutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import userService from '../../services/userService';
@@ -15,7 +15,7 @@ const LOGIN_MUTATION = gql`
   }
 `
 
-export const LoginPage = (props) => {
+const LoginPage = (props) => {
 
   const [inputs, setInputs] = useState({
     email: '',
@@ -46,7 +46,7 @@ export const LoginPage = (props) => {
   if(error) return <div>Wrong signin Component</div>
 
   return (
-    <div className={styles.LoginPage}>
+    <StyledLoginPage>
       <BackLink />
       <header>
         <h1>Log in</h1>
@@ -72,6 +72,8 @@ export const LoginPage = (props) => {
       >
         Let's go
       </Button>
-    </div>
+    </StyledLoginPage>
   )
 }
+
+export default LoginPage;

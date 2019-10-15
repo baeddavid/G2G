@@ -1,100 +1,84 @@
-import React from 'react';
-import styles from './BathroomCategoryIndex.module.css';
+import React from "react";
+import styles from "./BathroomCategoryIndex.module.css";
+import Card from "../../blocks/Card";
 
 const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
-
-  const { category, genderNeutral} = form;
+  const { category, genderNeutral } = form;
 
   const saveAndContinue = () => {
     nextStep();
-  }
+  };
 
   const isPageComplete = () => {
-    return category && genderNeutral
-  }
+    return category && genderNeutral;
+  };
 
   return (
     <div className={styles.BathroomCategoryIndex}>
       <h1>New Bathroom</h1>
-      <p>Thanks for being a contributing member of the G2G community! By providing this information, you’re helping us keep our database updated and useful.</p>
+      <p>
+        Thanks for being a contributing member of the G2G community! By
+        providing this information, you’re helping us keep our database updated
+        and useful.
+      </p>
       {/* Should we say swipe? Or tap arrow button */}
-      <h3>Select relevant answers. Then swipe</h3>
+      <h3>Select relevant answers. Then click continue.</h3>
       <p>Where is this bathroom?</p>
-      <div className={styles.cardContainer}>
-        <div 
-          className={`${styles.card} ${category === 'Private Business' ? styles.selected : null}`}
-          onClick={ () => setForm({ ...form, category: 'Private Business' })}
+      <Card.Container>
+        <Card
+          selected={category === "Private Business"}
+          onClick={() => setForm({ ...form, category: "Private Business" })}
         >
-          <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
-          </div>
-          <div className={styles.text}>
-            Private Business
-          </div>
-        </div>
-        <div 
-          className={`${styles.card} ${styles.middle} ${category === 'Indoor Public' ? styles.selected : null}`}
-          onClick={ () => setForm({ ...form, category: 'Indoor Public' })}
+          <Card.Image src="logo192.png" alt="Private Business" />
+          Private Business
+        </Card>
+        <Card
+          selected={category === "Indoor Public"}
+          onClick={() => setForm({ ...form, category: "Indoor Public" })}
         >
-          <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
-          </div>
-          <div className={styles.text}>
-            Indoor Public
-          </div>
-        </div>
-        <div 
-          className={`${styles.card} ${category === 'Outdoor Public' ? styles.selected : null}`}
-          onClick={ () => setForm({ ...form, category: 'Outdoor Public'})}
+          <Card.Image src="logo192.png" alt="Indoor Public" />
+          Indoor Public
+        </Card>
+        <Card
+          selected={category === "Outdoor Public"}
+          onClick={() => setForm({ ...form, category: "Outdoor Public" })}
         >
-          <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
-          </div>
-          <div className={styles.text}>
-            Outdoor Public
-          </div>
-        </div>
-      </div>
+          <Card.Image src="logo192.png" alt="Outdoor Public" />
+          Outdoor Public
+        </Card>
+      </Card.Container>
       <p>Which bathroom did you use?</p>
-      <div className={styles.cardContainer}>
-        <div
-          className={`${styles.card} ${genderNeutral === 'Women\'s' ? styles.selected : null}`}
-          onClick={ () => setForm({ ...form, genderNeutral: 'Women\'s' })}
+      <Card.Container>
+        <Card
+          selected={genderNeutral === "Women's"}
+          onClick={() => setForm({ ...form, genderNeutral: "Women's" })}
         >
-          <div className={styles.img}>
-            <img className={styles.female} src="female.png" alt="private business"/>
-          </div>
-          <div className={styles.text}>
-            Women's
-          </div>
-        </div>
-        <div
-          className={`${styles.card} ${styles.middle} ${form.genderNeutral === 'Gender Neutral' ? styles.selected : null}`}
-          onClick={ () => setForm({ ...form, genderNeutral: 'Gender Neutral' })}
+          <Card.Image src="logo192.png" alt="Women's" />
+          Women's
+        </Card>
+        <Card
+          selected={genderNeutral === "Gender Neutral"}
+          onClick={() => setForm({ ...form, genderNeutral: "Gender Neutral" })}
         >
-          <div className={styles.img}>
-            <img className={styles.neutral} src="neutral.png" alt="private business"/>
-          </div>
-          <div className={styles.text}>
-            Gender Neutral
-          </div>
-        </div>
-        <div
-          className={`${styles.card} ${genderNeutral === 'Men\'s' ? styles.selected : null}`}
-          onClick={ () => setForm({ ...form, genderNeutral: 'Men\'s'})}
+          <Card.Image src="logo192.png" alt="Gender Neutral" />
+          Gender Neutral
+        </Card>
+        <Card
+          selected={genderNeutral === "Men's"}
+          onClick={() => setForm({ ...form, genderNeutral: "Men's" })}
         >
-          <div className={styles.img}>
-            <img className={styles.male} src="male.png" alt="private business"/>
-          </div>
-          <div className={styles.text}>
-            Men's
-          </div>
-        </div>
-      </div>
+          <Card.Image src="logo192.png" alt="Men's" />
+          Men's
+        </Card>
+      </Card.Container>
       <div className={styles.saveAndContinueBtnContainer}>
-        <div 
-          className={isPageComplete() ? styles.saveAndContinueBtn : styles.cantContinueBtn}
-          onClick={ isPageComplete() ? saveAndContinue : null}
+        <div
+          className={
+            isPageComplete()
+              ? styles.saveAndContinueBtn
+              : styles.cantContinueBtn
+          }
+          onClick={isPageComplete() ? saveAndContinue : null}
         >
           Save and Continue
         </div>
@@ -105,7 +89,7 @@ const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
         <div className={styles.dot} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default BathroomCategoryIndex;

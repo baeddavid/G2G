@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useQuery, useLazyQuery } from 'react-apollo';
+import { useQuery } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import gql from 'graphql-tag';
 import styles from './ShowBathroomPage.module.css';
 import LoadingPage from '../LoadingPage/LoadingPage';
 import DeletedPage from '../DeletedPage/DeletedPage';
-import FeaturesScrollbar from '../../components/FeaturesScrollbar/FeaturesScrollbar';
+import FeaturesScrollbar from '../../components/FeaturesScrollbar';
 import ShowMap from '../../components/ShowMap/ShowMap'
 import BookmarkIndex from '../../components/Bookmark/BookmarkIndex';
 // import ErrorPage from '../ErrorPage/ErrorPage';

@@ -22,10 +22,9 @@ export const SignupPage = (props) => {
     name: '',
     email: '',
     password: '',
-    passwordConf: '',
   })
   
-  const { name, email, password, passwordConf } = inputs;
+  const { name, email, password } = inputs;
 
   const handleChange = (event) => {
     setInputs({...inputs, [event.target.name]: event.target.value})
@@ -48,7 +47,7 @@ export const SignupPage = (props) => {
   }
 
   const validEmail = () => {
-    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regex.test(String(email).toLowerCase());
   }
 
