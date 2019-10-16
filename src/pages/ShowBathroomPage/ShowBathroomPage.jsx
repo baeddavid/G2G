@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-apollo";
 import { Link } from "react-router-dom";
 import gql from "graphql-tag";
@@ -69,14 +69,12 @@ const ShowBathroomPage = props => {
     bookmark => bookmark.user.id === props.user.userId
   );
 
-  // If the user does not make a bookmark it will be undefined so set the actual id to a placeholder.
   if (isBookmarkedByUser !== undefined) {
     bookmarkId = isBookmarkedByUser.id;
   } else {
     bookmarkId = "Bookmark not present";
   }
 
-  // Convert the string into a boolean
   isBookmarkedByUser = !!isBookmarkedByUser;
 
   function handleCompleted() {
