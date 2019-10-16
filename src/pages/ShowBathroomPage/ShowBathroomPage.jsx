@@ -77,6 +77,8 @@ const ShowBathroomPage = props => {
 
   isBookmarkedByUser = !!isBookmarkedByUser;
 
+  // This breaks sometimes for some reason. It is a hoisting bug.
+  // TODO Fix the hoisting bug.
   function handleCompleted() {
     setBookmark(isBookmarkedByUser);
   }
