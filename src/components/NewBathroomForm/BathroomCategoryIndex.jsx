@@ -1,6 +1,8 @@
 import React from "react";
-import styles from "./BathroomCategoryIndex.module.css";
+import { Link } from "react-router-dom";
 import Card from "../../blocks/Card";
+import PageNav from "../../blocks/PageNav";
+import BathroomPage from "../../blocks/BathroomPage";
 
 const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
   const { category, genderNeutral } = form;
@@ -14,8 +16,9 @@ const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
   };
 
   return (
-    <div className={styles.BathroomCategoryIndex}>
-      <h1>New Bathroom</h1>
+    <BathroomPage>
+      <Link to="/">Cancel</Link>
+      <h2>New Bathroom</h2>
       <p>
         Thanks for being a contributing member of the G2G community! By
         providing this information, you’re helping us keep our database updated
@@ -71,24 +74,12 @@ const BathroomCategoryIndex = ({ form, nextStep, setForm }) => {
           Men's
         </Card>
       </Card.Container>
-      <div className={styles.saveAndContinueBtnContainer}>
-        <div
-          className={
-            isPageComplete()
-              ? styles.saveAndContinueBtn
-              : styles.cantContinueBtn
-          }
-          onClick={isPageComplete() ? saveAndContinue : null}
-        >
-          Save and Continue
-        </div>
-      </div>
-      <div className={styles.dotContainer}>
-        <div className={`${styles.dot} ${styles.highlight}`} />
-        <div className={styles.dot} />
-        <div className={styles.dot} />
-      </div>
-    </div>
+      <PageNav.Controller
+        isPageComplete={isPageComplete}
+        saveAndContinue={saveAndContinue}
+        page={1}
+      />
+    </BathroomPage>
   );
 };
 

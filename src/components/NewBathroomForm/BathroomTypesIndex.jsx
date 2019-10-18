@@ -1,91 +1,70 @@
-import React from 'react';
-import styles from './BathroomTypesIndex.module.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import Card from "../../blocks/Card";
+import PageNav from "../../blocks/PageNav";
+import BathroomPage from "../../blocks/BathroomPage";
 
 const BathroomTypesIndex = ({ form, nextStep, prevStep, setForm }) => {
-
   const saveAndContinue = () => {
-      nextStep();
-  }
+    nextStep();
+  };
 
   const back = () => {
-      prevStep();
-  }
+    prevStep();
+  };
 
-  return(
-    <div className={styles.BathroomTypesIndex}>
-      <h1>New Bathroom</h1>
+  return (
+    <BathroomPage>
+      <Link to="/">Cancel</Link>
+      <h2>New Bathroom</h2>
       <h3>Let us know the options available!</h3>
-      <div className={styles.cardContainer}>
-        <div
-          className={`${styles.card} ${form.purchaseRequired ? styles.selected : null}`}
-          onClick={ () => setForm({ ...form, purchaseRequired: !form.purchaseRequired })}
+      <Card.Container>
+        <Card
+          selected={form.purchaseRequired}
+          onClick={() =>
+            setForm({ ...form, purchaseRequired: !form.purchaseRequired })
+          }
         >
-          <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
-          </div>
-          <div className={styles.text}>
-            Purchase Required
-          </div>
-        </div>
-        <div
-          className={`${styles.card} ${form.accessibleStall ? styles.selected : null}`}
-          onClick={ () => setForm({ ...form, accessibleStall: !form.accessibleStall })}
+          <Card.Image src="/logo192.png" alt="Purchase Required" />
+          Purchase Required
+        </Card>
+        <Card
+          selected={form.accessibleStall}
+          onClick={() =>
+            setForm({ ...form, accessibleStall: !form.accessibleStall })
+          }
         >
-          <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
-          </div>
-          <div className={styles.text}>
-            Accessible Stall
-          </div>
-        </div>
-      </div>
-      <div className={styles.cardContainer}>
-        <div
-          className={`${styles.card} ${form.singleOccupancy ? styles.selected : null}`}
-          onClick={ () => setForm({ ...form, singleOccupancy: !form.singleOccupancy })}
+          <Card.Image src="/logo192.png" alt="Wheelchair Accessible" />
+          Wheelchair Accessible
+        </Card>
+      </Card.Container>
+      <Card.Container>
+        <Card
+          selected={form.singleOccupancy}
+          onClick={() =>
+            setForm({ ...form, singleOccupancy: !form.singleOccupancy })
+          }
         >
-          <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
-          </div>
-          <div className={styles.text}>
-            Single Occupancy
-          </div>
-        </div>
-        <div
-          className={`${styles.card} ${form.changingStations ? styles.selected : null}`}
-          onClick={ () => setForm({ ...form, changingStations: !form.changingStations })}
+          <Card.Image src="/logo192.png" alt="Single Occupancy" />
+          Single Occupancy
+        </Card>
+        <Card
+          selected={form.changingStations}
+          onClick={() =>
+            setForm({ ...form, changingStations: !form.changingStations })
+          }
         >
-          <div className={styles.img}>
-            <img src="logo192.png" alt="private business"/>
-          </div>
-          <div className={styles.text}>
-            Baby Changing
-          </div>
-        </div>
-      </div>
-      <div className={styles.backBtnContainer}>
-        <div 
-          className={styles.backBtn}
-          onClick={ back }
-        >
-            Back
-        </div>
-      </div>
-      <div className={styles.saveAndContinueBtnContainer}>
-        <div 
-          className={styles.saveAndContinueBtn}
-          onClick={ saveAndContinue }
-        >
-          Save and Continue
-        </div>
-      </div>
-      <div className={styles.dotContainer}>
-        <div className={styles.dot} />
-        <div className={`${styles.dot} ${styles.highlight}`} />
-        <div className={styles.dot} />
-      </div>
-    </div>
-  )
-}
+          <Card.Image src="/logo192.png" alt="Changing Stations" />
+          Changing Stations
+        </Card>
+      </Card.Container>
+      <PageNav.Controller
+        back={back}
+        saveAndContinue={saveAndContinue}
+        page={2}
+      />
+    </BathroomPage>
+  );
+};
 
 export default BathroomTypesIndex;

@@ -1,15 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import IndexForm from '../../components/NewBathroomForm/IndexForm';
-import styles from './CreateBathroomPage.module.css';
+import React from "react";
+import IndexForm from "../../components/NewBathroomForm/IndexForm";
 
-export const CreateBathroomPage = (props) => {
-  return (
-    <div className={styles.CreateBathroomPage}>
-      <Link to="/">
-        <div>Cancel</div>
-      </Link>
-      <IndexForm { ...props }/>
-    </div>  
-  )
-}
+export const CreateBathroomPage = props => {
+  return <IndexForm {...props} />;
+};

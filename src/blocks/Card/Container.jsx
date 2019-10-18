@@ -3,11 +3,19 @@ import styled, { css } from "styled-components";
 const Container = styled.div(
   ({ theme, ...props }) => css`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin: 1.5vh 0 4vh 0;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     width: 100%;
-    height: 18vh;
+
+    div:first-child {
+      margin-left: auto;
+    }
+
+    div:last-child {
+      margin-right: auto;
+    }
   `
 );
 

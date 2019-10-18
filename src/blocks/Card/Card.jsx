@@ -9,15 +9,15 @@ const Card = styled.div(
     justify-content: space-between;
     align-items: center;
 
-    width: ${props.width || "23%"};
-    height: ${props.height || "calc(100% - 3vh)"};
+    width: ${props.width || "30%"};
+    height: ${props.height || "100%"};
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
 
     padding: 1vh 3vw;
     border: 2px solid;
     border-color: ${props.selected ? theme.primary : "transparent"};
     border-radius: 13px;
-    margin: ${props.middle ? "0 4vw" : "0"};
+    margin: 0 2vw;
 
     background: ${theme.light};
 
