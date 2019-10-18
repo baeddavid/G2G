@@ -49,7 +49,7 @@ const ShowBathroomPage = props => {
   const Bathroom_ID_Object = { bathroomId: props.match.params.id };
   const [isBookmarked, setBookmark] = useState(false);
 
-  const { loading, error, data, refetch } = useQuery(GET_BATHROOM, {
+  const { loading, error, data } = useQuery(GET_BATHROOM, {
     fetchPolicy: "network-only",
     variables: Bathroom_ID_Object,
     onCompleted: handleCompleted
@@ -151,7 +151,6 @@ const ShowBathroomPage = props => {
           setBookmark={setBookmark}
           isBookmarked={isBookmarked}
           currentState={isBookmarkedByUser}
-          refetch={refetch}
           bathroomId={Bathroom_ID_Object}
           bookmarkId={bookmarkId}
         />
