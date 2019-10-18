@@ -8,20 +8,17 @@ const BookmarkIndex = ({
   setBookmark,
   currentState,
   isBookmarked,
-  refetch
 }) => {
   return (
     <div>
       {isBookmarked ? (
         <RemoveBookmark
-          refetch={refetch}
           bookmarkId={bookmarkId}
           setBookmark={setBookmark}
           currentState={currentState}
         />
       ) : (
         <Bookmark
-          refetch={refetch}
           bathroomId={bathroomId}
           setBookmark={setBookmark}
           currentState={currentState}

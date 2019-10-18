@@ -21,7 +21,6 @@ const RemoveBookmark = ({
   const BOOKMARK_ID = { id: bookmarkId };
   const [removeBookmark, { loading }] = useMutation(REMOVE_BOOKMARK, {
     onCompleted() {
-      refetch();
       setBookmark(!currentState);
     }
   });

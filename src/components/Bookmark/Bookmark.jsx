@@ -20,7 +20,6 @@ const Bookmark = ({
 }) => {
   const [addBookmark, { loading }] = useMutation(ADD_BOOKMARK, {
     onCompleted() {
-      refetch();
       setBookmark(!currentState);
     }
   });
