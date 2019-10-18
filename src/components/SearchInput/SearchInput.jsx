@@ -19,7 +19,7 @@ export const SearchInput = ({setIsFocused, setMapCenter, setPlaceData}) => {
         setIsFocused(false);
       });
     }
-  }, [])
+  }, [inputRef, setIsFocused, setMapCenter, setPlaceData])
 
 
   return (

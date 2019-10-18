@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Mutation } from "react-apollo";
 import gql from "graphql-tag";
-import styles from "./BathroomDescriptionIndex.module.css";
 import BathroomPage from "../../blocks/BathroomPage";
 import PageNav from "../../blocks/PageNav";
 import Button from "../Button";

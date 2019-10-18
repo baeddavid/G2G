@@ -68,7 +68,7 @@ const BathroomConfirmationIndex = ({
     prevStep();
   };
 
-  const [addBathroom] = usseMutation(POST_MUTATION, {
+  const [addBathroom] = useMutation(POST_MUTATION, {
     onCompleted() {
       saveAndContinue();
     }
