@@ -1,7 +1,9 @@
 import React from 'react';
-import { Query } from 'react-apollo';
+import { useQuery } from 'react-apollo';
 import gql from 'graphql-tag';
 import EditBathroom from '../../components/EditBathroom/EditBathroom';
+import LoadingPage from '../../pages/LoadingPage/LoadingPage';
+import ErrorPage from '../../pages/ErrorPage/ErrorPage';
 
 const GET_BATHROOM = gql`
 query getBathroom($bathroomId: ID!) {
@@ -27,19 +29,17 @@ query getBathroom($bathroomId: ID!) {
 
 const EditBathroomPage = props => {
   const Bathroom_ID_Object = {bathroomId: props.match.params.id};
+  const { loading, error, data } = useQuery(GET_BATHROOM, {
+    fetchPolicy: "no-cache",
+    variables: Bathroom_ID_Object
+  });
+
+  if(loading) return <LoadingPage />
+  if(error) return <ErrorPage />
+
 
   return(
-    <div>
-      <Query query={GET_BATHROOM} variables={Bathroom_ID_Object} fetchPolicy={'no-cache'}>
-        {({ loading, error, data }) => {
-          if(loading) return 'Loading...';
-          if(error) return 'We made a fucky wucky';
-          return(
-            <EditBathroom data={data.getBathroom} {...props}/>
-          )
-        }}
-      </Query>
-    </div>
+    <EditBathroom data={data.getBathroom} {...props} />
   )
 }
 
