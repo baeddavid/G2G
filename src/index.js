@@ -11,7 +11,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { setContext } from 'apollo-link-context';
 
 const httpLink = createHttpLink({
-  uri: 'https://sheltered-inlet-78249.herokuapp.com/'
+  uri: 'https://g2g-api-2.herokuapp.com/'
 })
 
 const authLink = setContext((_, { headers }) => {
