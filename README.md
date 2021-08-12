@@ -1,7 +1,8 @@
 # Got 2 Go
 ![](https://img.shields.io/badge/Deployed-✓-brightgreen) ![](https://img.shields.io/badge/Version-0.1-fab1a0)
 
-[Deployed Link](https://g2g-gottago.herokuapp.com/welcome)
+[Deployed Link](https://g2g-webapp.herokuapp.com/welcome)
+In inspect element set viewing to mobile device of your choice.
 
 ![alt text](/public/G2G.png)
 
